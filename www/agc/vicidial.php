@@ -363,6 +363,7 @@ $mysql_log_count=72;
 $one_mysql_log=0;
 
 require("dbconnect.php");
+require_once(dirname(__FILE__)."/../xf_brand.php");
 require("functions.php");
 
 if (isset($_GET["DB"]))						    {$DB=$_GET["DB"];}
@@ -817,7 +818,7 @@ else
 
 	}
 
-$login_script = "<title>Inktel | X Frontline - Login</title>\n" .
+$login_script = "<title>".xf_brand_title('Agent Login')."</title>\n" .
     "</head>\n" .
     "<body onresize=\"browser_dimensions();\" onload=\"browser_dimensions();\">\n";
 if ($hide_timeclock_link < 1)
@@ -849,7 +850,8 @@ $login_script .= "<table width=\"100%\"><tr><td></td>\n" .
     
     "<br /><br /><br /><center>\n" .
     "<div id=\"loginBox\" class=\"barStyle\">\n" .
-    "<img src=\"./images/xf-logo.svg\" border=\"0\" alt=\"X Frontline\" />" .
+    xf_brand_logo_tag('login-logo') .
+    "<span class=\"xf-login-brand\">".xf_brand_h('company_name')."</span>" .
     "<h1>Log In</h1>\n" .
     
     "<fieldset id=\"inputs\">" .
@@ -862,9 +864,11 @@ $login_script .= "<table width=\"100%\"><tr><td></td>\n" .
     "<fieldset id=\"actions\">" .
     "<input type=\"submit\" name=\"SUBMIT\" id=\"submit\" class=\"button blue\" value=\"Log In\" /> &nbsp; \n" .
     "<span id=\"instructions\">[UserMessage]</span>" .
+    "<span class=\"xf-login-tagline\">".xf_brand_h('login_message')."</span>" .
     "</fieldset>" .
     
     "</div>" .
+    xf_brand_footer() .
     ##"<div id=\"footer\"><span><font size=\"1\"><br />Powered by Vicidial &nbsp; &nbsp; &nbsp; VERSION: $version &nbsp; &nbsp; &nbsp; BUILD: $build</font></span></div>" .
     "</center>\n" .
     "</form>\n\n" .
@@ -1836,7 +1840,7 @@ else
 				}
 			echo "<!-- Phones balance selection: $phone_login|$pb_server_ip|$past_minutes_date|     |$pb_log -->\n";
 			}
-		echo "<title>X Frontline - Inktel</title>\n";
+		echo "<title>".xf_brand_title('Agent Console')."</title>\n";
 		$stmt="SELECT extension,dialplan_number,voicemail_id,phone_ip,computer_ip,server_ip,login,pass,status,active,phone_type,fullname,company,picture,messages,old_messages,protocol,local_gmt,ASTmgrUSERNAME,ASTmgrSECRET,login_user,login_pass,login_campaign,park_on_extension,conf_on_extension,VICIDIAL_park_on_extension,VICIDIAL_park_on_filename,monitor_prefix,recording_exten,voicemail_exten,voicemail_dump_exten,ext_context,dtmf_send_extension,call_out_number_group,client_browser,install_directory,local_web_callerID_URL,VICIDIAL_web_URL,AGI_call_logging_enabled,user_switching_enabled,conferencing_enabled,admin_hangup_enabled,admin_hijack_enabled,admin_monitor_enabled,call_parking_enabled,updater_check_enabled,AFLogging_enabled,QUEUE_ACTION_enabled,CallerID_popup_enabled,voicemail_button_enabled,enable_fast_refresh,fast_refresh_rate,enable_persistant_mysql,auto_dial_next_number,VDstop_rec_after_each_call,DBX_server,DBX_database,DBX_user,DBX_pass,DBX_port,DBY_server,DBY_database,DBY_user,DBY_pass,DBY_port,outbound_cid,enable_sipsak_messages,email,template_id,conf_override,phone_context,phone_ring_timeout,conf_secret,is_webphone,use_external_server_ip,codecs_list,webphone_dialpad,phone_ring_timeout,on_hook_agent,webphone_auto_answer from phones where login='$phone_login' and pass='$phone_pass' and active = 'Y';";
 		if ($DB) {echo "|$stmt|\n";}
 		$rslt=mysql_query($stmt, $link);
@@ -9744,7 +9748,7 @@ function set_length(SLnumber,SLlength_goal,SLdirection)
 					if (tempreason=='SHIFT')
                         {logout_content='Your Shift is over or has changed, you have been logged out of your session<br /><br />';}
 
-					document.getElementById("LogouTBoxLink").innerHTML = logout_content + "<a href=\"" + agcPAGE + "?relogin=YES&session_epoch=" + epoch_sec + "&session_id=" + session_id + "&session_name=" + session_name + "&VD_login=" + user + "&VD_campaign=" + campaign + "&phone_login=" + original_phone_login + "&phone_pass=" + phone_pass + "&VD_pass=" + pass + "\"><img src=\"./images/xf-logo.svg\" border=\"0\" alt=\"X Frontline\" /><br /><br />Click Here to Login Again</a>\n";
+					document.getElementById("LogouTBoxLink").innerHTML = logout_content + "<a href=\"" + agcPAGE + "?relogin=YES&session_epoch=" + epoch_sec + "&session_id=" + session_id + "&session_name=" + session_name + "&VD_login=" + user + "&VD_campaign=" + campaign + "&phone_login=" + original_phone_login + "&phone_pass=" + phone_pass + "&VD_pass=" + pass + "\"><img src=\"<?php echo xf_brand_logo_url() ?>\" style=\"height:56px;width:auto;\" border=\"0\" alt=\"<?php echo xf_brand_h("company_name") ?>\" /><br /><br />Click Here to Login Again</a>\n";
 
 					logout_stop_timeouts = 1;
 						
@@ -12607,6 +12611,10 @@ $zi=2;
 -->
 
 <div id="content">
+    <div id="xfBrandBar">
+        <a class="xf-brand-id" href="#" onclick="return false;"><?php echo xf_brand_logo_tag('console-logo', 34); ?><span class="xf-brand-name"><?php echo xf_brand_h('company_name'); ?><small><?php echo xf_brand_h('product_name'); ?></small></span></a>
+        <span class="xf-brand-right"><?php if (strlen(trim(xf_brand('support_line'))) > 0) {echo "<span class=\"xf-brand-support\">".xf_brand_h('support_line')."</span>";} ?><span class="xf-brand-date"><?php echo date("l, F j"); ?></span></span>
+    </div>
     <div id="userStats" class="clearfix">
         <div class="pic">
             <!--<img class="profile" src="./images/InktelX-Frontline-Vici.png" width="120px" height="120px"/><br>-->
@@ -12632,6 +12640,8 @@ $zi=2;
         </div>
     </div>
     <div id="notifications">
+        <span class="xf-greeting"><?php echo xf_brand_greeting($LOGfullname); ?></span>
+        <?php if (strlen(trim(xf_brand('daily_focus'))) > 0) {echo "<span class=\"xf-daily-focus\">".xf_brand_h('daily_focus')."</span>";} ?>
         <span id="MainStatuSSpanDefault" style="display: none;">You're currently logged in as <b><?php echo "$VD_login"; ?></b> at extension <?php echo "<b>$phone_login</b>"; if ($on_hook_agent == 'Y'){echo " (<a href=\"#\" onclick=\"NoneInSessionCalL();return false;\">Connect Now</a>)"; } ?></span>
         <span id="MainStatuSSpan"></span>
         <span style="float: right;"><b>Call Duration:</b> <span id="SecondSDISP">0</span></span>
@@ -13714,6 +13724,7 @@ $zi=2;
 </form>
 
 
+<?php echo xf_brand_footer(); ?>
 </body>
 </html>
 

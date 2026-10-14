@@ -4,9 +4,10 @@
 # Copyright (C) 2008  Matt Florell <vicidial@gmail.com>    LICENSE: AGPLv2
 #
 
-echo "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<title>X Frontline | Welcome</title>\n";
+require_once(dirname(__FILE__)."/../xf_brand.php");
+echo "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<title>".xf_brand_title('Welcome')."</title>\n";
 echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n";
-echo "<link rel=\"stylesheet\" href=\"../agc/css/xf-theme.css\">\n";
+echo "<link rel=\"stylesheet\" href=\"../agc/css/xf-theme.css\">\n<link rel=\"stylesheet\" href=\"../xf_brand_css.php\">\n";
 echo "<style>
   body { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
   .xf-welcome { width: 440px; max-width: 100%; text-align: center; padding: 40px 40px 34px; border-radius: 24px; position: relative; animation: xf-fade-up .45s ease both; }
@@ -22,16 +23,16 @@ echo "<style>
 echo "</head>\n";
 echo "<body>\n";
 echo "<div class=\"xf-card xf-welcome\">\n";
-echo "<img src=\"../agc/images/xf-logo.svg\" alt=\"X Frontline\">\n";
-echo "<span class=\"xf-eyebrow\">Welcome</span>\n";
-echo "<h1>Contact Center</h1>\n";
-echo "<p>Choose where you would like to go.</p>\n";
+echo xf_brand_logo_tag('welcome-logo', 64)."\n";
+echo "<span class=\"xf-eyebrow\">".xf_brand_h('company_name')."</span>\n";
+echo "<h1>".xf_brand_h('product_name')."</h1>\n";
+echo "<p>".xf_brand_h('tagline')."</p>\n";
 echo "<div class=\"xf-links\">\n";
 echo "<a class=\"xf-btn\" href=\"../agc/vicidial.php\">Agent Login</a>\n";
 echo "<a class=\"xf-btn ghost\" href=\"../agc/timeclock.php?referrer=welcome\">Timeclock</a>\n";
 echo "<a class=\"xf-btn ghost\" href=\"../vicidial/admin.php\">Administration</a>\n";
 echo "</div>\n";
-echo "<div class=\"xf-foot\">Powered by ViciDial</div>\n";
+echo xf_brand_footer()."\n";
 echo "</div>\n";
 echo "</body>\n\n";
 echo "</html>\n\n";

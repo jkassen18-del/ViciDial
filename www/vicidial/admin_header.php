@@ -1,5 +1,6 @@
 <?php
 # admin_header.php - VICIDIAL administration header
+require_once(dirname(__FILE__)."/../xf_brand.php");
 #
 # Copyright (C) 2011  Matt Florell <vicidial@gmail.com>    LICENSE: AGPLv2
 # 
@@ -38,7 +39,7 @@ if($short_header)
 	{
 	?>
 	<TABLE CELLPADDING=0 CELLSPACING=0 BGCOLOR="#015B91"><TR>
-	<TD><IMG SRC="vicidial_admin_web_logo_small.gif" WIDTH=71 HEIGHT=22> &nbsp; </TD>
+	<TD><a href="admin.php"><?php echo xf_brand_logo_tag('admin-logo-small', 22); ?></a> &nbsp; </TD>
 	<?php if ($reports_only_user < 1) {
 		?>
 	<TD> &nbsp; <A HREF="admin.php" ALT="Users"><FONT FACE="ARIAL,HELVETICA" COLOR=WHITE SIZE=2><B>Users</B></A> &nbsp; </TD>
@@ -1039,8 +1040,8 @@ $SScustom_fields_enabled =	$row[3];
 <TABLE BGCOLOR=white cellpadding=0 cellspacing=0>
 <!-- BEGIN SIDEBAR NAVIGATION -->
 <TR><TD VALIGN=TOP WIDTH=170 BGCOLOR=#015B91 ALIGN=CENTER>
-<IMG SRC="../agc/images/xf-logo.svg" WIDTH=160 HEIGHT=44 ALT="VICIDIAL logo">
-<B><FONT FACE="ARIAL,HELVETICA" COLOR=white>ADMINISTRATION</FONT></B><BR>
+<a href="<?php echo $ADMIN ?>" class="xf-admin-brand"><?php echo xf_brand_logo_tag('admin-logo', 44); ?></a>
+<B><FONT FACE="ARIAL,HELVETICA" COLOR=white><?php echo xf_brand_h('company_name'); ?> &middot; ADMINISTRATION</FONT></B><BR>
 	<TABLE CELLPADDING=2 CELLSPACING=0 BGCOLOR=#015B91 WIDTH=160>
 	<?php if ($reports_only_user < 1) {
 		?>
@@ -1330,6 +1331,8 @@ $SScustom_fields_enabled =	$row[3];
 		<a href="<?php echo $ADMIN ?>?ADD=1000000000000"><FONT FACE="ARIAL,HELVETICA" COLOR=<?php echo $conference_fc ?> SIZE=<?php echo $header_font_size ?>> Conferences </a></TD>
 		</TR><TR BGCOLOR=<?php echo $admin_color ?>><TD ALIGN=LEFT <?php echo $settings_sh ?>> &nbsp; 
 		<a href="<?php echo $ADMIN ?>?ADD=311111111111111"><FONT FACE="ARIAL,HELVETICA" COLOR=<?php echo $settings_fc ?> SIZE=<?php echo $header_font_size ?>> System Settings </a></TD>
+		</TR><TR BGCOLOR=<?php echo $admin_color ?>><TD ALIGN=LEFT> &nbsp; 
+		<a href="./admin_branding.php"><FONT FACE="ARIAL,HELVETICA" COLOR=BLACK SIZE=<?php echo $header_font_size ?>> Branding </a></TD>
 		</TR><TR BGCOLOR=<?php echo $admin_color ?>><TD ALIGN=LEFT <?php echo $status_sh ?>> &nbsp; 
 		<a href="<?php echo $ADMIN ?>?ADD=321111111111111"><FONT FACE="ARIAL,HELVETICA" COLOR=<?php echo $status_fc ?> SIZE=<?php echo $header_font_size ?>> System Statuses </a></TD>
 		</TR><TR BGCOLOR=<?php echo $admin_color ?>><TD ALIGN=LEFT <?php echo $vm_sh ?>> &nbsp; 
@@ -1439,7 +1442,7 @@ $SScustom_fields_enabled =	$row[3];
 	<?php }
 	if (strlen($settings_sh) > 1) { 
 		?>
-	<TR BGCOLOR=<?php echo $settings_color ?>><TD ALIGN=LEFT COLSPAN=2> &nbsp; <a href="<?php echo $ADMIN ?>?ADD=311111111111111"><FONT FACE="ARIAL,HELVETICA" COLOR=BLACK SIZE=<?php echo $subheader_font_size ?>> System Settings </a></TD></TR>
+	<TR BGCOLOR=<?php echo $settings_color ?>><TD ALIGN=LEFT COLSPAN=2> &nbsp; <a href="<?php echo $ADMIN ?>?ADD=311111111111111"><FONT FACE="ARIAL,HELVETICA" COLOR=BLACK SIZE=<?php echo $subheader_font_size ?>> System Settings </a> &nbsp; | &nbsp; <a href="./admin_branding.php"><FONT FACE="ARIAL,HELVETICA" COLOR=BLACK SIZE=<?php echo $subheader_font_size ?>> Branding </a></TD></TR>
 	<?php }
 	if ( (strlen($status_sh) > 1) and (!eregi('campaign',$hh) ) ) { 
 		?>

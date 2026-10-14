@@ -14,6 +14,8 @@ code was touched, so every feature behaves exactly as before.
 | `www/agc/images/xf-logo.svg` | New wordmark used on the login screen, agent console and admin sidebar. Replace this file to brand the system. |
 | `www/vicidial/welcome.php` | Landing page rebuilt as a premium card. Links are unchanged. |
 | `docs/X-LITE_SOFTPHONE_SETUP.md` | How to pair X-Lite (or any SIP softphone) with the system. |
+| `www/xf_brand.php`, `www/xf_brand_defaults.php`, `www/xf_brand_css.php` | Branding layer: company identity, logo, theme preset, accent colour and personal messages. See `docs/BRANDING.md`. |
+| `www/vicidial/admin_branding.php` | Admin → Branding editor with live preview. |
 
 ## PHP touch points
 

@@ -4,6 +4,7 @@
    the legacy table-driven admin markup without touching its behaviour.
    ========================================================================== */
 @import url("../../agc/css/xf-theme.css");
+@import url("../../xf_brand_css.php");
 
 body { padding: 18px 22px 40px; font-size: 13.5px; }
 body > center { display: block; text-align: left; }

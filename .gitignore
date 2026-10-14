@@ -1,1 +1,4 @@
-/nbproject/nbproject/private/
+# Per-deployment branding (edit through Admin -> Branding)
+www/xf_brand_custom.json
+www/agc/images/brand/*
+!www/agc/images/brand/.gitkeep

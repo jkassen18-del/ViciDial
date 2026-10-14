@@ -4,6 +4,7 @@
    The previous stylesheet is preserved as custom_legacy.css.
    ========================================================================== */
 @import url("xf-theme.css");
+@import url("../../xf_brand_css.php");
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { height: 100%; }
@@ -28,6 +29,26 @@ ul { line-height: 1.3; }
 
 #left  { display: block; width: 250px; float: left; }
 #right { display: block; width: 575px; float: left; margin-left: 14px; position: relative; min-height: 10px; }
+
+/* --------------------------------------------------------------------------
+   Brand bar
+   -------------------------------------------------------------------------- */
+#xfBrandBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 6px 12px;
+}
+#xfBrandBar .xf-brand-id { display: inline-flex; align-items: center; gap: 12px; color: var(--xf-text); }
+#xfBrandBar .xf-brand-logo { height: 34px; width: auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,.45)); }
+#xfBrandBar .xf-brand-name { display: flex; flex-direction: column; line-height: 1.1; font-weight: 600; font-size: 15px; letter-spacing: .01em; }
+#xfBrandBar .xf-brand-name small { font-size: 10px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--xf-gold); margin-top: 3px; }
+#xfBrandBar .xf-brand-right { display: inline-flex; align-items: center; gap: 14px; font-size: 12px; color: var(--xf-text-3); }
+#xfBrandBar .xf-brand-support { padding: 4px 10px; border-radius: 999px; border: 1px solid var(--xf-line); color: var(--xf-text-2); }
+#xfBrandBar .xf-brand-date { letter-spacing: .06em; text-transform: uppercase; font-size: 11px; }
+#notifications .xf-greeting { margin-bottom: 4px; }
+#notifications .xf-daily-focus { margin: 0 0 8px; }
+body > .xf-brand-footer { width: 860px; margin: 26px auto 0; }
 
 /* --------------------------------------------------------------------------
    Agent header card
@@ -713,3 +734,26 @@ a.button[style*="width"] { box-sizing: border-box; }
 /* Clearfix helpers */
 .clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
 .clearfix { display: block; }
+
+/* Login screen extras: footer pinned to the bottom, timeclock link as a quiet pill */
+#loginBox ~ .xf-brand-footer, form > center > .xf-brand-footer {
+  position: fixed;
+  left: 0; right: 0; bottom: 22px;
+  width: auto;
+  margin: 0;
+}
+body > table:first-of-type, body > form > table:first-of-type {
+  position: absolute;
+  top: 14px; left: 16px;
+  width: auto !important;
+}
+body > table:first-of-type a, body > form > table:first-of-type a {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--xf-line);
+  background: rgba(255,255,255,.03);
+  font-size: 12px;
+  color: var(--xf-text-2);
+}
+body > table:first-of-type a:hover, body > form > table:first-of-type a:hover { color: var(--xf-gold-2); border-color: var(--xf-line-strong); }
