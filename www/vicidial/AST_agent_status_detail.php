@@ -282,7 +282,7 @@ if ($file_download < 1)
 	echo "<link rel=\"stylesheet\" href=\"calendar.css\">\n";
 
 	echo "<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\">\n";
-	echo "<TITLE>$report_name</TITLE></HEAD><BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0>\n";
+	echo "<TITLE>$report_name</TITLE><link rel=stylesheet href=css/xf-admin.css></HEAD><BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0>\n";
 	echo "<span style=\"position:absolute;left:0px;top:0px;z-index:20;\" id=admin_header>";
 
 	$short_header=1;

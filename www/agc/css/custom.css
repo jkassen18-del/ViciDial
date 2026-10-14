@@ -1,587 +1,715 @@
-/* @group resets and elements */
-* { margin: 0; padding: 0; }
+/* ==========================================================================
+   X Frontline — Agent Console (premium theme)
+   This file is the customization layer loaded by vicidial.php.
+   The previous stylesheet is preserved as custom_legacy.css.
+   ========================================================================== */
+@import url("xf-theme.css");
 
-html { height: 101%; font-family: �Helvetica Neue�, Arial, Helvetica, sans-serif; background: #fff; }
-body { font-family: Helvetica, Arial, sans-serif; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { height: 100%; }
+body { min-height: 100%; padding-bottom: 40px; }
 
-img { border: 0;}
+p  { font-size: 14px; line-height: 1.5; color: var(--xf-text-2); margin-bottom: 12px; }
+ul { line-height: 1.3; }
 
-a { color: #3c86b7; text-decoration: none; }
-a:hover { cursor: pointer; }
+/* --------------------------------------------------------------------------
+   Page frame
+   -------------------------------------------------------------------------- */
+.wrapper { width: 850px; margin: 0 auto; }
 
-ul { line-height: 120%; }
+#content {
+  display: block;
+  width: 860px;
+  margin: 0 auto;
+  padding: 14px 10px 0;
+  animation: xf-fade .35s ease;
+}
+#content.clearfix { padding-top: 0; }
 
-p { font-size: 1.2em; line-height: 1.4em; font-family: Arial, sans-serif; color: #333; margin-bottom: 15px; }
-h1 { font-family: Helvetica, Arial, Verdana, sans-serif; color: #757575; font-weight: bold; font-size: 1.7em; line-height: 2.0em; }
-h2 { font-family: Georgia, Tahoma, sans-serif;font-size: 1.4em; letter-spacing: -0.04em; line-height: 1.8em; }
-h3 { color: #115a9f; font-weight: normal; font-size: 1.3em; line-height: 1.6em;  }
-h4 { color: #727272; font-family: Arial, Tahoma, sans-serif; font-size: 1.1em; line-height: 1.3em; margin-bottom: 0px; }
+#left  { display: block; width: 250px; float: left; }
+#right { display: block; width: 575px; float: left; margin-left: 14px; position: relative; min-height: 10px; }
 
-/* @group core */
-.wrapper { width: 850px; overflow: hidden; margin: 0 auto; background: none; }
-
-#content { display: block; width: 820px; margin: 0 auto; padding: 10px; }
-
-#right { display: block; width: 560px; float: left; overflow: hidden; margin-left: 5px; }
-#left { display: block; width: 240px; float: left; overflow: hidden; }
-
-/* @group navigation */
-nav { width: auto; background: #eee; height: 60px; border-bottom: 1px solid #dadada; margin-bottom: 30px; }
-
-ul#n { width: 850px; margin: 0 auto; display: block; list-style: none; }
-ul#n li:first-child {float: left;}
-ul#n li { float: right;}
-/* ul#n li a { display: block; padding: 0 11px; color: #969696; font-size: 15px; font-weight: bold; text-shadow: 0px 1px 1px #fff; } */
-
-#userStats, #notifications { display: block; width: auto; background-color: #f9f9f9; border: 1px solid #ccc; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; padding: 12px; behavior: url(PIE.php);}
-#userStats {margin-bottom: 5px;}
-#notifications { height:20px; }
-
-#userStats .pic { height: 160px; widows: 160px; float: left; display: block; margin-right: 20px; text-align: center;}
-#userStats .pic img { padding: 7px; background: #fff; border: 1px solid #ccc; margin-bottom: 5px; }
-#livecall { font-size: 1.2em; font-weight: bold; text-transform: uppercase;}
-.on { color: green;}
-.off { color: #808080;}
-.dead { color: red;}
-
-#userStats .data { float: left; display: block; position:  relative; width: 600px; /*height: 166px;*/ padding: 4px; padding-left: 15px; background: #e6e6e6; overflow:  hidden; box-sizing: border-box; -moz-box-sizing: border-box; behavior: url(PIE.php);}
-#userStats .data h1 { color: #474747; line-height: 1.6em; text-shadow: 0px 1px 1px #fff; behavior: url(PIE.php);}
-#userStats .data h3 { color: #666; line-height: 0.9em; margin-bottom: 5px; }
-#userStats .data h4 { font-size: 1.2em; line-height: 1.3em; }
-
-#userStats .data .actionLinks { position: absolute; right: 6px; top: 8px; }
-#userStats .data .actionLinks a img { margin-right: 5px; }
-
-#userStats .data .sep { clear: both; margin-top: 0px; width: 590px; height: 1px; border-bottom: 1px solid #ccc; margin-bottom: 0; }
-#userStats .data ul.numbers { list-style: none; width: 590px; padding-top: 7px; margin-top: 0; border-top: 1px solid #fff; color: #474747; }
-#userStats .data ul.numbers li { width: 135px; float: left; display: block; padding-left: 8px; height: 50px; border-right: 1px dotted #909090; text-transform: uppercase; }
-#userStats .data ul.numbers li strong { color: #7b7b7b; display: block; font-size: 1.4em; line-height: .9em; font-weight: bold; }
-
-#notifications { margin-top: 10px; }
-
-/* @group left */
-#left .gcontent { display: block; margin-bottom: 10px; }
-#left .gcontent .head { background: #589fc6; border: 1px solid #3e82a7; padding-left: 8px; }
-#left .gcontent .head h1 { color: #fafcfd; font-weight: bold; font-size: 1.4em; }
-
-#left .gcontent .boxy { overflow: hidden; border-radius: 0px 0px 5px 5px; border: 1px solid #ccc; border-top: 0px; padding: 10px 8px; background: #f9f9f9; behavior: url(PIE.php);}
-#left .gcontent .boxy span.action { font-size: 1.0em; float: left; padding-bottom: 10px; width: 200px;} /**may need to set width to fix for IE to avoid wrapping text**/
-#left .gcontent .boxy span a img { vertical-align: middle;}
-#left .gcontent .boxy span a span { padding-left: 5px;}
-#left .gcontent .boxy span a { text-decoration: none;}
-
-#left .gcontent .boxy .friendslist { display: block; margin-bottom: 15px; }
-#left .gcontent .boxy .friend { border-top: 1px solid #ccc; float: left; height: 40px; padding: 5px 5px 5px 4px; width: 100px; }
-#left .gcontent .boxy .friend img { border: 1px solid #ccc; float: left; padding: 2px; background: #fff; margin-right: 4px; }
-#left .gcontent .boxy .friend .friendly { position: relative; top: 16px; font-size: 1.2em; }
-
-#right span.action { border: 1px solid #ccc; border-radius: 5px; display: inline-block; font-size: 1.0em; float: left; padding: 15px; height: 79px; width: 109px;
-margin: 10px; text-align: center; overflow: hidden; behavior: url(PIE.php);} /** height here causes mute button to be hidden **/
-
-#right span.action img {  }
-#right span.notice { float: left; display: inline-block; padding: 15px; }
-
-.promptBox {position:absolute;top:1px;width:825px;height:980px;overflow: scroll; border-radius: 5px 5px 5px 5px; border: 1px solid #ccc; padding: 10px 8px; background: #f9f9f9; behavior: url(PIE.php);}
-.promptBox .centerTable { margin-top: 35%; margin-left: 35%; }
-    
-/** @group clearfix **/
-.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
-.clearfix { display: inline-block; }
- 
-html[xmlns] .clearfix { display: block; }
-* html .clearfix { height: 1%; }
-
-.nobrdr { border: 0px !important; }
-
-#x_logo{height: 64px;}
-#DiaLControl, #LogOffControl
-{
-    height: 50px;
-    /*width: 115px;*/
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
+/* --------------------------------------------------------------------------
+   Agent header card
+   -------------------------------------------------------------------------- */
+#userStats, #notifications {
+  display: block;
+  position: relative;
+  background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+  border: 1px solid var(--xf-line);
+  border-radius: var(--xf-radius-lg);
+  box-shadow: var(--xf-shadow-sm);
+  padding: 18px 20px;
+}
+#userStats { margin-bottom: 10px; overflow: hidden; }
+#userStats::before {
+  content: "";
+  position: absolute; inset: 0 0 auto 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,180,106,.7), transparent);
 }
 
-#LogOffControl
-{
-    margin-left: 1px\9;
+#userStats .pic {
+  float: left;
+  width: 140px;
+  margin-right: 20px;
+  text-align: center;
+}
+#userStats .pic img {
+  width: 92px; height: 92px;
+  padding: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.10), rgba(255,255,255,.02));
+  border: 1px solid var(--xf-line-strong);
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+  margin-bottom: 10px;
 }
 
-#DiaLControl a, #LogOffControl a{
-    float: left;
-    height: 50px;
-    width:  60px;
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
+#livecall {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--xf-line-strong);
+  background: rgba(255,255,255,.04);
+  color: var(--xf-text-2);
+  white-space: nowrap;
+}
+#livecall::before {
+  content: "";
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  margin-right: 7px;
+  vertical-align: 1px;
+  background: currentColor;
+}
+.on   { color: var(--xf-live) !important; }
+.off  { color: var(--xf-text-3) !important; }
+.dead { color: var(--xf-dead) !important; }
+#livecall.on   { background: var(--xf-live-soft); border-color: rgba(63,214,141,.4); animation: xf-pulse 2s infinite; }
+#livecall.dead { background: var(--xf-dead-soft); border-color: rgba(255,107,107,.4); }
+
+#userStats .data {
+  float: left;
+  position: relative;
+  width: 640px;
+  padding: 2px 0 0;
+}
+#userStats .data h1 { font-size: 26px; line-height: 1.15; margin-bottom: 2px; }
+#userStats .data h1 a { color: var(--xf-text); }
+#userStats .data h1 a:hover { color: var(--xf-gold-2); }
+#userStats .data h3 { font-size: 13px; font-weight: 500; color: var(--xf-text-2); margin-bottom: 6px; }
+#userStats .data h4 { font-size: 11px; letter-spacing: .18em; color: var(--xf-gold); margin-bottom: 0; }
+#userStats .data h4 #status { font-weight: 700; }
+
+#userStats .data .actionLinks { position: absolute; right: 0; top: 0; display: flex; gap: 8px; }
+#userStats .data .actionLinks a img { margin-right: 0; }
+
+#x_logo { height: 48px; }
+
+#DiaLControl, #LogOffControl {
+  display: inline-block;
+  text-align: center;
+}
+#DiaLControl a, #LogOffControl a {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 76px;
+  height: 64px;
+  border-radius: var(--xf-radius);
+  border: 1px solid var(--xf-line-strong);
+  background: rgba(255,255,255,.04);
+  color: var(--xf-text-2);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  transition: background .15s ease, border-color .15s ease, transform .12s ease;
+}
+#DiaLControl a:hover, #LogOffControl a:hover { background: var(--xf-gold-soft); border-color: rgba(212,180,106,.5); color: var(--xf-text); transform: translateY(-1px); }
+#DiaLControl a img, #LogOffControl a img { height: 30px; width: 30px; margin: 0; }
+#DiaLControl a span, #LogOffControl a span { display: block; }
+
+#userStats .data .sep { clear: both; height: 1px; margin: 14px 0 0; border-bottom: 1px solid var(--xf-line); }
+
+#userStats .data ul.numbers {
+  list-style: none;
+  display: flex;
+  width: 100%;
+  margin: 12px 0 0;
+  padding: 0;
+}
+#userStats .data ul.numbers li {
+  flex: 1 1 0;
+  padding: 2px 14px;
+  border-right: 1px solid var(--xf-line);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--xf-text-3);
+  height: auto;
+}
+#userStats .data ul.numbers li:first-child { padding-left: 0; }
+#userStats .data ul.numbers li strong {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--xf-font-display);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: 0;
+  color: var(--xf-text);
+  text-transform: none;
+}
+.nobrdr { border: 0 !important; }
+
+#notifications {
+  margin-top: 0;
+  min-height: 44px;
+  padding: 10px 18px;
+  font-size: 13px;
+  color: var(--xf-text-2);
+  border-radius: var(--xf-radius);
+}
+#notifications b { color: var(--xf-text); font-weight: 600; }
+#notifications a { color: var(--xf-gold-2); }
+#notifications > span[style*="float: right"] {
+  font-variant-numeric: tabular-nums;
+  color: var(--xf-text);
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--xf-line);
+  border-radius: 999px;
+  padding: 3px 12px;
+  margin-top: -3px;
+}
+#SecondSDISP { font-family: var(--xf-font-mono); color: var(--xf-gold-2); }
+
+/* --------------------------------------------------------------------------
+   Left rail — Actions & Places
+   -------------------------------------------------------------------------- */
+#left .gcontent { display: block; margin-bottom: 14px; }
+#left .gcontent .head {
+  padding: 10px 16px 8px;
+  background: transparent;
+  border: 0;
+}
+#left .gcontent .head h1 {
+  font-family: var(--xf-font);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--xf-gold);
+  margin: 0;
+}
+#left .gcontent .boxy {
+  overflow: hidden;
+  border: 1px solid var(--xf-line);
+  border-radius: var(--xf-radius-lg);
+  background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015));
+  box-shadow: var(--xf-shadow-sm);
+  padding: 10px;
+}
+#placesDiv { height: auto !important; min-height: 120px; }
+
+#left .gcontent .boxy span.action {
+  display: block;
+  float: none;
+  width: auto;
+  padding: 0;
+  margin: 0 0 6px;
+  font-size: 13px;
+}
+#left .gcontent .boxy span.action:last-of-type { margin-bottom: 0; }
+#left .gcontent .boxy span.action a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: var(--xf-radius);
+  border: 1px solid transparent;
+  color: var(--xf-text);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background .15s ease, border-color .15s ease, transform .12s ease;
+}
+#left .gcontent .boxy span.action a:hover { background: rgba(255,255,255,.05); border-color: var(--xf-line); transform: translateX(2px); }
+#left .gcontent .boxy span.action a img {
+  margin: 0 !important;
+  width: 34px; height: 34px;
+  padding: 6px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--xf-line);
+  flex: 0 0 auto;
+}
+#left .gcontent .boxy span.action a span { padding-left: 0; }
+#left .gcontent .boxy span.action a[disabled],
+#left .gcontent .boxy span.action a[style*="opacity"] { cursor: default; }
+#left .gcontent .boxy span.action a[disabled]:hover { background: transparent; border-color: transparent; transform: none; }
+
+#left .gcontent .boxy span.action[style*="color:#eee"] {
+  display: block;
+  text-align: center;
+  font-family: var(--xf-font-mono);
+  font-size: 11px;
+  color: var(--xf-text-3) !important;
+  padding: 8px 0 2px;
 }
 
-#DiaLControl a img, #LogOffControl a img{
-    height:  58px;
-    margin-bottom: -15px;
-    
-}
+#ParkCounterSpan { display: block; text-align: right; font-family: var(--xf-font-mono); font-size: 12px; color: var(--xf-hold); min-height: 6px; }
+#ParkCounterSpan2 { color: var(--xf-hold); }
 
-#DiaLControl a span, #LogOffControl a span{
-    /* all rules below are specific to ie9 and below */
-    position: absolute\9;
-    margin-left: -55px\9; 
-    margin-top: 45px\9;
-}
+#AgentViewSpan { display: block; overflow: auto !important; max-height: 220px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--xf-line); font-size: 12px; color: var(--xf-text-2); }
+#AgentViewSpan b { color: var(--xf-text); }
 
-#ParkCounterSpan
-{
-    margin-left: 50px;
-    color: red;
+/* --------------------------------------------------------------------------
+   Right stage — work panels (Contact, Transfer, Script, Options, Form)
+   The panels are absolutely positioned by the markup; we pin them to the
+   top of the stage so they always sit directly under the header card.
+   -------------------------------------------------------------------------- */
+#right > span[id] {
+  top: 0 !important;
+  left: 0;
+  width: 575px !important;
+  display: block;
+  border: 1px solid var(--xf-line);
+  border-radius: var(--xf-radius-lg);
+  background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015));
+  box-shadow: var(--xf-shadow-sm);
+  padding: 18px 20px 20px;
+  color: var(--xf-text);
 }
-#ParkCounterSpan2
-{
-    color: red;
+#right > span[id] > h1 {
+  font-size: 20px;
+  margin: 0 0 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--xf-line);
 }
-#MainStatuSSpan
-{
-    float: left;
-}
-#MainPanelCustInfo input, #MainPanelCustInfo select, .input
-{
-    background: #f1f1f1;
-    padding: 2px 2px 2px 5px;
-    margin: 0 0 5px 0;
-    width: 170px;
-    border: 1px solid #ccc;
-    font-size: 12pt;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    behavior: url(PIE.php);
-}
+#right > span[id] > h1 a { color: var(--xf-text-3); font-family: var(--xf-font); font-weight: 500; }
+#right > span[id] > h1 a:hover { color: var(--xf-gold-2); }
+#right > span[id] > h1 font { font-size: 12px !important; }
+#called_count_desc { font-size: 12px !important; color: var(--xf-text-3); margin-left: 8px; font-family: var(--xf-font); }
 
-#ScriptContents
-{
-    width: 540px;
+/* Contact information grid */
+#MainPanelCustInfo table { width: 100%; }
+#MainPanelCustInfo table table { width: 100% !important; }
+#MainPanelCustInfo td { padding: 3px 4px; font-size: 12.5px; color: var(--xf-text-2); vertical-align: middle; white-space: nowrap; }
+#MainPanelCustInfo td[align="right"] { color: var(--xf-text-3); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; width: 92px; }
+#MainPanelCustInfo input, #MainPanelCustInfo select, .input {
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--xf-line-strong);
+  border-radius: var(--xf-radius-sm);
+  padding: 6px 9px;
+  margin: 0 0 3px 0;
+  width: 170px;
+  font-size: 13px;
+  color: var(--xf-text);
+  box-shadow: none;
 }
-
-/*---------------------------
- BEGIN styles for login box
- --------------------------*/
-.barStyle
-{
-    background-color: #fff;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));
-    background-image: -webkit-linear-gradient(top, #fff, #eee);
-    background-image: -moz-linear-gradient(top, #fff, #eee);
-    background-image: -ms-linear-gradient(top, #fff, #eee);
-    background-image: -o-linear-gradient(top, #fff, #eee);
-    background-image: linear-gradient(top, #fff, #eee);
-    
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;  
-    -webkit-box-shadow:
-          0 0 2px rgba(0, 0, 0, 0.2),
-          0 1px 1px rgba(0, 0, 0, .2),
-          0 3px 0 #fff,
-          0 4px 0 rgba(0, 0, 0, .2),
-          0 6px 0 #fff,  
-          0 7px 0 rgba(0, 0, 0, .2);
-    -moz-box-shadow:
-          0 0 2px rgba(0, 0, 0, 0.2),  
-          1px 1px   0 rgba(0,   0,   0,   .1),
-          3px 3px   0 rgba(255, 255, 255, 1),
-          4px 4px   0 rgba(0,   0,   0,   .1),
-          6px 6px   0 rgba(255, 255, 255, 1),  
-          7px 7px   0 rgba(0,   0,   0,   .1);
-    box-shadow:
-          0 0 2px rgba(0, 0, 0, 0.2),  
-          0 1px 1px rgba(0, 0, 0, .2),
-          0 3px 0 #fff,
-          0 4px 0 rgba(0, 0, 0, .2),
-          0 6px 0 #fff,  
-          0 7px 0 rgba(0, 0, 0, .2);
-    behavior: url(PIE.php);
+#MainPanelCustInfo input:focus, #MainPanelCustInfo select:focus, .input:focus {
+  border-color: var(--xf-gold);
+  box-shadow: 0 0 0 3px var(--xf-gold-soft);
 }
+#MainPanelCustInfo input[style*="width:457px"] { width: 100% !important; }
+#MainPanelCustInfo textarea { width: 100%; min-height: 64px; }
+#MainPanelCustInfo input[type="hidden"] { display: none; }
+#CusTInfOSpaN { display: block; font-size: 12px; color: var(--xf-text-2); }
+#CusTInfOSpaN[style] { background: transparent !important; }
+#CallNotesButtons a { font-size: 11px; letter-spacing: .04em; text-transform: none; }
 
-#loginBox
-{
-    height: 375px;
-    width: 400px;
-    margin: -150px 0 0 -230px;
-    padding: 30px;
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    z-index: 0;
+/* Script panel */
+#ScriptContents {
+  width: 100%;
+  max-height: 560px;
+  overflow: auto;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--xf-text);
 }
+#ScriptContents table { color: inherit; }
 
-#loginBox:before
-{
-    content: '';
-    position: absolute;
-    z-index: -1;
-    border: 1px dashed #ccc;
-    top: 5px;
-    bottom: 5px;
-    left: 5px;
-    right: 5px;
-    -moz-box-shadow: 0 0 0 1px #fff;
-    -webkit-box-shadow: 0 0 0 1px #fff;
-    box-shadow: 0 0 0 1px #fff;
-    behavior: url(PIE.php);
+/* Form panel (iframe) */
+#FormContents iframe { width: 530px; min-height: 520px; border: 0; border-radius: var(--xf-radius); background: transparent; }
+
+/* --------------------------------------------------------------------------
+   Action tiles (Additional Options panel and generic .action)
+   -------------------------------------------------------------------------- */
+#right span.action {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  float: none;
+  width: 118px;
+  height: auto;
+  min-height: 92px;
+  margin: 4px;
+  padding: 8px 6px;
+  border: 1px solid var(--xf-line);
+  border-radius: var(--xf-radius);
+  background: rgba(255,255,255,.03);
+  font-size: 11.5px;
+  font-weight: 500;
+  text-align: center;
+  overflow: hidden;
+  vertical-align: top;
+  transition: background .15s ease, border-color .15s ease, transform .12s ease;
 }
+#right span.action:hover { background: rgba(255,255,255,.06); border-color: var(--xf-line-strong); transform: translateY(-1px); }
+#right span.action a { color: var(--xf-text); display: block; }
+#right span.action a img { width: 36px; height: 36px; margin: 0 0 4px !important; display: block; margin-left: auto !important; margin-right: auto !important; }
+#right span.action a br { display: none; }
+#right span.action input[type="text"] { width: 90px; text-align: center; margin: 0; }
+#right span.action input[type="checkbox"] { margin-right: 4px; }
+#VolumeControlSpan img { width: 28px !important; height: 28px !important; margin: 0 2px !important; display: inline-block !important; }
+#AgentMuteSpan img { width: 28px; height: 28px; }
 
-/*--------------------*/
-
-#loginBox h1
-{
-    text-shadow: 0 1px 0 rgba(255, 255, 255, .7), 0px 2px 0 rgba(0, 0, 0, .5);
-    text-transform: uppercase;
-    text-align: center;
-    color: #666;
-    margin: 0 0 30px 0;
-    letter-spacing: 4px;
-    font: normal 26px/1 Verdana, Helvetica;
-    position: relative;
-    behavior: url(PIE.php);
+#ActionPanel > div { display: block; }
+#ActionPanel > div > br { display: none; }
+#ActionPanel #DiaLLeaDPrevieW, #ActionPanel #DiaLDiaLAltPhonE, #ActionPanel #ManualQueueChoice,
+#ActionPanel #RecorDingFilename, #ActionPanel #RecorDID {
+  display: inline-block;
+  margin: 2px 10px 8px 4px;
+  font-size: 12.5px;
+  color: var(--xf-text-2);
 }
+#ActionPanel #RecorDingFilename, #ActionPanel #RecorDID { font-family: var(--xf-font-mono); font-size: 11px; color: var(--xf-text-3); }
 
-#loginBox h1:after, #loginBox h1:before
-{
-    background-color: #777;
-    content: "";
-    height: 1px;
-    position: absolute;
-    top: 15px;
-    width: 120px;   
+#right span.notice {
+  float: none;
+  display: block;
+  padding: 3px 8px;
+  margin: 0 4px;
+  font-size: 12px;
+  color: var(--xf-text-2);
 }
+#right span.notice:empty { display: none; }
+#right span.notice a { color: var(--xf-gold-2); }
+#right span.notice table { width: 100%; }
+#right #HotKeyEntriesBox, #right #HotKeyActionBox, #right #callsinqueuedisplay, #right #AgentStatusSpan {
+  margin: 8px 4px 4px;
+  padding: 10px 12px;
+  border-radius: var(--xf-radius-sm);
+  background: rgba(255,255,255,.025);
+  border: 1px solid var(--xf-line);
+}
+#ActionPanel #ManualQueueChoice { display: block; height: 0; margin: 0; overflow: hidden; }
+#ActionPanel #ManualQueueChoice:not(:empty) { height: auto; margin: 2px 4px 8px; }
+#right span.notice font[size="1"] { color: var(--xf-text-3); font-family: var(--xf-font-mono); font-size: 10.5px; }
+#right span.notice table { width: 100%; }
+#HotKeyEntriesBox table, #HotKeyActionBox table { height: auto !important; }
+#AgentStatusSpan { font-variant-numeric: tabular-nums; }
 
-#loginBox h1:after
-{ 
-    background-image: -webkit-gradient(linear, left top, right top, from(#777), to(#fff));
-    background-image: -webkit-linear-gradient(left, #777, #fff);
-    background-image: -moz-linear-gradient(left, #777, #fff);
-    background-image: -ms-linear-gradient(left, #777, #fff);
-    background-image: -o-linear-gradient(left, #777, #fff);
-    background-image: linear-gradient(left, #777, #fff);      
-    right: 0;
-    behavior: url(PIE.php);
+/* --------------------------------------------------------------------------
+   Buttons used across panels & modals
+   -------------------------------------------------------------------------- */
+.button {
+  display: inline-block;
+  text-decoration: none;
+  font: 600 13px/1 var(--xf-font);
+  letter-spacing: .02em;
+  text-align: center;
+  color: #15120a;
+  border: 1px solid rgba(212,180,106,.55);
+  border-radius: 999px;
+  padding: 10px 16px;
+  text-shadow: none;
+  box-shadow: 0 6px 18px rgba(212,180,106,.18), 0 1px 0 rgba(255,255,255,.35) inset;
+  transition: transform .12s ease, filter .15s ease, box-shadow .15s ease, opacity .15s ease;
+  cursor: pointer;
 }
-
-#loginBox h1:before
-{
-    background-image: -webkit-gradient(linear, right top, left top, from(#777), to(#fff));
-    background-image: -webkit-linear-gradient(right, #777, #fff);
-    background-image: -moz-linear-gradient(right, #777, #fff);
-    background-image: -ms-linear-gradient(right, #777, #fff);
-    background-image: -o-linear-gradient(right, #777, #fff);
-    background-image: linear-gradient(right, #777, #fff);
-    left: 0;
-    behavior: url(PIE.php);
-}
-
-/*--------------------*/
-
-#loginBox #instructions
-{
-    color: red;
-}
-#loginBox fieldset, #TransferMain
-{
-    border: 0;
-    padding: 0;
-    margin: 0;
-}
-
-/*--------------------*/
-
-#loginBox #inputs input, #loginBox #inputs #LogiNCamPaigns select, #TransferMain input, #TransferMain select
-{
-    background: #f1f1f1 url(http://www.red-team-design.com/wp-content/uploads/2011/09/login-sprite.png) no-repeat;
-    padding: 15px 15px 15px 30px;
-    margin: 0 0 10px 0;
-    width: 330px;
-    border: 1px solid #ccc;
-    font-size: 12pt;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    -moz-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    -webkit-box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    box-shadow: 0 1px 1px #ccc inset, 0 1px 0 #fff;
-    behavior: url(PIE.php);
-}
-
-#loginBox #VD_login
-{
-    background-position: 5px -2px !important;
-}
-
-#loginBox #VD_pass
-{
-    background-position: 5px -52px !important;
-}
-
-#loginBox #phone_login
-{
-    background-position: 5px -52px !important;
-}
-
-#loginBox #inputs #LogiNReseT
-{
-    float:right;
-    cursor: pointer;
-    margin-right: 15px;
-}
-#loginBox #inputs #LogiNCamPaigns select
-{
-    background-position: 5px -302px !important;
-    height: 30px;
-    width: 333px;
-    margin-left: 10px;
-    margin-right: 0px;
-    padding: 4px;
-    float: left;
-}
-#loginBox #inputs #LogiNReseT select
-{
-    float: right;
-}
-#loginBox #inputs input:focus, #TransferMain input:focus
-{
-    background-color: #fff;
-    border-color: #e8c291;
-    outline: none;
-    -moz-box-shadow: 0 0 0 1px #e8c291 inset;
-    -webkit-box-shadow: 0 0 0 1px #e8c291 inset;
-    box-shadow: 0 0 0 1px #e8c291 inset;
-    behavior: url(PIE.php);
-}
-
-/*--------------------*/
-#loginBox #actions
-{
-    margin: 5px 0 0 0px;
-}
-
-#loginBox #submit
-{       
-    float: left;
-    height: 35px;
-    padding: 0;
-    width: 120px;
-    cursor: pointer;
-    margin-left: 11px;
-    /*font: bold 15px Arial, Helvetica;
-    color: #8f5a0a;*/
-}
-
-#loginBox #submit:focus
-{       
-    text-decoration: none;
-}   
-
-#loginBox #submit::-moz-focus-inner
-{
-  border: none;
-}
-
-#loginBox #footer
-{
-    margin-top: 40px;
-}
-/*---------------------------
- END styles for login box
- --------------------------*/
-
-
-/*---------------------------
- BEGIN generic button styles
- --------------------------*/
-.button
-{
-    text-decoration: none;
-    font: bold 1.2em 'Trebuchet MS',Arial, Helvetica; /*Change the em value to scale the button*/
-    display: inline-block;
-    text-align: center;
-    color: #fff;
-
-    border: 1px solid #9c9c9c; /* Fallback style */
-    border: 1px solid rgba(0, 0, 0, 0.3);            
-
-    moz-border-radius: .3em;
-    border-radius: .3em;
-
-    text-shadow: 0 1px 0 rgba(0,0,0,0.4);
-
-    box-shadow: 0 0 .05em rgba(0,0,0,0.4);
-    -moz-box-shadow: 0 0 .05em rgba(0,0,0,0.4);
-    -webkit-box-shadow: 0 0 .05em rgba(0,0,0,0.4);
-    behavior: url(PIE.php);
-}
-.button:hover
-{
-    box-shadow: 0 0 .1em rgba(0,0,0,0.4);
-    -moz-box-shadow: 0 0 .1em rgba(0,0,0,0.4);
-    -webkit-box-shadow: 0 0 .1em rgba(0,0,0,0.4);
-    behavior: url(PIE.php);
-}
-.button:active
-{
-    position: relative;
-    top: 1px;
-}
-.blue {
-    background: #4477a1;
-    background: -webkit-gradient(linear, left top, left bottom, from(#81a8cb), to(#4477a1) );
-    background: -moz-linear-gradient(-90deg, #81a8cb, #4477a1);
-    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#81a8cb', endColorstr='#4477a1');
-    behavior: url(PIE.php);
-}
-.blue:hover {
-    background: #81a8cb;
-    background: -webkit-gradient(linear, left top, left bottom, from(#4477a1), to(#81a8cb) );
-    background: -moz-linear-gradient(-90deg, #4477a1, #81a8cb);
-    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#4477a1', endColorstr='#81a8cb');
-    behavior: url(PIE.php);
-}
+.button a { color: inherit !important; display: block; }
+.button:hover { filter: brightness(1.06); box-shadow: 0 10px 26px rgba(212,180,106,.28), 0 1px 0 rgba(255,255,255,.35) inset; }
+.button:active { position: relative; top: 1px; }
+.blue, .blue:hover { background: linear-gradient(180deg, var(--xf-gold-2) 0%, var(--xf-gold) 60%, #c9a85a 100%); filter: none; }
+.blue:hover { filter: brightness(1.06); }
 .blueinactive {
-    background: #4477a1;
-    background: -webkit-gradient(linear, left top, left bottom, from(#81a8cb), to(#4477a1) );
-    background: -moz-linear-gradient(-90deg, #81a8cb, #4477a1);
-    filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#81a8cb', endColorstr='#4477a1');
-    opacity: .25;
-    filter: alpha(opacity = 25);
-
-    behavior: url(PIE.php);
+  background: rgba(255,255,255,.06);
+  color: var(--xf-text-3);
+  border-color: var(--xf-line);
+  box-shadow: none;
+  opacity: .55;
+  cursor: default;
+  pointer-events: none;
 }
-/*---------------------------
- END generic button styles
- --------------------------*/
+a.button[style*="width"] { box-sizing: border-box; }
 
-/*------------------------------------------------------------------------------------
- BEGIN styles for transfer conference options (some settings inherited from #loginBox)
- -------------------------------------------------------------------------------------*/
-
+/* --------------------------------------------------------------------------
+   Transfer / Conference panel
+   -------------------------------------------------------------------------- */
+#TransferMain fieldset { border: 0; padding: 0; margin: 0; }
 #TransferMain #x-transfer-options,
 #TransferMain #x-transfer-inactive,
 #TransferMain #x-transfer-active,
-#TransferMain #x-transfer-local
-{
-    display: inline-block;
-    text-align: left;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    border: 1px solid;
-    padding: 5px;
-    margin-bottom: 5px;
-    /*behavior: url(PIE.php);*/
+#TransferMain #x-transfer-local {
+  display: block;
+  text-align: left;
+  border-radius: var(--xf-radius);
+  border: 1px solid var(--xf-line);
+  background: rgba(255,255,255,.025);
+  padding: 12px;
+  margin-bottom: 10px;
+  overflow: hidden;
 }
-
-/* override PIE for transfer number field  for Ie9 & below */
-#TransferMain input, #TransferMain input:focus, #loginBox #inputs #LogiNCamPaigns select
-{
-    behavior: none\9 !important;
-}
+#TransferMain #x-transfer-active:empty, #TransferMain #x-transfer-inactive:empty { display: none; }
+#TransferMain #x-transfer-active:not(:has(*)) { display: none; }
+#TransferMain #x-transfer-options > div { width: 48% !important; }
 #TransferMain #x-transfer-options span,
 #TransferMain #x-transfer-inactive span,
 #TransferMain #x-transfer-active span,
-#TransferMain #x-transfer-local span
-{
-    float:left;
-    margin: 5px 25px 5px 36px;
-    width: 180px;
-    font: bold 1.0em !important;
-    padding: 5px;
-    vertical-align: top;
+#TransferMain #x-transfer-local span {
+  float: none;
+  display: block;
+  width: auto;
+  margin: 0 0 8px;
+  padding: 0;
+  font-size: 13px;
 }
-
+#TransferMain #x-transfer-options span.button,
+#TransferMain #x-transfer-local span.button { padding: 10px 14px; text-align: center; }
 #TransferMain #x-transfer-options span a,
-#TransferMain #x-transfer-inactive span a,
-#TransferMain #x-transfer-active span a,
-#TransferMain #x-transfer-local span a
-{
-    width: auto;
-    height: 20px !important;
-    color: #eee;
-    padding: 0px;
+#TransferMain #x-transfer-local span a { height: auto !important; padding: 0; color: inherit; }
+#TransferMain #x-transfer-local #agentdirectlink { color: var(--xf-text-2); }
+#TransferMain #x-transfer-local #agentdirectlink a { color: var(--xf-gold-2); }
+#TransferMain #dialoverride_checkbox, #TransferMain #consultative_checkbox { height: auto; font-size: 12.5px; color: var(--xf-text-2); }
+#TransferMain input, #TransferMain select {
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--xf-line-strong);
+  border-radius: var(--xf-radius-sm);
+  padding: 8px 10px;
+  margin: 0 0 8px;
+  width: 100%;
+  height: auto;
+  font-size: 14px;
+  color: var(--xf-text);
 }
+#TransferMain input:focus, #TransferMain select:focus { border-color: var(--xf-gold); box-shadow: 0 0 0 3px var(--xf-gold-soft); outline: none; }
+#TransferMain select, #TransferMain #XfeRGrouPLisT { margin: 0 0 8px !important; padding: 8px 10px; width: 100%; }
+#TransferMain #XfeRGrouPLisT select { margin: 0 !important; }
+#TransferMain input[type="checkbox"] { width: 15px; height: 15px; margin: 0 6px 0 0; display: inline-block; vertical-align: -2px; }
+#TransferMain img { margin-bottom: 0 !important; height: 18px !important; vertical-align: middle; }
+#TransferMain #x-transfer-inactive { display: flex; align-items: center; gap: 10px; }
+#TransferMain #x-transfer-inactive span { margin: 0; }
+#TransferMain #x-transfer-inactive font a { display: inline-block; padding: 3px 8px; margin-right: 4px; border-radius: 999px; border: 1px solid var(--xf-line); font-size: 11px; color: var(--xf-text-2); }
+#TransferMain #x-transfer-inactive font a:hover { border-color: var(--xf-gold); color: var(--xf-gold-2); }
+#XfeRDiaLGrouPSelecteD, #XfeRCID { font-size: 12px; color: var(--xf-text-3); font-family: var(--xf-font-mono); }
+#XfeRDiaLGrouPSelecteD:empty, #XfeRCID:empty { display: none; }
 
-#TransferMain #x-transfer-local #agentdirectlink
-{
-    color: #666;
+/* --------------------------------------------------------------------------
+   Modal prompts (.promptBox) — centered glass sheets
+   -------------------------------------------------------------------------- */
+.promptBox {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 860px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 40px);
+  height: auto;
+  overflow: auto;
+  border-radius: var(--xf-radius-lg);
+  border: 1px solid rgba(212,180,106,.28);
+  padding: 22px 26px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
+    rgba(17, 21, 30, 0.96);
+  box-shadow: var(--xf-shadow), 0 0 0 100vmax rgba(5, 7, 11, 0.62);
+  color: var(--xf-text);
+  font-size: 13.5px;
+  line-height: 1.5;
 }
-
-#TransferMain #dialoverride_checkbox
-{
-    height: 13px;    
+.promptBox .centerTable { margin: 0 auto; }
+.promptBox h1 { font-size: 22px; margin-bottom: 6px; }
+.promptBox h3 { font-size: 15px; margin-bottom: 10px; color: var(--xf-text); }
+.promptBox table { margin: 0 auto; }
+.promptBox td { padding: 4px 6px; }
+.promptBox a:not(.button) { color: var(--xf-gold-2); }
+.promptBox .button { margin: 4px 2px; min-width: 110px; }
+.promptBox textarea { width: 100%; min-height: 80px; }
+.promptBox input[type="text"] { min-width: 140px; }
+.promptBox .scroll_calllog, .promptBox .scroll_callback {
+  max-height: 420px;
+  overflow: auto;
+  text-align: left;
+  border: 1px solid var(--xf-line);
+  border-radius: var(--xf-radius);
+  background: rgba(0,0,0,.25);
+  padding: 8px;
 }
+#DispoSelectBox td[bgcolor] { border-radius: var(--xf-radius); padding: 10px 12px; height: auto !important; }
+#DispoSelectContent label, #DispoSelectContent input[type="radio"] { cursor: pointer; }
+#DispoSelectContent font.log_text { font-size: 14px; }
+#DispoSelectContent table { width: 100% !important; }
+#DispoSelectHAspan a, #DispoSelectMaxMin a { font-size: 12px; }
+#CallBackDateContent table { margin: 8px auto; }
+#CallBackDateContent td { padding: 2px; }
+#CallBackDateContent td[bgcolor] { border-radius: 6px; }
+#CallBackDateContent td a { display: block; padding: 4px 6px; border-radius: 6px; }
+#CallBackDateContent td a:hover { background: var(--xf-gold-soft); }
 
-#TransferMain input, #TransferMain select
-{
-    background: none;
-    padding: 5px 5px 5px 5px;
-    margin: 0 0 0 36px;
-    width: 200px;
-    height: 20px;
-    border: 1px solid #ccc;
-    font-size: 13pt;
+/* Side boxes that sit at the left of the page */
+#CBcommentsBox, #EAcommentsBox, #EAcommentsMinBox, #AgentXferViewSpan {
+  background: rgba(17,21,30,.96);
+  border: 1px solid var(--xf-line-strong);
+  border-radius: var(--xf-radius);
+  box-shadow: var(--xf-shadow-sm);
+  padding: 10px 12px;
+  font-size: 12.5px;
 }
+#AgentXferViewSpan { display: block; margin: 0 auto 10px; width: 860px; }
+#AgentXferViewSpan:empty { display: none; }
 
-#TransferMain select, #TransferMain #XfeRGrouPLisT
-{
-    margin: 0 0 0 6px !important;
-    padding: 5px;
-    width: 200px;
+#LoadingBox { display: none; }
+
+/* Focus-sink form used by the keyboard handling; keep it functional but out of sight */
+#inert_form, #NothingBox2 { position: absolute; left: -9999px; top: 0; width: 1px; height: 1px; overflow: hidden; }
+
+#webphoneSpan { background-color: var(--xf-surface) !important; border: 1px solid var(--xf-line-strong); border-radius: var(--xf-radius); }
+
+/* --------------------------------------------------------------------------
+   Legacy text classes used by injected markup
+   -------------------------------------------------------------------------- */
+.body_text  { font-size: 13px; }
+.body_small { font-size: 12px; }
+.body_small_bold { font-size: 12px; font-weight: 600; }
+.body_tiny  { font-size: 11px; }
+.sh_text    { font-size: 13px; font-weight: 600; }
+.sk_text    { font-size: 12px; }
+.sd_text    { font-size: 16px; font-weight: 600; }
+.skb_text   { font-size: 13px; font-weight: 600; }
+.log_text    { font-size: 13px; font-family: var(--xf-font); }
+.log_text_sm { font-size: 11px; }
+.log_title   { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--xf-gold); }
+.log_text_red { font-size: 12px; font-weight: 700; color: var(--xf-dead); background: var(--xf-dead-soft); }
+.queue_text_red { font-size: 12px; font-weight: 700; color: var(--xf-dead); }
+.preview_text { background: var(--xf-live-soft); padding: 2px 6px; border-radius: 4px; }
+.preview_text_red { background: var(--xf-dead-soft); padding: 2px 6px; border-radius: 4px; }
+.ON_conf  { font-family: var(--xf-font-mono); font-size: 11px; background: var(--xf-hold-soft); color: var(--xf-text); }
+.OFF_conf { font-family: var(--xf-font-mono); font-size: 11px; background: rgba(255,255,255,.06); color: var(--xf-text-2); }
+.cust_form { font-size: 13px; }
+.cust_form_text { font-size: 13px; }
+.disabled_img { opacity: .9; }
+
+/* --------------------------------------------------------------------------
+   Login screen
+   -------------------------------------------------------------------------- */
+.barStyle { background: transparent; box-shadow: none; }
+
+#loginBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 440px;
+  height: auto;
+  margin: 0;
+  padding: 38px 40px 32px;
+  transform: translate(-50%, -52%);
+  border-radius: 24px;
+  border: 1px solid rgba(212,180,106,.30);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
+    rgba(16, 20, 28, 0.92);
+  box-shadow: var(--xf-shadow);
+  z-index: 1;
+  text-align: center;
+  animation: xf-login-in .45s ease both;
 }
-
-#TransferMain input[type="checkbox"]
-{
-    margin: 0px;
-    width: 20px;
-    text-align: left;
+#loginBox::before {
+  content: "";
+  position: absolute; left: 10%; right: 10%; top: -1px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,180,106,.9), transparent);
 }
+#loginBox > img { height: 56px; width: auto; margin-bottom: 10px; filter: drop-shadow(0 6px 20px rgba(0,0,0,.5)); }
 
-#TransferMain select
-{
-    width: 285px;
-    height: 30px;
+#loginBox h1 {
+  position: relative;
+  margin: 4px 0 24px;
+  font-family: var(--xf-font);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  color: var(--xf-gold);
+  text-shadow: none;
 }
-
-#TransferMain img
-{
-    margin-bottom: 0px !important;
-    height: 15px !important;
+#loginBox h1::before, #loginBox h1::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 90px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,180,106,.6));
 }
+#loginBox h1::before { left: 0; }
+#loginBox h1::after  { right: 0; background: linear-gradient(270deg, transparent, rgba(212,180,106,.6)); }
 
-/*------------------------------------------------------------------------------------
- END styles for transfer conference options (some settings inherited from #loginBox)
- -------------------------------------------------------------------------------------*/
-
-#LoadingBox
-{
-    display: none;
+#loginBox fieldset { border: 0; padding: 0; margin: 0; }
+#loginBox #inputs { display: flex; flex-wrap: wrap; gap: 10px; }
+#loginBox #inputs input, #loginBox #inputs #LogiNCamPaigns select, #loginBox #inputs #LogiNCamPaigns input {
+  flex: 1 1 100%;
+  width: 100%;
+  height: 46px;
+  margin: 0;
+  padding: 0 16px;
+  font-size: 15px;
+  background: rgba(255,255,255,.045);
+  border: 1px solid var(--xf-line-strong);
+  border-radius: 12px;
+  color: var(--xf-text);
+  box-shadow: none;
 }
-
-.log_text {
-    font-size: 14pt;
+#loginBox #inputs input:focus, #loginBox #inputs select:focus {
+  background: rgba(255,255,255,.07);
+  border-color: var(--xf-gold);
+  box-shadow: 0 0 0 4px var(--xf-gold-soft);
+  outline: none;
 }
-
-.log_text_sm
-{
-    font-size: 10pt;
+#loginBox #VD_login, #loginBox #VD_pass, #loginBox #phone_login { background-position: 0 0 !important; }
+#loginBox #inputs #LogiNCamPaigns { flex: 1 1 auto; display: flex; min-width: 0; }
+#loginBox #inputs #LogiNCamPaigns select { height: 46px; margin: 0; padding: 0 12px; float: none; width: 100%; }
+#loginBox #inputs #LogiNReseT {
+  flex: 0 0 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  margin: 0;
+  border: 1px solid var(--xf-line-strong);
+  border-radius: 12px;
+  background: rgba(255,255,255,.045);
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease;
 }
+#loginBox #inputs #LogiNReseT:hover { background: var(--xf-gold-soft); border-color: rgba(212,180,106,.5); }
+#loginBox #inputs #LogiNReseT img { width: 20px; height: 20px; opacity: .85; }
 
-.log_title
-{
-    font-size: 12pt;
+#loginBox #actions { margin: 18px 0 0; display: flex; flex-direction: column; align-items: stretch; gap: 12px; }
+#loginBox #submit {
+  float: none;
+  width: 100%;
+  height: 48px;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
 }
+#loginBox #submit:focus { text-decoration: none; }
+#loginBox #submit::-moz-focus-inner { border: none; }
+#loginBox #instructions { display: block; min-height: 18px; font-size: 13px; color: var(--xf-dead); }
+#loginBox #instructions:empty { display: none; }
+#loginBox #footer { margin-top: 24px; color: var(--xf-text-3); font-size: 11px; }
 
-.disabled_img {
-    /* filter: url(filters.svg#grayscale);  Firefox 3.5+ */
-    filter: gray; /* IE5+ */
-    /* -webkit-filter: grayscale(1); /* Webkit Nightlies & Google Chrome Canary */
-}
+/* Clearfix helpers */
+.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: block; }

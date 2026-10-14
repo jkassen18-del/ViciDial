@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="72" viewBox="0 0 260 72" role="img" aria-label="X Frontline">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0d58f"/>
+      <stop offset="0.55" stop-color="#d4b46a"/>
+      <stop offset="1" stop-color="#9c8040"/>
+    </linearGradient>
+    <linearGradient id="s" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="8" width="56" height="56" rx="16" fill="#141924" stroke="url(#g)" stroke-width="1.5"/>
+  <rect x="4" y="8" width="56" height="28" rx="16" fill="url(#s)"/>
+  <path d="M20 22 L44 50 M44 22 L20 50" stroke="url(#g)" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <text x="76" y="44" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="500" fill="#f2eee6" letter-spacing="0.5">Frontline</text>
+  <text x="77" y="60" font-family="Inter, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="9.5" font-weight="700" fill="#d4b46a" letter-spacing="3.4">CONTACT CENTER</text>
+</svg>

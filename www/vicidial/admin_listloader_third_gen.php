@@ -356,7 +356,7 @@ function ParseFileName()
 
 </script>
 <title>ADMINISTRATION: Lead Loader</title>
-</head>
+<link rel=stylesheet href=css/xf-admin.css></head>
 <BODY BGCOLOR=WHITE marginheight=0 marginwidth=0 leftmargin=0 topmargin=0>
 
 <?php

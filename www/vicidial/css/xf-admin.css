@@ -1,0 +1,195 @@
+/* ==========================================================================
+   X Frontline — Administration & Reports (premium theme)
+   Builds on the shared foundation in ../../agc/css/xf-theme.css and restyles
+   the legacy table-driven admin markup without touching its behaviour.
+   ========================================================================== */
+@import url("../../agc/css/xf-theme.css");
+
+body { padding: 18px 22px 40px; font-size: 13.5px; }
+body > center { display: block; text-align: left; }
+
+/* The outer frame table: sidebar column + content column */
+body > center > table[bgcolor="white" i] {
+  width: 100%;
+  max-width: 1480px;
+  margin: 0 auto;
+  background: transparent !important;
+}
+body > center > table[bgcolor="white" i] > tbody > tr > td[width="170"] {
+  width: 290px !important;
+  min-width: 290px;
+  background: transparent !important;
+  text-align: left;
+  vertical-align: top;
+  padding: 0 18px 0 0;
+}
+body > center > table[bgcolor="white" i] > tbody > tr > td[width="770"] {
+  width: auto !important;
+  background: transparent !important;
+  vertical-align: top;
+  padding: 0;
+}
+td[width="770"] > table[width="770"] { width: 100% !important; background: transparent !important; }
+td[width="770"] > table[width="770"]:first-of-type > tbody > tr:first-child > td {
+  padding: 9px 16px;
+  border-radius: var(--xf-radius) var(--xf-radius) 0 0;
+  border: 1px solid var(--xf-line);
+  border-bottom: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025)) !important;
+}
+td[width="770"] > table[width="770"]:first-of-type > tbody > tr:first-child a { font-weight: 600; letter-spacing: .04em; }
+td[width="770"] > table[width="770"]:first-of-type > tbody > tr:first-child font[size="1"] { font-size: 12px; color: var(--xf-text-2); }
+td[width="770"] > table[width="770"]:first-of-type > tbody > tr:nth-child(2) > td {
+  padding: 8px 16px;
+  border: 1px solid var(--xf-line);
+  border-top: 0;
+  border-radius: 0 0 var(--xf-radius) var(--xf-radius);
+}
+td[width="770"] > table[width="770"]:first-of-type > tbody > tr:nth-child(2) a { display: inline-block; padding: 2px 6px; border-radius: 999px; font-size: 12.5px; }
+td[width="770"] > table[width="770"]:first-of-type > tbody > tr:nth-child(2) a:hover { background: var(--xf-gold-soft); }
+td[width="770"] > table[width="770"]:first-of-type > tbody > tr:nth-child(2) font { color: var(--xf-text-2) !important; }
+
+/* Brand block */
+td[width="170"] > img[alt="VICIDIAL logo"] { height: 44px; width: auto; margin: 4px 0 2px; vertical-align: middle; }
+td[width="170"] > b > font {
+  display: inline-block;
+  margin-left: 14px;
+  font-size: 11px !important;
+  font-weight: 700;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--xf-gold) !important;
+  vertical-align: middle;
+}
+td[width="170"] > br { display: none; }
+
+/* --------------------------------------------------------------------------
+   Navigation: the 160px nav table becomes a horizontal pill bar; the final
+   row of that table is the page content.
+   -------------------------------------------------------------------------- */
+table[width="160"][bgcolor="#015B91" i] {
+  display: block;
+  width: 100%;
+  margin-top: 14px;
+  background: transparent !important;
+}
+table[width="160"][bgcolor="#015B91" i] > tbody {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border: 1px solid var(--xf-line);
+  border-radius: var(--xf-radius-lg);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
+  box-shadow: var(--xf-shadow-sm);
+}
+table[width="160"][bgcolor="#015B91" i] > tbody > tr { display: block; width: auto !important; }
+table[width="160"][bgcolor="#015B91" i] > tbody > tr > td {
+  display: block;
+  width: auto !important;
+  padding: 0;
+  background: transparent !important;
+}
+
+/* Top-level items */
+table[width="160"][bgcolor="#015B91" i] > tbody > tr:not([bgcolor]) > td > a {
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 999px;
+  border: 1px solid var(--xf-line);
+  background: rgba(255,255,255,.03);
+  color: var(--xf-text);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: .02em;
+  transition: background .15s ease, border-color .15s ease, transform .12s ease;
+}
+table[width="160"][bgcolor="#015B91" i] > tbody > tr:not([bgcolor]) > td > a:hover {
+  background: rgba(255,255,255,.07);
+  border-color: var(--xf-line-strong);
+  transform: translateY(-1px);
+}
+table[width="160"][bgcolor="#015B91" i] > tbody > tr:not([bgcolor]) > td > a font { color: inherit !important; font-size: 13px !important; }
+table[width="160"][bgcolor="#015B91" i] > tbody > tr:not([bgcolor]) > td[bgcolor] > a {
+  background: linear-gradient(180deg, var(--xf-gold-2), var(--xf-gold));
+  border-color: rgba(212,180,106,.6);
+  color: #15120a;
+  box-shadow: 0 6px 18px rgba(212,180,106,.22);
+}
+table[width="160"][bgcolor="#015B91" i] > tbody > tr:not([bgcolor]) > td[bgcolor] > a font { color: #15120a !important; }
+
+/* Sub-section items (rows carrying a BGCOLOR) */
+table[width="160"][bgcolor="#015B91" i] > tbody > tr[bgcolor] { background: transparent !important; }
+table[width="160"][bgcolor="#015B91" i] > tbody > tr[bgcolor] > td { white-space: nowrap; }
+table[width="160"][bgcolor="#015B91" i] > tbody > tr[bgcolor] > td a {
+  display: inline-block;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--xf-text-2);
+  border: 1px solid transparent;
+  transition: background .15s ease, color .15s ease;
+}
+table[width="160"][bgcolor="#015B91" i] > tbody > tr[bgcolor] > td a:hover { background: var(--xf-gold-soft); color: var(--xf-gold-2); }
+table[width="160"][bgcolor="#015B91" i] > tbody > tr[bgcolor] > td a font { color: inherit !important; font-size: 12px !important; }
+table[width="160"][bgcolor="#015B91" i] > tbody > tr[bgcolor] > td[bgcolor] a { background: var(--xf-gold-soft); color: var(--xf-gold-2); border-color: rgba(212,180,106,.35); }
+table[width="160"][bgcolor="#015B91" i] > tbody > tr[bgcolor] > td > b,
+table[width="160"][bgcolor="#015B91" i] > tbody > tr[bgcolor] > td > font > b { display: inline-block; padding: 5px 11px; color: var(--xf-text-3); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+
+/* 2px divider row + trailing spacer row */
+table[width="160"][bgcolor="#015B91" i] > tbody > tr:has(> td[height="2"]) { display: none; }
+table[width="160"][bgcolor="#015B91" i] > tbody > tr:last-child { display: none; }
+#refresh_countdown { display: inline-block; margin: 6px 0 2px; font-size: 12px; color: var(--xf-text-3); }
+#refresh_countdown font { color: var(--xf-text-3) !important; }
+
+/* Compact header used by a few pages */
+table[bgcolor="#015B91" i]:not([width]) {
+  display: block;
+  width: 100%;
+  max-width: 1480px;
+  margin: 0 auto 16px;
+  padding: 8px 12px;
+  border: 1px solid var(--xf-line);
+  border-radius: var(--xf-radius);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)) !important;
+}
+table[bgcolor="#015B91" i]:not([width]) td { padding: 0 6px; background: transparent !important; vertical-align: middle; }
+table[bgcolor="#015B91" i]:not([width]) td a { display: inline-block; padding: 6px 12px; border-radius: 999px; font-size: 12.5px; font-weight: 600; color: var(--xf-text); }
+table[bgcolor="#015B91" i]:not([width]) td a:hover { background: var(--xf-gold-soft); color: var(--xf-gold-2); }
+table[bgcolor="#015B91" i]:not([width]) td a font { color: inherit !important; }
+table[bgcolor="#015B91" i]:not([width]) img { height: 22px; width: auto; vertical-align: middle; }
+
+/* --------------------------------------------------------------------------
+   Content: forms, data lists, reports
+   -------------------------------------------------------------------------- */
+td, th { padding: 4px 7px; vertical-align: middle; }
+td[bgcolor], th[bgcolor] { border-bottom: 1px solid rgba(255,255,255,.05); }
+tr[bgcolor] > td:first-child { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+tr[bgcolor] > td:last-child  { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+table[bgcolor] { border-radius: var(--xf-radius-sm); }
+
+/* Section headings often arrive as centered bold text */
+center > b, td > center > b, td > b > font[size="3"], b > font[size="4"] { color: var(--xf-text); }
+td[align="center"] > b > font, td[align="center"] > font > b { letter-spacing: .02em; }
+
+/* Form rows: label cells are right-aligned in ViciDial */
+td[align="right"] { color: var(--xf-text-2); }
+td[align="right"] > font, td[align="right"] > b > font { color: var(--xf-text-2) !important; }
+
+/* Help links & small-print */
+a[href*="99999"] img, img[src*="help.gif"] { opacity: .65; vertical-align: middle; }
+a[href*="99999"] img:hover, img[src*="help.gif"]:hover { opacity: 1; }
+font[size="1"] { color: var(--xf-text-3); }
+
+/* Report preformatted output */
+pre { margin: 10px 0; }
+pre a { color: var(--xf-gold-2); }
+
+/* Inputs inside dense admin tables should not balloon the rows */
+td input[type="text"], td input[type="password"], td input:not([type]), td select { padding: 6px 9px; }
+td input[type="submit"], td input[type="button"], td button { padding: 7px 16px; font-size: 12.5px; }
+td textarea { min-height: 64px; }
+
+/* Calendar widget shipped with reports */
+.calendar { background: var(--xf-surface-2); border: 1px solid var(--xf-line-strong); color: var(--xf-text); border-radius: var(--xf-radius-sm); }

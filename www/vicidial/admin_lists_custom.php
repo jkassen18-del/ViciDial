@@ -236,7 +236,7 @@ if ($action == "HELP")
 	{
 	?>
 	</title>
-	</head>
+	<link rel=stylesheet href=css/xf-admin.css></head>
 	<body bgcolor=white>
 	<center>
 	<TABLE WIDTH=98% BGCOLOR=#E6E6E6 cellpadding=2 cellspacing=4><TR><TD ALIGN=LEFT><FONT FACE=\"ARIAL,HELVETICA\" COLOR=BLACK SIZE=2>
@@ -867,7 +867,7 @@ if ( ($action == "MODIFY_CUSTOM_FIELD_SUBMIT") and ($list_id > 99) and ($field_i
 ##### BEGIN modify custom fields for list
 if ( ($action == "MODIFY_CUSTOM_FIELDS") and ($list_id > 99) )
 	{
-	echo "</TITLE></HEAD><BODY BGCOLOR=white>\n";
+	echo "</TITLE><link rel=stylesheet href=css/xf-admin.css></HEAD><BODY BGCOLOR=white>\n";
 	echo "<TABLE><TR><TD>\n";
 
 	$custom_records_count=0;

@@ -29,7 +29,7 @@ echo"<HTML><HEAD>\n";
 echo"<TITLE>Group1</TITLE>\n";
 echo"<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=iso-8859-1\">\n";
 echo"<META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$URL\">\n";
-echo"</HEAD>\n";
+echo"<link rel=stylesheet href=css/xf-admin.css></HEAD>\n";
 echo"<BODY BGCOLOR=#FFFFFF marginheight=0 marginwidth=0 leftmargin=0 topmargin=0>\n";
 echo"<a href=\"$URL\">click here to continue. . .</a>\n";
 echo"</BODY></HTML>\n";

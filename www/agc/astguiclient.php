@@ -146,7 +146,7 @@ if( (strlen($user)<2) or (strlen($pass)<2) or (!$auth) or ($relogin == 'YES') )
 	header ("Content-type: text/html; charset=utf-8");
 
 	echo "<title>astGUIclient web client: Login</title>\n";
-	echo "</head>\n";
+	echo "<link rel=stylesheet href=css/xf-theme.css></head>\n";
 	echo "<BODY BGCOLOR=WHITE MARGINHEIGHT=0 MARGINWIDTH=0>\n";
 	echo "<TABLE><TR><TD></TD>\n";
 	echo "<!-- INTERNATIONALIZATION-LINKS-PLACEHOLDER-AGC -->\n";
@@ -211,7 +211,7 @@ echo "<!-- VERSION: $version     BUILD: $build      ADD: $ADD-->\n";
 if ( (strlen($phone_login)<2) or (strlen($phone_pass)<2) )
 {
 echo "<title>astGUIclient web client: Phone Login</title>\n";
-echo "</head>\n";
+echo "<link rel=stylesheet href=css/xf-theme.css></head>\n";
 echo "<BODY BGCOLOR=WHITE MARGINHEIGHT=0 MARGINWIDTH=0>\n";
 echo "<TABLE><TR><TD></TD>\n";
 echo "<!-- INTERNATIONALIZATION-LINKS-PLACEHOLDER-AGC -->\n";
@@ -248,7 +248,7 @@ $authphone=$row[0];
 if (!$authphone)
 	{
 	echo "<title>astGUIclient web client: Phone Login</title>\n";
-	echo "</head>\n";
+	echo "<link rel=stylesheet href=css/xf-theme.css></head>\n";
 	echo "<BODY BGCOLOR=WHITE MARGINHEIGHT=0 MARGINWIDTH=0>\n";
 	echo "<TABLE><TR><TD></TD>\n";
 	echo "<!-- INTERNATIONALIZATION-LINKS-PLACEHOLDER-AGC -->\n";
@@ -2707,7 +2707,7 @@ if ($enable_fast_refresh < 1) {echo "var refresh_interval = 1000;\n";}
 -->
 </style>
 <?php
-echo "</head>\n";
+echo "<link rel=stylesheet href=css/xf-theme.css></head>\n";
 
 
 ?>

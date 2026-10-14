@@ -179,7 +179,7 @@ $VU_user_group=$row[0];
 if ($relogin == 'YES')
 	{
 	echo "<title>Phone web client: Login</title>\n";
-	echo "</head>\n";
+	echo "<link rel=stylesheet href=css/xf-theme.css></head>\n";
     echo "<body bgcolor=\"white\">\n";
 	if ($hide_timeclock_link < 1)
         {echo "<a href=\"./timeclock.php?referrer=agent&amp;pl=$phone_login&amp;pp=$phone_pass&amp;VD_login=$VD_login&amp;VD_pass=$VD_pass\"> Timeclock</a><br />\n";}
@@ -214,7 +214,7 @@ if ($relogin == 'YES')
 if ( (strlen($phone_login)<2) or (strlen($phone_pass)<2) )
 	{
 	echo "<title>Phone web client: Phone Login</title>\n";
-	echo "</head>\n";
+	echo "<link rel=stylesheet href=css/xf-theme.css></head>\n";
     echo "<body bgcolor=\"white\">\n";
 	if ($hide_timeclock_link < 1)
         {echo "<a href=\"./timeclock.php?referrer=agent&amp;pl=$phone_login&amp;pp=$phone_pass&amp;VD_login=$VD_login&amp;VD_pass=$VD_pass\"> Timeclock</a><br />\n";}
@@ -309,7 +309,7 @@ else
 	if ($VDloginDISPLAY)
 		{
 		echo "<title>Phone web client: Login</title>\n";
-		echo "</head>\n";
+		echo "<link rel=stylesheet href=css/xf-theme.css></head>\n";
         echo "<body bgcolor=\"white\">\n";
 		if ($hide_timeclock_link < 1)
             {echo "<a href=\"./timeclock.php?referrer=agent&amp;pl=$phone_login&amp;pp=$phone_pass&amp;VD_login=$VD_login&amp;VD_pass=$VD_pass\"> Timeclock</a><br />\n";}
@@ -399,7 +399,7 @@ else
 	if (!$authphone)
 		{
 		echo "<title>Phone web client: Phone Login Error</title>\n";
-		echo "</head>\n";
+		echo "<link rel=stylesheet href=css/xf-theme.css></head>\n";
         echo "<body bgcolor=\"white\">\n";
 		if ($hide_timeclock_link < 1)
             {echo "<a href=\"./timeclock.php?referrer=agent&amp;pl=$phone_login&amp;pp=$phone_pass&amp;VD_login=$VD_login&amp;VD_pass=$VD_pass\"> Timeclock</a><br />\n";}
@@ -808,7 +808,7 @@ if ($is_webphone) {$AVTheight = '20';}
 
 
 
-echo "</head>\n";
+echo "<link rel=stylesheet href=css/xf-theme.css></head>\n";
 
 $zi=2;
 

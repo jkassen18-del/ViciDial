@@ -107,7 +107,7 @@ $browser = getenv("HTTP_USER_AGENT");
 <?php
 echo "<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\">\n";
 ?>
-</head>
+<link rel=stylesheet href=css/xf-admin.css></head>
 <BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0>
 <CENTER>
 

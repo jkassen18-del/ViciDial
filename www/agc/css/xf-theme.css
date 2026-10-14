@@ -1,0 +1,287 @@
+/* ==========================================================================
+   X Frontline — Premium theme foundation
+   Shared design tokens + base styling for every page (agent, admin, reports).
+   Loaded by css/custom.css (agent console) and ../vicidial/css/xf-admin.css.
+   ========================================================================== */
+
+:root {
+  /* Surfaces */
+  --xf-bg:            #0b0e14;
+  --xf-bg-2:          #10141c;
+  --xf-surface:       #161b25;
+  --xf-surface-2:     #1c2230;
+  --xf-surface-3:     #232a3a;
+  --xf-line:          rgba(255, 255, 255, 0.08);
+  --xf-line-strong:   rgba(255, 255, 255, 0.14);
+
+  /* Type */
+  --xf-text:          #f2eee6;
+  --xf-text-2:        #b7bcc8;
+  --xf-text-3:        #7f8697;
+
+  /* Brand accents */
+  --xf-gold:          #d4b46a;
+  --xf-gold-2:        #f0d58f;
+  --xf-gold-deep:     #9c8040;
+  --xf-gold-soft:     rgba(212, 180, 106, 0.14);
+
+  /* States */
+  --xf-live:          #3fd68d;
+  --xf-live-soft:     rgba(63, 214, 141, 0.16);
+  --xf-hold:          #f2b84b;
+  --xf-hold-soft:     rgba(242, 184, 75, 0.16);
+  --xf-dead:          #ff6b6b;
+  --xf-dead-soft:     rgba(255, 107, 107, 0.16);
+  --xf-info:          #6fb4ff;
+  --xf-info-soft:     rgba(111, 180, 255, 0.14);
+
+  /* Geometry */
+  --xf-radius-lg:     18px;
+  --xf-radius:        12px;
+  --xf-radius-sm:     8px;
+  --xf-shadow:        0 24px 60px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  --xf-shadow-sm:     0 8px 24px rgba(0, 0, 0, 0.35);
+
+  /* Fonts (system stacks — no network dependency) */
+  --xf-font:          "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --xf-font-display:  "Playfair Display", "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --xf-font-mono:     "JetBrains Mono", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--xf-bg);
+  background-image:
+    radial-gradient(1200px 600px at 10% -10%, rgba(212, 180, 106, 0.10), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(111, 180, 255, 0.08), transparent 55%),
+    linear-gradient(180deg, #0d1118 0%, #0b0e14 100%);
+  background-attachment: fixed;
+  color: var(--xf-text);
+  font-family: var(--xf-font);
+  font-size: 14px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Legacy <FONT> tags — keep sizes meaningful, neutralise hard-coded colors */
+font { font-family: inherit; }
+font[face] { font-family: var(--xf-font) !important; }
+font[color="BLACK" i], font[color="#000000" i], font[color="#000" i],
+font[color="WHITE" i], font[color="#FFFFFF" i], font[color="#FFF" i] { color: var(--xf-text) !important; }
+font[color="RED" i],  font[color="#FF0000" i] { color: var(--xf-dead) !important; }
+font[color="GREEN" i], font[color="#009900" i], font[color="#00AA00" i] { color: var(--xf-live) !important; }
+font[color="BLUE" i], font[color="#0000FF" i], font[color="#3C86B7" i] { color: var(--xf-info) !important; }
+font[color="GRAY" i], font[color="GREY" i], font[color="#666666" i], font[color="#999999" i] { color: var(--xf-text-3) !important; }
+font[size="1"] { font-size: 11px; }
+font[size="2"] { font-size: 13px; }
+font[size="3"] { font-size: 15px; }
+font[size="4"] { font-size: 18px; }
+font[size="5"] { font-size: 22px; }
+
+a { color: var(--xf-gold-2); text-decoration: none; transition: color .15s ease; }
+a:hover { color: #fff; }
+
+h1, h2, h3, h4 { color: var(--xf-text); margin: 0 0 .5em; font-weight: 600; letter-spacing: -0.01em; }
+h1 { font-family: var(--xf-font-display); font-weight: 500; font-size: 26px; }
+h2 { font-size: 20px; }
+h3 { font-size: 16px; }
+h4 { font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--xf-text-3); }
+
+hr { border: 0; border-top: 1px solid var(--xf-line); margin: 16px 0; }
+img { border: 0; }
+pre {
+  font-family: var(--xf-font-mono);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--xf-text);
+  background: var(--xf-surface);
+  border: 1px solid var(--xf-line);
+  border-radius: var(--xf-radius);
+  padding: 14px 16px;
+  overflow: auto;
+}
+pre font, pre b { font-family: inherit; }
+
+/* --------------------------------------------------------------------------
+   Tables (legacy attribute-driven markup becomes cards / data grids)
+   -------------------------------------------------------------------------- */
+table { border-collapse: separate; border-spacing: 0; color: inherit; font-family: inherit; }
+td, th { color: inherit; font-family: inherit; }
+th { font-weight: 600; text-align: left; }
+
+/* The classic ViciDial palette, re-mapped onto the dark system */
+[bgcolor="#015B91" i]               { background-color: var(--xf-surface-3) !important; }
+[bgcolor="#B6D3FC" i]               { background-color: var(--xf-surface-2) !important; }
+[bgcolor="#B9CBFD" i], [bgcolor="#9BB9FB" i], [bgcolor="#8EBCFD" i], [bgcolor="#3C86B7" i]
+                                     { background-color: var(--xf-surface-3) !important; }
+[bgcolor="#D9E6FE" i], [bgcolor="#F0F5FE" i], [bgcolor="#F6F6F6" i], [bgcolor="#E6E6E6" i],
+[bgcolor="#EFEFEF" i], [bgcolor="#EAEAEA" i], [bgcolor="#CCCCCC" i], [bgcolor="#FFFFFF" i],
+[bgcolor="WHITE" i], [bgcolor="E6E6E6" i]
+                                     { background-color: var(--xf-surface) !important; }
+[bgcolor="#CCFFFF" i], [bgcolor="#E0FFFF" i], [bgcolor="#AFEEEE" i], [bgcolor="#CCCCFF" i]
+                                     { background-color: var(--xf-info-soft) !important; }
+[bgcolor="#99FFCC" i], [bgcolor="#BDFFBD" i], [bgcolor="#CCFFCC" i], [bgcolor="#99FF99" i], [bgcolor="#66CC66" i]
+                                     { background-color: var(--xf-live-soft) !important; }
+[bgcolor="#FFCCCC" i], [bgcolor="#FF6666" i]
+                                     { background-color: var(--xf-dead-soft) !important; }
+[bgcolor="#FFFF99" i], [bgcolor="#FFCC99" i], [bgcolor="#FFFF33" i], [bgcolor="#CCCC00" i], [bgcolor="#FF9933" i]
+                                     { background-color: var(--xf-hold-soft) !important; }
+[bgcolor="#FF99FF" i], [bgcolor="#FF33FF" i], [bgcolor="#CC99FF" i]
+                                     { background-color: rgba(168, 140, 255, 0.16) !important; }
+[bgcolor="#99FF33" i]               { background-color: var(--xf-live-soft) !important; }
+[bgcolor="#009900" i]               { background-color: rgba(63, 214, 141, 0.35) !important; }
+[bgcolor="#990000" i]               { background-color: rgba(255, 107, 107, 0.35) !important; }
+[bgcolor="#000099" i]               { background-color: rgba(111, 180, 255, 0.35) !important; }
+[bgcolor="#000000" i]               { background-color: #05070b !important; }
+[bgcolor="#999999" i]               { background-color: var(--xf-surface-3) !important; }
+
+/* --------------------------------------------------------------------------
+   Form controls
+   -------------------------------------------------------------------------- */
+input, select, textarea, button {
+  font-family: var(--xf-font);
+  font-size: 13.5px;
+  color: var(--xf-text);
+}
+
+input[type="text"], input[type="password"], input[type="number"], input[type="email"],
+input[type="search"], input[type="tel"], input[type="date"], input[type="time"],
+input:not([type]), select, textarea {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--xf-line-strong);
+  border-radius: var(--xf-radius-sm);
+  padding: 7px 10px;
+  color: var(--xf-text);
+  outline: none;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset;
+  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+input[type="text"]:focus, input[type="password"]:focus, input[type="number"]:focus,
+input[type="email"]:focus, input[type="search"]:focus, input[type="tel"]:focus,
+input:not([type]):focus, select:focus, textarea:focus {
+  border-color: var(--xf-gold);
+  box-shadow: 0 0 0 3px var(--xf-gold-soft);
+  background: rgba(255, 255, 255, 0.06);
+}
+input::placeholder, textarea::placeholder { color: var(--xf-text-3); }
+select { cursor: pointer; }
+select option { background: var(--xf-surface-2); color: var(--xf-text); }
+textarea { resize: vertical; line-height: 1.45; }
+input[type="checkbox"], input[type="radio"] { accent-color: var(--xf-gold); width: 15px; height: 15px; vertical-align: -2px; }
+input:disabled, select:disabled, textarea:disabled { opacity: .5; cursor: not-allowed; }
+
+input[type="submit"], input[type="button"], input[type="reset"], button {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  border: 1px solid rgba(212, 180, 106, 0.55);
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: #15120a;
+  background: linear-gradient(180deg, var(--xf-gold-2) 0%, var(--xf-gold) 60%, #c9a85a 100%);
+  box-shadow: 0 6px 18px rgba(212, 180, 106, 0.22), 0 1px 0 rgba(255, 255, 255, 0.35) inset;
+  transition: transform .12s ease, box-shadow .15s ease, filter .15s ease;
+}
+input[type="submit"]:hover, input[type="button"]:hover, input[type="reset"]:hover, button:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 10px 26px rgba(212, 180, 106, 0.30), 0 1px 0 rgba(255, 255, 255, 0.35) inset;
+}
+input[type="submit"]:active, input[type="button"]:active, input[type="reset"]:active, button:active { transform: translateY(1px); }
+input[type="submit"]:disabled, button:disabled { filter: grayscale(.6); opacity: .55; cursor: not-allowed; }
+
+/* --------------------------------------------------------------------------
+   Scrollbars
+   -------------------------------------------------------------------------- */
+* { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.18) transparent; }
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb { background: rgba(255,255,255,.16); border-radius: 10px; border: 2px solid transparent; background-clip: padding-box; }
+*::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.28); background-clip: padding-box; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+::selection { background: rgba(212, 180, 106, 0.35); color: #fff; }
+
+/* --------------------------------------------------------------------------
+   Utility components available to any page
+   -------------------------------------------------------------------------- */
+.xf-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.015));
+  border: 1px solid var(--xf-line);
+  border-radius: var(--xf-radius-lg);
+  box-shadow: var(--xf-shadow-sm);
+  padding: 20px 22px;
+}
+.xf-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--xf-gold);
+  font-weight: 600;
+}
+.xf-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border: 1px solid var(--xf-line-strong);
+  background: rgba(255,255,255,.04);
+  color: var(--xf-text-2);
+}
+.xf-badge.live { color: var(--xf-live); background: var(--xf-live-soft); border-color: rgba(63,214,141,.35); }
+.xf-badge.hold { color: var(--xf-hold); background: var(--xf-hold-soft); border-color: rgba(242,184,75,.35); }
+.xf-badge.dead { color: var(--xf-dead); background: var(--xf-dead-soft); border-color: rgba(255,107,107,.35); }
+
+.xf-btn, a.xf-btn {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid rgba(212, 180, 106, 0.55);
+  border-radius: 999px;
+  padding: 9px 20px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: #15120a;
+  background: linear-gradient(180deg, var(--xf-gold-2) 0%, var(--xf-gold) 60%, #c9a85a 100%);
+  box-shadow: 0 6px 18px rgba(212, 180, 106, 0.22), 0 1px 0 rgba(255, 255, 255, 0.35) inset;
+  text-decoration: none;
+  transition: transform .12s ease, box-shadow .15s ease, filter .15s ease;
+}
+.xf-btn:hover, a.xf-btn:hover { color: #15120a; filter: brightness(1.06); }
+.xf-btn.ghost, a.xf-btn.ghost {
+  color: var(--xf-text);
+  background: rgba(255,255,255,.04);
+  border-color: var(--xf-line-strong);
+  box-shadow: none;
+}
+.xf-btn.ghost:hover, a.xf-btn.ghost:hover { background: rgba(255,255,255,.08); color: #fff; }
+
+@keyframes xf-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(63, 214, 141, .45); }
+  70%  { box-shadow: 0 0 0 10px rgba(63, 214, 141, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(63, 214, 141, 0); }
+}
+/* xf-fade-up is for leaf elements only: a lingering transform on a container
+   would become the containing block for position:fixed descendants. */
+@keyframes xf-fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes xf-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes xf-login-in {
+  from { opacity: 0; transform: translate(-50%, -48%); }
+  to   { opacity: 1; transform: translate(-50%, -52%); }
+}

@@ -85,7 +85,7 @@ while ($i < $servers_to_print)
 	}
 
 echo "<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\">\n";
-echo "<TITLE>VICIDIAL: Manual CID call</TITLE></HEAD><BODY BGCOLOR=WHITE>\n";
+echo "<TITLE>VICIDIAL: Manual CID call</TITLE><link rel=stylesheet href=css/xf-admin.css></HEAD><BODY BGCOLOR=WHITE>\n";
 echo "<FORM ACTION=\"$PHP_SELF\" METHOD=GET>\n";
 echo "Sender: <INPUT TYPE=TEXT NAME=sender SIZE=12 MAXLENGTH=10 VALUE=\"$sender\"> &nbsp; &nbsp; \n";
 echo "Receiver: <INPUT TYPE=TEXT NAME=receiver SIZE=12 MAXLENGTH=10 VALUE=\"$receiver\"> &nbsp; &nbsp; \n";

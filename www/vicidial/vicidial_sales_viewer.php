@@ -49,7 +49,7 @@ $auth=$row[0];
 <html>
 <head>
 <title>Recent Sales Lookup</title>
-</head>
+<link rel=stylesheet href=css/xf-admin.css></head>
 <?php
 include("dbconnect.php");
 #include("/home/www/phpsubs/stylesheet.inc");

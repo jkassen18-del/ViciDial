@@ -267,7 +267,7 @@ if ($format=='debug')
 	echo "<!-- VERSION: $version     BUILD: $build    USER: $user   server_ip: $server_ip-->\n";
 	echo "<title>VICIDiaL Script Display Script";
 	echo "</title>\n";
-	echo "</head>\n";
+	echo "<link rel=stylesheet href=css/xf-theme.css></head>\n";
 	echo "<BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0>\n";
 	}
 

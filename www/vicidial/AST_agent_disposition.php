@@ -78,7 +78,7 @@ while ($i < $campaigns_to_print)
 
 <?php 
 echo "<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\">\n";
-echo "<TITLE>VICIDIAL: Agent Disposition</TITLE></HEAD><BODY BGCOLOR=WHITE>\n";
+echo "<TITLE>VICIDIAL: Agent Disposition</TITLE><link rel=stylesheet href=css/xf-admin.css></HEAD><BODY BGCOLOR=WHITE>\n";
 echo "<FORM ACTION=\"$PHP_SELF\" METHOD=GET>\n";
 echo "<FONT FACE=\"ARIAL,HELVETICA\" COLOR=BLACK SIZE=2>Date - From: <input type=text name=begin_date value=\"$begin_date\" size=10 maxsize=10> to \n";
 echo "<input type=text name=end_date value=\"$end_date\" size=10 maxsize=10> &nbsp;\n";

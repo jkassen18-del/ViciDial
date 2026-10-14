@@ -87,7 +87,7 @@ if ($reset_counter > 7)
 <?php 
 echo "<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\">\n";
 echo"<META HTTP-EQUIV=Refresh CONTENT=\"7; URL=$PHP_SELF?server_ip=$server_ip&DB=$DB&reset_counter=$reset_counter\">\n";
-echo "<TITLE>VICIDIAL: Time On Park</TITLE></HEAD><BODY BGCOLOR=WHITE>\n";
+echo "<TITLE>VICIDIAL: Time On Park</TITLE><link rel=stylesheet href=css/xf-admin.css></HEAD><BODY BGCOLOR=WHITE>\n";
 echo "<PRE><FONT SIZE=3>\n\n";
 
 echo "VICIDIAL: Time On Park         $NOW_TIME    <a href=\"./admin.php?ADD=999999\">REPORTS</a>\n\n";

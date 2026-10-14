@@ -288,7 +288,7 @@ function conf_send_recording(taskconfrectype,sesname,taskconfrec,taskconffile,le
 
 echo "<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\">\n";
 echo"<META HTTP-EQUIV=Refresh CONTENT=\"$RR; URL=$PHP_SELF?RR=$RR&DB=$DB&group=$group&adastats=$adastats&SIPmonitorLINK=$SIPmonitorLINK&IAXmonitorLINK=$IAXmonitorLINK&RECmonitorLINK=$RECmonitorLINK&usergroup=$usergroup&UGdisplay=$UGdisplay&UidORname=$UidORname&orderby=$orderby&SERVdisplay=$SERVdisplay\">\n";
-echo "<TITLE>VICIDIAL: Time On VDAD Campaign: $group</TITLE></HEAD><BODY BGCOLOR=WHITE>\n";
+echo "<TITLE>VICIDIAL: Time On VDAD Campaign: $group</TITLE><link rel=stylesheet href=css/xf-admin.css></HEAD><BODY BGCOLOR=WHITE>\n";
 echo "<FORM ACTION=\"$PHP_SELF\" METHOD=GET>\n";
 echo "VICIDIAL Campaign: \n";
 echo "<INPUT TYPE=HIDDEN NAME=RR VALUE=\"$RR\">\n";

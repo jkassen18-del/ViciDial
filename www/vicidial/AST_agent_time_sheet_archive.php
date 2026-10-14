@@ -63,7 +63,7 @@ if (!isset($query_date)) {$query_date = $NOW_DATE;}
 
 <?php 
 echo "<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\">\n";
-echo "<TITLE>VICIDIAL: Agent Time Sheet</TITLE></HEAD><BODY BGCOLOR=WHITE>\n";
+echo "<TITLE>VICIDIAL: Agent Time Sheet</TITLE><link rel=stylesheet href=css/xf-admin.css></HEAD><BODY BGCOLOR=WHITE>\n";
 echo "<a href=\"./admin.php\">VICIDIAL ADMIN</a>: Agent Time Sheet\n";
 echo " - <a href=\"./user_stats.php?user=$agent\">User Stats</a>\n";
 echo " - <a href=\"./user_status.php?user=$agent\">User Status</a>\n";

@@ -4,22 +4,35 @@
 # Copyright (C) 2008  Matt Florell <vicidial@gmail.com>    LICENSE: AGPLv2
 #
 
-echo "<title>ViciDial Welcome</title>\n";
+echo "<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"utf-8\">\n<title>X Frontline | Welcome</title>\n";
+echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n";
+echo "<link rel=\"stylesheet\" href=\"../agc/css/xf-theme.css\">\n";
+echo "<style>
+  body { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .xf-welcome { width: 440px; max-width: 100%; text-align: center; padding: 40px 40px 34px; border-radius: 24px; position: relative; animation: xf-fade-up .45s ease both; }
+  .xf-welcome::before { content: ''; position: absolute; left: 10%; right: 10%; top: -1px; height: 1px; background: linear-gradient(90deg, transparent, rgba(212,180,106,.9), transparent); }
+  .xf-welcome .xf-eyebrow { display: block; margin-top: 6px; }
+  .xf-welcome img { height: 64px; width: auto; margin-bottom: 14px; filter: drop-shadow(0 6px 20px rgba(0,0,0,.5)); }
+  .xf-welcome h1 { font-size: 28px; margin: 6px 0 4px; }
+  .xf-welcome p { color: var(--xf-text-2); margin: 0 0 26px; font-size: 13.5px; }
+  .xf-welcome .xf-links { display: flex; flex-direction: column; gap: 10px; }
+  .xf-welcome a.xf-btn { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; padding: 13px 20px; }
+  .xf-welcome .xf-foot { margin-top: 22px; font-size: 11px; color: var(--xf-text-3); letter-spacing: .08em; text-transform: uppercase; }
+</style>\n";
 echo "</head>\n";
-echo "<BODY BGCOLOR=WHITE MARGINHEIGHT=0 MARGINWIDTH=0>\n";
-echo "<BR><BR><BR><BR><BR><CENTER><TABLE WIDTH=300 CELLPADDING=0 CELLSPACING=0 BGCOLOR=\"#CCCCCC\"><TR BGCOLOR=WHITE>";
-echo "<TD ALIGN=LEFT VALIGN=BOTTOM><IMG SRC=\"../agc/images/vdc_tab_vicidial.gif\" BORDER=0></TD>";
-echo "<TD ALIGN=CENTER VALIGN=MIDDLE> Welcome </TD>";
-echo "</TR>\n";
-echo "<TR><TD ALIGN=CENTER COLSPAN=2><font size=1> &nbsp; </TD></TR>\n";
-echo "<TR><TD ALIGN=CENTER COLSPAN=2><font size=3><b> <a href=\"../agc/vicidial.php\">Agent Login</a> </TD></TR>\n";
-echo "<TR><TD ALIGN=CENTER COLSPAN=2><font size=1> &nbsp; </TD></TR>\n";
-echo "<TR><TD ALIGN=CENTER COLSPAN=2><font size=3><b> <a href=\"../agc/timeclock.php?referrer=welcome\"> Timeclock</a> </TD></TR>\n";
-echo "<TR><TD ALIGN=CENTER COLSPAN=2><font size=1> &nbsp; </TD></TR>\n";
-echo "<TR><TD ALIGN=CENTER COLSPAN=2><font size=3><b> <a href=\"../vicidial/admin.php\">Administration</a> </TD></TR>\n";
-echo "<TR><TD ALIGN=CENTER COLSPAN=2><font size=1> &nbsp; </TD></TR>\n";
-echo "</TABLE>\n";
-echo "</FORM>\n\n";
+echo "<body>\n";
+echo "<div class=\"xf-card xf-welcome\">\n";
+echo "<img src=\"../agc/images/xf-logo.svg\" alt=\"X Frontline\">\n";
+echo "<span class=\"xf-eyebrow\">Welcome</span>\n";
+echo "<h1>Contact Center</h1>\n";
+echo "<p>Choose where you would like to go.</p>\n";
+echo "<div class=\"xf-links\">\n";
+echo "<a class=\"xf-btn\" href=\"../agc/vicidial.php\">Agent Login</a>\n";
+echo "<a class=\"xf-btn ghost\" href=\"../agc/timeclock.php?referrer=welcome\">Timeclock</a>\n";
+echo "<a class=\"xf-btn ghost\" href=\"../vicidial/admin.php\">Administration</a>\n";
+echo "</div>\n";
+echo "<div class=\"xf-foot\">Powered by ViciDial</div>\n";
+echo "</div>\n";
 echo "</body>\n\n";
 echo "</html>\n\n";
 

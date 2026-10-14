@@ -72,7 +72,7 @@ if ( (strlen($phone)<10) or (strlen($phone)>10) )
 	echo "<html>\n";
 	echo "<head>\n";
 	echo "<title>Recording ID Lookup: </title>\n";
-	echo "</head>\n";
+	echo "<link rel=stylesheet href=css/xf-admin.css></head>\n";
 	echo "<body bgcolor=white>\n";
 	echo "<br><br>\n";
 	echo "You need to use only a 10-digit phone number<BR>\n";

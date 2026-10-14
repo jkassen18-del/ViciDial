@@ -71,7 +71,7 @@ $US='_';
 <html>
 <head>
 <title>Recording ID Lookup: </title>
-</head>
+<link rel=stylesheet href=css/xf-admin.css></head>
 <body bgcolor=white>
 
 <?php 

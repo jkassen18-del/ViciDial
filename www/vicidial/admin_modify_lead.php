@@ -312,7 +312,7 @@ if ($scb_count_to_print > 0)
 <title>ADMINISTRATION: Lead record modification</title>
 <script language="JavaScript" src="calendar_db.js"></script>
 <link rel="stylesheet" href="calendar.css">
-</head>
+<link rel=stylesheet href=css/xf-admin.css></head>
 <BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0>
 <CENTER><FONT FACE="Courier" COLOR=BLACK SIZE=3>
 <?php 

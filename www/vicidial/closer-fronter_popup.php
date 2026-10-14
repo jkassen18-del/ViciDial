@@ -209,7 +209,7 @@ else
 	echo "</script>\n";
 	}
 ?>
-</head>
+<link rel=stylesheet href=css/xf-admin.css></head>
 <BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0 onLoad="document.forms[0].search_phone.focus(); setTimeout('document.forms[0].search_phone.focus()', 1000); self.focus()">
 <CENTER><FONT FACE="Courier" COLOR=BLACK SIZE=3>
 

@@ -588,7 +588,7 @@ if ($function == 'sounds_list')
 							echo "	parent.close_chooser();\n";
 							echo "	}\n";
 							echo "</script>\n";
-							echo "</head>\n\n";
+							echo "<link rel=stylesheet href=css/xf-admin.css></head>\n\n";
 
 							echo "<body>\n";
 							echo "<a href=\"javascript:close_file();\"><font size=1 face=\"Arial,Helvetica\">close frame</font></a>\n";
@@ -700,7 +700,7 @@ if ($function == 'moh_list')
 			echo "	parent.close_chooser();\n";
 			echo "	}\n";
 			echo "</script>\n";
-			echo "</head>\n\n";
+			echo "<link rel=stylesheet href=css/xf-admin.css></head>\n\n";
 
 			echo "<body>\n";
 			echo "<a href=\"javascript:close_file();\"><font size=1 face=\"Arial,Helvetica\">close frame</font></a>\n";
@@ -816,7 +816,7 @@ if ($function == 'vm_list')
 		echo "	parent.close_chooser();\n";
 		echo "	}\n";
 		echo "</script>\n";
-		echo "</head>\n\n";
+		echo "<link rel=stylesheet href=css/xf-admin.css></head>\n\n";
 
 		echo "<body>\n";
 		echo "<a href=\"javascript:close_file();\"><font size=1 face=\"Arial,Helvetica\">close frame</font></a>\n";

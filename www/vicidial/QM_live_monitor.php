@@ -98,7 +98,7 @@ if ($enable_queuemetrics_logging > 0)
 	
 				if (eregi('SUCCESS',$monitorCONTENTS[0]))
 					{
-					echo "<HTML><BODY BGCOLOR=\"E6E6E6\" onLoad=\"javascript:window.close();\">\n";
+					echo "<HTML><link rel=stylesheet href=css/xf-admin.css><BODY BGCOLOR=\"E6E6E6\" onLoad=\"javascript:window.close();\">\n";
 					}
 				else
 					{

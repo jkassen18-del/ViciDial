@@ -80,7 +80,7 @@ $browser = getenv("HTTP_USER_AGENT");
 ?><HTML>
 <HEAD>
 <TITLE>VICIDIAL: Lead Loader Module</TITLE>
-</HEAD>
+<link rel=stylesheet href=css/xf-admin.css></HEAD>
 <FRAMESET ROWS="300,*" border=0>
 <FRAME SRC="listloader.php" NAME="main">
 <FRAME SRC="count.htm" NAME="lead_count">

@@ -513,10 +513,10 @@ $webphone_width			= 460;	# set the webphone frame width
 $webphone_height		= 500;	# set the webphone frame height
 $webphone_pad			= 0;	# set the table cellpadding for the webphone
 $webphone_location		= 'right';	# set the location on the agent screen 'right' or 'bar'
-$MAIN_COLOR				= '#CCCCCC';	# old default is E0C2D6
-$SCRIPT_COLOR			= '#E6E6E6';	# old default is FFE7D0
-$FORM_COLOR				= '#EFEFEF';
-$SIDEBAR_COLOR			= '#F6F6F6';
+$MAIN_COLOR				= '#1c2230';	# old default is E0C2D6
+$SCRIPT_COLOR			= '#232a3a';	# old default is FFE7D0
+$FORM_COLOR				= '#161b25';
+$SIDEBAR_COLOR			= '#161b25';
 
 # if options file exists, use the override values for the above variables
 #   see the options-example.php file for more information
@@ -603,6 +603,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
 <link rel="stylesheet" type="text/css" href="css/custom.css" />
 ';
@@ -848,7 +849,7 @@ $login_script .= "<table width=\"100%\"><tr><td></td>\n" .
     
     "<br /><br /><br /><center>\n" .
     "<div id=\"loginBox\" class=\"barStyle\">\n" .
-    "<img src=\"./images/InktelX-Frontline-Sponsored.png\" border=\"0\" alt=\"X Frontline\" />" .
+    "<img src=\"./images/xf-logo.svg\" border=\"0\" alt=\"X Frontline\" />" .
     "<h1>Log In</h1>\n" .
     
     "<fieldset id=\"inputs\">" .
@@ -9743,7 +9744,7 @@ function set_length(SLnumber,SLlength_goal,SLdirection)
 					if (tempreason=='SHIFT')
                         {logout_content='Your Shift is over or has changed, you have been logged out of your session<br /><br />';}
 
-					document.getElementById("LogouTBoxLink").innerHTML = logout_content + "<a href=\"" + agcPAGE + "?relogin=YES&session_epoch=" + epoch_sec + "&session_id=" + session_id + "&session_name=" + session_name + "&VD_login=" + user + "&VD_campaign=" + campaign + "&phone_login=" + original_phone_login + "&phone_pass=" + phone_pass + "&VD_pass=" + pass + "\"><img src=\"./images/InktelX-Frontline-Sponsored.png\" border=\"0\" alt=\"X Frontline\" /><br /><br />Click Here to Login Again</a>\n";
+					document.getElementById("LogouTBoxLink").innerHTML = logout_content + "<a href=\"" + agcPAGE + "?relogin=YES&session_epoch=" + epoch_sec + "&session_id=" + session_id + "&session_name=" + session_name + "&VD_login=" + user + "&VD_campaign=" + campaign + "&phone_login=" + original_phone_login + "&phone_pass=" + phone_pass + "&VD_pass=" + pass + "\"><img src=\"./images/xf-logo.svg\" border=\"0\" alt=\"X Frontline\" /><br /><br />Click Here to Login Again</a>\n";
 
 					logout_stop_timeouts = 1;
 						
@@ -12593,7 +12594,7 @@ $zi=2;
 <!--
 <nav>
     <ul id="n" class="clearfix">
-        <li><img id="x_logo" src="./images/InktelX-Frontline-Sponsored.png" border="0" alt="X Frontline" /></li>
+        <li><img id="x_logo" src="./images/xf-logo.svg" border="0" alt="X Frontline" /></li>
         <li>
             
         </li>

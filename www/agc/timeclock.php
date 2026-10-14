@@ -127,7 +127,7 @@ if ( ($stage == 'login') or ($stage == 'logout') )
 		echo"<HTML><HEAD>\n";
 		echo"<TITLE>Agent Timeclock</TITLE>\n";
 		echo"<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\">\n";
-		echo"</HEAD>\n";
+		echo"<link rel=stylesheet href=css/xf-theme.css></HEAD>\n";
 		echo "<BODY BGCOLOR=WHITE MARGINHEIGHT=0 MARGINWIDTH=0>\n";
 		echo "<FORM  NAME=vicidial_form ID=vicidial_form ACTION=\"$agcPAGE\" METHOD=POST>\n";
 		echo "<INPUT TYPE=HIDDEN NAME=referrer VALUE=\"$referrer\">\n";
@@ -232,7 +232,7 @@ if ( ($stage == 'login') or ($stage == 'logout') )
 			echo"<HTML><HEAD>\n";
 			echo"<TITLE>Agent Timeclock</TITLE>\n";
 			echo"<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\">\n";
-			echo"</HEAD>\n";
+			echo"<link rel=stylesheet href=css/xf-theme.css></HEAD>\n";
 			echo "<BODY BGCOLOR=WHITE MARGINHEIGHT=0 MARGINWIDTH=0>\n";
 			echo "<FORM  NAME=vicidial_form ID=vicidial_form ACTION=\"$agcPAGE\" METHOD=POST>\n";
 			echo "<INPUT TYPE=HIDDEN NAME=stage VALUE=\"login\">\n";
@@ -347,7 +347,7 @@ if ( ($stage == 'login') or ($stage == 'logout') )
 			echo"<HTML><HEAD>\n";
 			echo"<TITLE>Agent Timeclock</TITLE>\n";
 			echo"<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\">\n";
-			echo"</HEAD>\n";
+			echo"<link rel=stylesheet href=css/xf-theme.css></HEAD>\n";
 			echo "<BODY BGCOLOR=WHITE MARGINHEIGHT=0 MARGINWIDTH=0>\n";
 			echo "<CENTER><BR><B>$VDdisplayMESSAGE</B><BR><BR>";
 			echo "<TABLE WIDTH=460 CELLPADDING=0 CELLSPACING=0 BGCOLOR=\"#CCFFCC\"><TR BGCOLOR=WHITE>";
@@ -386,7 +386,7 @@ if ( ($stage == 'login') or ($stage == 'logout') )
 		echo"<HTML><HEAD>\n";
 		echo"<TITLE>Agent Timeclock</TITLE>\n";
 		echo"<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\">\n";
-		echo"</HEAD>\n";
+		echo"<link rel=stylesheet href=css/xf-theme.css></HEAD>\n";
 		echo "<BODY BGCOLOR=WHITE MARGINHEIGHT=0 MARGINWIDTH=0>\n";
 		echo "<FORM  NAME=vicidial_form ID=vicidial_form ACTION=\"$agcPAGE\" METHOD=POST>\n";
 		echo "<INPUT TYPE=HIDDEN NAME=stage VALUE=\"$log_action\">\n";
@@ -425,7 +425,7 @@ else
 	echo"<HTML><HEAD>\n";
 	echo"<TITLE>Agent Timeclock</TITLE>\n";
 	echo"<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\">\n";
-	echo"</HEAD>\n";
+	echo"<link rel=stylesheet href=css/xf-theme.css></HEAD>\n";
 	echo "<BODY BGCOLOR=WHITE MARGINHEIGHT=0 MARGINWIDTH=0>\n";
 	echo "<FORM  NAME=vicidial_form ID=vicidial_form ACTION=\"$agcPAGE\" METHOD=POST>\n";
 	echo "<INPUT TYPE=HIDDEN NAME=stage VALUE=\"login\">\n";

@@ -124,8 +124,8 @@ $color_class[9] = 'orange';
 -->
  </STYLE>
 
-<TITLE>VICIDIAL CLOSER: Main</TITLE></HEAD>
-</HEAD>
+<TITLE>VICIDIAL CLOSER: Main</TITLE><link rel=stylesheet href=css/xf-admin.css></HEAD>
+<link rel=stylesheet href=css/xf-admin.css></HEAD>
 <BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0>
 <CENTER><FONT FACE="Courier" COLOR=BLACK SIZE=3>
 

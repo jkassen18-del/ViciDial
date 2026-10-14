@@ -1013,7 +1013,7 @@ if ( ($ADD==3111) or ($ADD==2111) or ($ADD==2011) or ($ADD==4111) or ($ADD==5111
 	<?php
 	}
 echo "</script>\n";
-echo "</head>\n";
+echo "<link rel=stylesheet href=css/xf-admin.css></head>\n";
 if ( ($SSadmin_modify_refresh > 1) and (preg_match("/^3|^4/",$ADD)) )
 	{
 	echo "<BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0 onLoad=\"modify_refresh_display();\">\n";
@@ -1039,7 +1039,7 @@ $SScustom_fields_enabled =	$row[3];
 <TABLE BGCOLOR=white cellpadding=0 cellspacing=0>
 <!-- BEGIN SIDEBAR NAVIGATION -->
 <TR><TD VALIGN=TOP WIDTH=170 BGCOLOR=#015B91 ALIGN=CENTER>
-<IMG SRC="./vicidial_admin_web_logo.gif" WIDTH=170 HEIGHT=45 ALT="VICIDIAL logo">
+<IMG SRC="../agc/images/xf-logo.svg" WIDTH=160 HEIGHT=44 ALT="VICIDIAL logo">
 <B><FONT FACE="ARIAL,HELVETICA" COLOR=white>ADMINISTRATION</FONT></B><BR>
 	<TABLE CELLPADDING=2 CELLSPACING=0 BGCOLOR=#015B91 WIDTH=160>
 	<?php if ($reports_only_user < 1) {

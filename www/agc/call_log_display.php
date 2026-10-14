@@ -111,7 +111,7 @@ echo "<head>\n";
 echo "<!-- VERSION: $version     BUILD: $build    EXTEN: $exten   server_ip: $server_ip-->\n";
 echo "<title>Call Log Display";
 echo "</title>\n";
-echo "</head>\n";
+echo "<link rel=stylesheet href=css/xf-theme.css></head>\n";
 echo "<BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0>\n";
 }
 

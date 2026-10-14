@@ -7,7 +7,7 @@
 header ("Content-type: text/html; charset=utf-8");
 
 echo "<title>ViciDial Welcome</title>\n";
-echo "</head>\n";
+echo "<link rel=stylesheet href=css/xf-admin.css></head>\n";
 echo "<BODY BGCOLOR=WHITE MARGINHEIGHT=0 MARGINWIDTH=0>\n";
 echo "<BR><BR><BR><BR><CENTER><TABLE WIDTH=600 CELLPADDING=0 CELLSPACING=0 BGCOLOR=\"#CCCCCC\"><TR BGCOLOR=WHITE>";
 echo "<TD ALIGN=LEFT VALIGN=BOTTOM WIDTH=120><IMG SRC=\"../agc/images/vdc_tab_vicidial.gif\" BORDER=0></TD>";

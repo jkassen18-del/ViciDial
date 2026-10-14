@@ -253,7 +253,7 @@ echo "<!-- VERSION: $version     BUILD: $build    UNIQUEID: $uniqueid   server_i
 <?php
 echo "<title>LIVE INBOUND CALL";
 echo "</title>\n";
-echo "</head>\n";
+echo "<link rel=stylesheet href=css/xf-theme.css></head>\n";
 echo "<BODY BGCOLOR=\"#CCC2E0\" marginheight=0 marginwidth=0 leftmargin=0 topmargin=0 onload=\"link_timeout();\">\n";
 echo "<CENTER><H2>LIVE INBOUND CALL</H2>\n";
 echo "<B>$NOW_TIME</B><BR><BR>\n";

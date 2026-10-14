@@ -3796,7 +3796,7 @@ $NWE = "')\"><IMG SRC=\"help.gif\" WIDTH=20 HEIGHT=20 BORDER=0 ALT=\"HELP\" ALIG
 if ($ADD==99999)
 	{
 	echo "</title>\n";
-	echo "</head>\n";
+	echo "<link rel=stylesheet href=css/xf-admin.css></head>\n";
 	echo "<BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0>\n";
 	echo "<CENTER>\n";
 	echo "<TABLE WIDTH=98% BGCOLOR=#E6E6E6 cellpadding=2 cellspacing=0><TR><TD ALIGN=LEFT><FONT FACE=\"ARIAL,HELVETICA\" COLOR=BLACK SIZE=4><B>ADMINISTRATION: HELP<BR></B></FONT><FONT FACE=\"ARIAL,HELVETICA\" COLOR=BLACK SIZE=2><BR><BR>\n";
@@ -7658,7 +7658,7 @@ if ($ADD==73)
 	if ($LOGmodify_campaigns==1)
 		{
 		echo "</title>\n";
-		echo "</head>\n";
+		echo "<link rel=stylesheet href=css/xf-admin.css></head>\n";
 		echo "<BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0>\n";
 		echo "<FONT FACE=\"ARIAL,HELVETICA\" COLOR=BLACK SIZE=2>";
 
@@ -7802,7 +7802,7 @@ if ($ADD==7111111)
 	$entry_list_id = 'entry_list_id';
 
 	echo "</title>\n";
-	echo "</head>\n";
+	echo "<link rel=stylesheet href=css/xf-admin.css></head>\n";
 	echo "<BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0>\n";
 	echo "<FONT FACE=\"ARIAL,HELVETICA\" COLOR=BLACK SIZE=2>";
 
@@ -29005,7 +29005,7 @@ if ($ADD==999999)
 		<HEAD>
 
 		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
-		<TITLE>Server Stats and Reports</TITLE></HEAD><BODY BGCOLOR=WHITE>
+		<TITLE>Server Stats and Reports</TITLE><link rel=stylesheet href=css/xf-admin.css></HEAD><BODY BGCOLOR=WHITE>
 		<FONT SIZE=4><B>Server Stats and Reports</B></FONT><BR><BR>
 		<TABLE BORDER=0 CELLPADDING=5 CELLSPACING=0><TR><TD VALIGN=TOP>
 		 &nbsp; &nbsp; &nbsp;
@@ -29228,7 +29228,7 @@ if ($ADD==999998)
 	<HEAD>
 
 	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
-	<TITLE>Administration: Admin</TITLE></HEAD><BODY BGCOLOR=WHITE>
+	<TITLE>Administration: Admin</TITLE><link rel=stylesheet href=css/xf-admin.css></HEAD><BODY BGCOLOR=WHITE>
 	<FONT SIZE=4><B>Administration</B></FONT><BR><BR><CENTER>
 	<TABLE BORDER=0 CELLPADDING=5 CELLSPACING=0><TR><TD VALIGN=TOP>
 	<UL>
@@ -29517,7 +29517,7 @@ if ( ($SSnocache_admin=='1') or ( ($SSadmin_modify_refresh > 1) and ($modify_foo
 		{
 		echo "<META HTTP-EQUIV=\"REFRESH\" CONTENT=\"$SSadmin_modify_refresh;URL=$modify_url\">\n";
 		}
-	echo "</head>\n";
+	echo "<link rel=stylesheet href=css/xf-admin.css></head>\n";
 	}
 
 echo "</html>\n";

@@ -209,7 +209,7 @@ if ($unified_contact > 0)
 	$unified_contact_URL = "$vtiger_url/index.php?action=UnifiedSearch&module=Home&search_module=Contacts&query_string=$phone&_service=vicidial";
 
 	echo "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$unified_contact_URL\">\n";
-	echo "</head>\n";
+	echo "<link rel=stylesheet href=css/xf-admin.css></head>\n";
 	echo "<BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0\">\n";
 	echo "<CENTER><FONT FACE=\"Courier\" COLOR=BLACK SIZE=3>\n";
 
@@ -331,7 +331,7 @@ if ($acctid_search > 0)
 				$account_URL = "$vtiger_url/index.php?module=Accounts&action=DetailView&record=$vendor_id&parenttab=Sales";
 				}
 			echo "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$account_URL\">\n";
-			echo "</head>\n";
+			echo "<link rel=stylesheet href=css/xf-admin.css></head>\n";
 			echo "<BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0\">\n";
 			echo "<CENTER><FONT FACE=\"Courier\" COLOR=BLACK SIZE=3>\n";
 
@@ -515,7 +515,7 @@ if ($account_search > 0)
 				$account_URL = "$vtiger_url/index.php?module=Accounts&action=DetailView&record=$accountid&parenttab=Sales";
 				}
 			echo "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$account_URL\">\n";
-			echo "</head>\n";
+			echo "<link rel=stylesheet href=css/xf-admin.css></head>\n";
 			echo "<BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0\">\n";
 			echo "<CENTER><FONT FACE=\"Courier\" COLOR=BLACK SIZE=3>\n";
 
@@ -563,7 +563,7 @@ if ($vendor_search > 0)
 		# http://mysite.com/vtigercrm/index.php?module=Vendors&action=DetailView&record=2&parenttab=Inventory
 		$account_URL = "$vtiger_url/index.php?module=Vendors&action=DetailView&record=$vendorid&parenttab=Inventory";
 		echo "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$account_URL\">\n";
-		echo "</head>\n";
+		echo "<link rel=stylesheet href=css/xf-admin.css></head>\n";
 		echo "<BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0\">\n";
 		echo "<CENTER><FONT FACE=\"Courier\" COLOR=BLACK SIZE=3>\n";
 
@@ -599,7 +599,7 @@ if ($lead_search > 0)
 		echo "<!-- LEAD not found $phone -->\n";
 		if (ereg('Y',$vtiger_create_lead_record))
 			{
-			echo "</head>\n";
+			echo "<link rel=stylesheet href=css/xf-admin.css></head>\n";
 			echo "<BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0\">\n";
 			echo "<CENTER><FONT FACE=\"Courier\" COLOR=BLACK SIZE=3>\n";
 			echo "$phone not found, creating account...\n";
@@ -728,7 +728,7 @@ if ($lead_search > 0)
 				}
 
 			echo "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$account_URL\">\n";
-			echo "</head>\n";
+			echo "<link rel=stylesheet href=css/xf-admin.css></head>\n";
 			echo "<BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0\">\n";
 			echo "<CENTER><FONT FACE=\"Courier\" COLOR=BLACK SIZE=3>\n";
 
@@ -835,7 +835,7 @@ if ($lead_search > 0)
 				$account_URL = "$vtiger_url/index.php?module=Leads&action=DetailView&record=$leadid&parenttab=Sales";
 				}
 			echo "<META HTTP-EQUIV=Refresh CONTENT=\"0; URL=$account_URL\">\n";
-			echo "</head>\n";
+			echo "<link rel=stylesheet href=css/xf-admin.css></head>\n";
 			echo "<BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0\">\n";
 			echo "<CENTER><FONT FACE=\"Courier\" COLOR=BLACK SIZE=3>\n";
 

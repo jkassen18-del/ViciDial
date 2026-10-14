@@ -150,7 +150,7 @@ if (strlen($action) < 1)
 ### BEGIN change territory owner for one account
 if ( ($action == "CHANGE_TERRITORY_OWNER_ACCOUNT") and ($enable_vtiger_integration > 0) )
 	{
-	echo "</TITLE></HEAD><BODY BGCOLOR=white>\n";
+	echo "</TITLE><link rel=stylesheet href=css/xf-admin.css></HEAD><BODY BGCOLOR=white>\n";
 	echo "<TABLE><TR><TD>\n";
 	echo "<FONT FACE=\"ARIAL,HELVETICA\" COLOR=BLACK SIZE=2>";
 
@@ -190,7 +190,7 @@ if ( ($action == "CHANGE_TERRITORY_OWNER_ACCOUNT") and ($enable_vtiger_integrati
 ### BEGIN process change territory owner for one account
 if ( ($action == "PROCESS_CHANGE_TERRITORY_OWNER_ACCOUNT") and ($enable_vtiger_integration > 0) )
 	{
-	echo "</TITLE></HEAD><BODY BGCOLOR=white>\n";
+	echo "</TITLE><link rel=stylesheet href=css/xf-admin.css></HEAD><BODY BGCOLOR=white>\n";
 
 	if ( (strlen($accountid)<1) or (strlen($user)<1) )
 		{

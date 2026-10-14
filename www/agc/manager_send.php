@@ -304,7 +304,7 @@ if ($format=='debug')
 	if ($ACTION=="Command")			{echo "Command";}
 	if ($ACTION==99999)	{echo "HELP";}
 	echo "</title>\n";
-	echo "</head>\n";
+	echo "<link rel=stylesheet href=css/xf-theme.css></head>\n";
 	echo "<BODY BGCOLOR=white marginheight=0 marginwidth=0 leftmargin=0 topmargin=0>\n";
 	}
 

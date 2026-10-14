@@ -171,7 +171,7 @@ while ($i < $user_groups_to_print)
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
 <TITLE>VICIDIAL: Agent SPH Report</TITLE>
 
-</HEAD><BODY BGCOLOR=WHITE>
+<link rel=stylesheet href=css/xf-admin.css></HEAD><BODY BGCOLOR=WHITE>
 
 <?php
 $campaign_ct = count($campaign);
