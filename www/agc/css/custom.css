@@ -141,8 +141,10 @@ body > .xf-brand-footer { width: 860px; margin: 26px auto 0; }
   align-items: center;
   justify-content: center;
   gap: 4px;
-  width: 76px;
+  min-width: 76px;
   height: 64px;
+  padding: 0 10px;
+  white-space: nowrap;
   border-radius: var(--xf-radius);
   border: 1px solid var(--xf-line-strong);
   background: rgba(255,255,255,.04);

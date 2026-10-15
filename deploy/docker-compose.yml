@@ -1,0 +1,48 @@
+# X Frontline / ViciDial web tier + database.
+#
+#   cd deploy && docker compose up -d --build
+#   open http://localhost:8080/            (welcome page)
+#        http://localhost:8080/vicidial/admin.php   admin 6666 / 1234
+#        http://localhost:8080/agc/vicidial.php     agent 1001 / 1234, extension 1001, campaign PREM01
+#
+# The dialer itself (Asterisk + the ViciDial perl back-end) is not part of
+# this compose file; see README.md for how to connect one.
+services:
+  db:
+    image: mariadb:10.6
+    command: >-
+      --sql-mode=
+      --character-set-server=utf8
+      --collation-server=utf8_general_ci
+      --max-connections=500
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpass}
+      MARIADB_DATABASE: asterisk
+      MARIADB_USER: cron
+      MARIADB_PASSWORD: "1234"
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 60
+      start_period: 90s
+    restart: unless-stopped
+
+  web:
+    build: ./web
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    volumes:
+      - ../www:/var/www/html
+    environment:
+      DB_HOST: db
+    restart: unless-stopped
+
+volumes:
+  dbdata:
