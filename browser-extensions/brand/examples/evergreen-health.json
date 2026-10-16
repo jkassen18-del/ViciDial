@@ -1,0 +1,13 @@
+{
+  "companyName": "Evergreen Health",
+  "productPrefix": "Evergreen",
+  "logo": "evergreen-logo.svg",
+  "primary": "#0F766E",
+  "accent": "#84CC16",
+  "theme": "light",
+  "radius": 14,
+  "supportUrl": "https://help.evergreen.example",
+  "supportEmail": "servicedesk@evergreen.example",
+  "footerText": "Evergreen Health · Information Security",
+  "extensionIdDomain": "evergreen.example"
+}

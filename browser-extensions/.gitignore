@@ -1,0 +1,3 @@
+dist/
+.dev-server-data/
+node_modules/

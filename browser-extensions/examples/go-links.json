@@ -1,0 +1,32 @@
+{
+  "name": "Acme company links",
+  "updated": "2026-10-01",
+  "links": [
+    { "key": "handbook", "url": "https://intranet.acme.example/handbook", "title": "Employee handbook", "description": "Policies, benefits and how we work.", "department": "HR", "tags": ["policy", "onboarding"], "aliases": ["policies"], "featured": true },
+    { "key": "payroll", "url": "https://payroll.acme.example", "title": "Payroll & payslips", "description": "View payslips, tax forms and bank details.", "department": "HR", "tags": ["pay", "money"], "aliases": ["pay", "payslip", "salary"], "featured": true },
+    { "key": "pto", "url": "https://hr.acme.example/time-off", "title": "Book time off", "description": "Request holidays and see your balance.", "department": "HR", "tags": ["leave", "holiday"], "aliases": ["holiday", "leave", "vacation"] },
+    { "key": "benefits", "url": "https://hr.acme.example/benefits", "title": "Benefits portal", "department": "HR", "tags": ["health", "pension"] },
+    { "key": "onboarding", "url": "https://intranet.acme.example/new-starters", "title": "New starter guide", "description": "Your first 30 days: accounts, equipment, people to meet.", "department": "HR", "tags": ["onboarding"], "aliases": ["start", "welcome"], "featured": true },
+    { "key": "org", "url": "https://hr.acme.example/org-chart", "title": "Org chart", "department": "HR", "tags": ["people"], "aliases": ["orgchart", "people"] },
+    { "key": "it", "url": "https://intranet.acme.example/it-help", "title": "IT help centre", "description": "Raise a ticket, reset passwords, request software.", "department": "IT", "tags": ["support", "helpdesk"], "aliases": ["help", "helpdesk", "support"], "featured": true },
+    { "key": "vpn", "url": "https://intranet.acme.example/it-help/vpn", "title": "VPN setup", "description": "Install and connect to the company VPN.", "department": "IT", "tags": ["remote", "network"] },
+    { "key": "password", "url": "https://login.acme.example/reset", "title": "Reset your password", "department": "IT", "tags": ["account", "sso"], "aliases": ["reset", "pw"] },
+    { "key": "software", "url": "https://intranet.acme.example/it-help/software", "title": "Software catalogue", "description": "Approved apps and how to request new ones.", "department": "IT", "tags": ["apps", "licenses"], "aliases": ["apps"] },
+    { "key": "ticket", "url": "https://acme.atlassian.net/servicedesk/customer/portal/1", "title": "Raise an IT ticket", "department": "IT", "tags": ["support"] },
+    { "key": "security", "url": "https://intranet.acme.example/security", "title": "Report a security issue", "description": "Phishing, lost devices, suspicious activity.", "department": "IT", "tags": ["phishing", "incident"], "aliases": ["phishing", "infosec"] },
+    { "key": "brand", "url": "https://brand.acme.example", "title": "Brand guidelines", "description": "Logos, colours, fonts and tone of voice.", "department": "Marketing", "tags": ["design", "logo"], "aliases": ["logos", "guidelines"], "featured": true },
+    { "key": "templates", "url": "https://drive.acme.example/marketing/templates", "title": "Slide & document templates", "department": "Marketing", "tags": ["slides", "docs"] },
+    { "key": "campaigns", "url": "https://marketing.acme.example/calendar", "title": "Campaign calendar", "department": "Marketing", "tags": ["planning"] },
+    { "key": "press", "url": "https://acme.example/press", "title": "Press kit", "department": "Marketing", "tags": ["media"] },
+    { "key": "crm", "url": "https://acme.lightning.force.com", "title": "Salesforce CRM", "department": "Sales", "tags": ["accounts", "pipeline"], "aliases": ["salesforce", "sfdc"] },
+    { "key": "pricing", "url": "https://intranet.acme.example/sales/pricing", "title": "Price book", "department": "Sales", "tags": ["quotes"] },
+    { "key": "deck", "url": "https://drive.acme.example/sales/pitch-deck", "title": "Latest pitch deck", "department": "Sales", "tags": ["slides"] },
+    { "key": "expenses", "url": "https://expenses.acme.example", "title": "Submit expenses", "department": "Finance", "tags": ["receipts", "travel"], "aliases": ["expense", "receipts"] },
+    { "key": "travel", "url": "https://travel.acme.example", "title": "Book travel", "department": "Finance", "tags": ["flights", "hotels"] },
+    { "key": "po", "url": "https://finance.acme.example/purchase-orders/{*}", "home": "https://finance.acme.example/purchase-orders", "title": "Purchase orders", "description": "go/po/12345 opens a purchase order directly.", "department": "Finance", "tags": ["procurement"] },
+    { "key": "wiki", "url": "https://wiki.acme.example/search?q={*}", "home": "https://wiki.acme.example", "title": "Company wiki", "description": "go/wiki/search terms searches the wiki.", "department": "Company", "tags": ["docs", "knowledge"], "featured": true },
+    { "key": "news", "url": "https://intranet.acme.example/news", "title": "Company news", "department": "Company", "tags": ["updates"] },
+    { "key": "lunch", "url": "https://intranet.acme.example/canteen", "title": "Canteen menu", "department": "Facilities", "tags": ["food"], "aliases": ["menu", "food"] },
+    { "key": "rooms", "url": "https://rooms.acme.example", "title": "Book a meeting room", "department": "Facilities", "tags": ["desk", "booking"], "aliases": ["desk", "room"] }
+  ]
+}

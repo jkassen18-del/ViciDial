@@ -1,0 +1,17 @@
+{
+  "name": "workplace-browser-extensions",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Branded workplace browser extensions (Ticket Snap, Data Leak Guard, SaaS Usage Reporter, Environment Labeler, Go-Links) for Chrome, Edge and Firefox.",
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "build:chrome": "node tools/build.mjs --browsers chrome",
+    "build:edge": "node tools/build.mjs --browsers edge",
+    "build:firefox": "node tools/build.mjs --browsers firefox",
+    "check": "node tools/check.mjs",
+    "dev-server": "node tools/dev-server.mjs",
+    "lint:firefox": "node tools/build.mjs --browsers firefox --no-zip && npx --yes web-ext@8 lint --source-dir dist/firefox/go-links"
+  }
+}

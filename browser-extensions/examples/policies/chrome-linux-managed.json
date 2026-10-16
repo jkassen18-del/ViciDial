@@ -1,0 +1,39 @@
+{
+  "ExtensionInstallForcelist": [
+    "GO_LINKS_EXTENSION_ID;https://clients2.google.com/service/update2/crx",
+    "ENV_LABELER_EXTENSION_ID;https://clients2.google.com/service/update2/crx"
+  ],
+  "3rdparty": {
+    "extensions": {
+      "GO_LINKS_EXTENSION_ID": {
+        "sources": [
+          { "url": "https://intranet.acme.example/go-links.json", "name": "Company" },
+          { "url": "https://intranet.acme.example/go-links-engineering.json", "name": "Engineering", "department": "Engineering" }
+        ],
+        "brand": { "companyName": "Acme Inc.", "primary": "#4F46E5", "accent": "#0EA5E9" },
+        "defaults": { "openInNewTab": false }
+      },
+      "ENV_LABELER_EXTENSION_ID": {
+        "rulesUrls": ["https://intranet.acme.example/env-rules.json"],
+        "allowPersonalRules": true
+      },
+      "DLP_GUARD_EXTENSION_ID": {
+        "mode": "all-except-trusted",
+        "trustedSites": ["acme.example", "acme.atlassian.net", "acme.lightning.force.com"],
+        "reportingEndpoint": "https://security.acme.example/api/dlp/incidents",
+        "allowUserDisable": false
+      },
+      "SAAS_REPORTER_EXTENSION_ID": {
+        "reportingEnabled": true,
+        "reportEndpoint": "https://it.acme.example/api/saas/reports",
+        "department": "Marketing",
+        "sanctionedApps": ["slack.com", "notion.so", "figma.com", "zoom.us"],
+        "unsanctionedApps": ["wetransfer.com"]
+      },
+      "TICKET_SNAP_EXTENSION_ID": {
+        "provider": "webhook",
+        "webhookUrl": "https://it.acme.example/api/tickets"
+      }
+    }
+  }
+}

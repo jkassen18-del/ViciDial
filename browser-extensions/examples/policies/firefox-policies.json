@@ -1,0 +1,32 @@
+{
+  "policies": {
+    "ExtensionSettings": {
+      "go-links@acme.example": {
+        "installation_mode": "force_installed",
+        "install_url": "https://intranet.acme.example/extensions/go-links.xpi"
+      },
+      "env-labeler@acme.example": {
+        "installation_mode": "force_installed",
+        "install_url": "https://intranet.acme.example/extensions/env-labeler.xpi"
+      }
+    },
+    "3rdparty": {
+      "Extensions": {
+        "go-links@acme.example": {
+          "sources": [
+            { "url": "https://intranet.acme.example/go-links.json", "name": "Company" }
+          ],
+          "brand": { "companyName": "Acme Inc.", "primary": "#4F46E5", "accent": "#0EA5E9" }
+        },
+        "env-labeler@acme.example": {
+          "rulesUrls": ["https://intranet.acme.example/env-rules.json"]
+        },
+        "dlp-guard@acme.example": {
+          "mode": "all-except-trusted",
+          "trustedSites": ["acme.example"],
+          "allowUserDisable": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Engineering links",
+  "updated": "2026-10-01",
+  "links": [
+    { "key": "jira", "url": "https://acme.atlassian.net/browse/{1}", "home": "https://acme.atlassian.net/jira", "title": "Jira", "description": "go/jira/ABC-123 opens an issue.", "department": "Engineering", "tags": ["issues"] },
+    { "key": "pr", "url": "https://github.com/acme/{1}/pull/{2}", "home": "https://github.com/acme", "title": "GitHub pull request", "description": "go/pr/repo/123", "department": "Engineering", "tags": ["code", "review"] },
+    { "key": "repo", "url": "https://github.com/acme/{1}", "home": "https://github.com/acme", "title": "GitHub repositories", "department": "Engineering", "tags": ["code"], "aliases": ["gh", "github"] },
+    { "key": "ci", "url": "https://ci.acme.example", "title": "CI dashboard", "department": "Engineering", "tags": ["builds"] },
+    { "key": "status", "url": "https://status.acme.example", "title": "Service status", "department": "Engineering", "tags": ["incidents", "uptime"], "featured": true },
+    { "key": "oncall", "url": "https://acme.pagerduty.com/schedules", "title": "On-call schedule", "department": "Engineering", "tags": ["pager"] },
+    { "key": "grafana", "url": "https://grafana.acme.example/d/{*}", "home": "https://grafana.acme.example", "title": "Grafana dashboards", "department": "Engineering", "tags": ["metrics"], "aliases": ["metrics", "dash"] },
+    { "key": "runbooks", "url": "https://wiki.acme.example/eng/runbooks", "title": "Runbooks", "department": "Engineering", "tags": ["ops"] }
+  ]
+}

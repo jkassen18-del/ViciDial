@@ -1,0 +1,9 @@
+{
+  "name": "Acme environment rules",
+  "updated": "2026-10-01",
+  "rules": [
+    { "id": "prod", "label": "PRODUCTION", "color": "#DC2626", "patterns": ["app.acme.example", "admin.acme.example", "*.prod.acme.example", "acme.lightning.force.com"], "ribbon": "top", "faviconTint": true, "titlePrefix": true, "border": true, "confirmForms": true },
+    { "id": "staging", "label": "STAGING", "color": "#D97706", "patterns": ["*.staging.acme.example", "staging-*.acme.example", "acme--uat.sandbox.lightning.force.com"], "ribbon": "top", "faviconTint": true, "titlePrefix": true, "border": false, "confirmForms": false },
+    { "id": "dev", "label": "DEV", "color": "#16A34A", "patterns": ["*.dev.acme.example", "localhost", "127.0.0.1"], "ribbon": "corner", "faviconTint": true, "titlePrefix": false, "border": false, "confirmForms": false }
+  ]
+}

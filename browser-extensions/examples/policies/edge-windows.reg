@@ -1,0 +1,16 @@
+Windows Registry Editor Version 5.00
+
+; Force-install Go-Links and point it at the company link sources.
+; Complex values (arrays/objects) are written as JSON strings.
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge\ExtensionInstallForcelist]
+"1"="GO_LINKS_EXTENSION_ID;https://edge.microsoft.com/extensionwebstorebase/v1/crx"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge\3rdparty\extensions\GO_LINKS_EXTENSION_ID\policy]
+"sources"="[{\"url\":\"https://intranet.acme.example/go-links.json\",\"name\":\"Company\"}]"
+"brand"="{\"companyName\":\"Acme Inc.\",\"primary\":\"#4F46E5\",\"accent\":\"#0EA5E9\"}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge\3rdparty\extensions\DLP_GUARD_EXTENSION_ID\policy]
+"mode"="all-except-trusted"
+"allowUserDisable"=dword:00000000
+"trustedSites"="[\"acme.example\",\"acme.atlassian.net\"]"
