@@ -4,18 +4,61 @@
   "short_name": "SaaS Usage",
   "version": "1.0.0",
   "description": "Shows which SaaS apps you use (by domain only) and reports anonymous totals so IT can manage approved tools and licences.",
-  "background": { "service_worker": "background.js", "type": "module" },
-  "action": { "default_popup": "popup.html", "default_title": "SaaS Usage Reporter" },
-  "options_ui": { "page": "options.html", "open_in_tab": true },
-  "permissions": ["storage", "alarms", "idle", "tabs", "webNavigation", "notifications", "scripting", "favicon"],
-  "optional_host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module",
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "SaaS Usage Reporter",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "permissions": [
+    "storage",
+    "alarms",
+    "idle",
+    "tabs",
+    "webNavigation",
+    "notifications",
+    "scripting",
+    "favicon"
+  ],
+  "optional_host_permissions": [
+    "<all_urls>"
+  ],
   "incognito": "not_allowed",
-  "storage": { "managed_schema": "schema.json" },
+  "storage": {
+    "managed_schema": "schema.json"
+  },
   "browser_overrides": {
     "firefox": {
       "browser_specific_settings": {
-        "gecko": { "data_collection_permissions": { "required": ["browsingActivity"] } }
+        "gecko": {
+          "data_collection_permissions": {
+            "required": [
+              "browsingActivity"
+            ]
+          }
+        }
       }
     }
-  }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "minimum_chrome_version": "121"
 }

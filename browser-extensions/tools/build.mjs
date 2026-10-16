@@ -54,12 +54,12 @@ function deepMerge(target, src) {
   return target;
 }
 
-function copyDir(src, dest, skip = () => false) {
+function copyDir(src, dest, skip = () => false, depth = 0) {
   fs.mkdirSync(dest, { recursive: true });
   for (const entry of fs.readdirSync(src, { withFileTypes: true })) {
-    if (entry.name.startsWith('.') || skip(entry.name)) continue;
+    if (entry.name.startsWith('.') || skip(entry.name, depth)) continue;
     const s = path.join(src, entry.name), d = path.join(dest, entry.name);
-    if (entry.isDirectory()) copyDir(s, d, skip);
+    if (entry.isDirectory()) copyDir(s, d, skip, depth + 1);
     else fs.copyFileSync(s, d);
   }
 }
@@ -172,6 +172,10 @@ function buildManifest(ext, browser, src) {
     }, m.browser_specific_settings || {});
   } else {
     delete m.browser_specific_settings;
+    // Source manifests list background.scripts too (for direct loading in
+    // Firefox, see tools/sync.mjs); store packages only need the service worker.
+    if (m.background?.service_worker) delete m.background.scripts;
+    if (m.minimum_chrome_version === '121') delete m.minimum_chrome_version;
     m.minimum_chrome_version ||= '116';
   }
 
@@ -222,7 +226,9 @@ for (const browser of browsers) {
     const outDir = path.join(DIST, browser, ext);
     fs.rmSync(outDir, { recursive: true, force: true });
 
-    copyDir(srcDir, outDir, (name) => name === 'manifest.json' || name === 'README.md' || name === 'node_modules');
+    // shared/ and icons/ inside the extension folder are sync.mjs copies; the
+    // build writes fresh ones below using the selected brand kit.
+    copyDir(srcDir, outDir, (name, depth) => depth === 0 && ['manifest.json', 'README.md', 'node_modules', 'shared', 'icons'].includes(name));
     copyDir(SHARED, path.join(outDir, 'shared'), (name) => name === 'README.md');
 
     // brand

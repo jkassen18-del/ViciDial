@@ -6,7 +6,8 @@
   "type": "module",
   "engines": { "node": ">=18" },
   "scripts": {
-    "build": "node tools/build.mjs",
+    "sync": "node tools/sync.mjs",
+    "build": "node tools/sync.mjs && node tools/build.mjs",
     "build:chrome": "node tools/build.mjs --browsers chrome",
     "build:edge": "node tools/build.mjs --browsers edge",
     "build:firefox": "node tools/build.mjs --browsers firefox",

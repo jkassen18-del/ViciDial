@@ -4,16 +4,48 @@
   "short_name": "Data Leak Guard",
   "version": "1.0.0",
   "description": "Warns or blocks before card numbers, national IDs, secrets or confidential documents are pasted or uploaded to unapproved websites.",
-  "permissions": ["storage", "alarms", "activeTab"],
-  "optional_host_permissions": ["https://*/*", "http://*/*"],
-  "background": { "service_worker": "background.js", "type": "module" },
-  "action": { "default_popup": "popup.html", "default_title": "Data Leak Guard" },
-  "options_ui": { "page": "options.html", "open_in_tab": true },
-  "storage": { "managed_schema": "schema.json" },
+  "permissions": [
+    "storage",
+    "alarms",
+    "activeTab"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module",
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Data Leak Guard",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "storage": {
+    "managed_schema": "schema.json"
+  },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
-      "js": ["shared/content-ui.js", "detectors.js", "content.js"],
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "shared/content-ui.js",
+        "detectors.js",
+        "content.js"
+      ],
       "run_at": "document_start",
       "all_frames": true,
       "match_about_blank": true
@@ -24,11 +56,23 @@
       "browser_specific_settings": {
         "gecko": {
           "data_collection_permissions": {
-            "required": ["none"],
-            "optional": ["websiteActivity", "personallyIdentifyingInfo"]
+            "required": [
+              "none"
+            ],
+            "optional": [
+              "websiteActivity",
+              "personallyIdentifyingInfo"
+            ]
           }
         }
       }
     }
-  }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "minimum_chrome_version": "121"
 }

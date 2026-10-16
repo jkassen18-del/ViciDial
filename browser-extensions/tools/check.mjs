@@ -11,7 +11,7 @@ const skip = new Set(['dist', 'node_modules', '.dev-server-data']);
 const files = [];
 (function walk(dir) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (e.name.startsWith('.') || skip.has(e.name)) continue;
+    if (e.name.startsWith('.') || skip.has(e.name) || (e.name === 'shared' && dir !== ROOT)) continue;
     const p = path.join(dir, e.name);
     if (e.isDirectory()) walk(p); else files.push(p);
   }
@@ -29,6 +29,9 @@ for (const f of files) {
 }
 console.log(`${failed ? '✖' : '✔'} syntax: ${files.filter((f) => /\.(m?js|json)$/.test(f)).length} files checked, ${failed} problem(s)`);
 if (failed) process.exit(1);
+
+const sync = spawnSync(process.execPath, [path.join(ROOT, 'tools/sync.mjs'), '--check'], { stdio: 'inherit' });
+if (sync.status !== 0) process.exit(1);
 
 const b = spawnSync(process.execPath, [path.join(ROOT, 'tools/build.mjs'), '--no-zip'], { stdio: 'inherit' });
 process.exit(b.status ?? 1);

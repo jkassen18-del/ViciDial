@@ -15,23 +15,33 @@ and lock any setting through browser policy.
 
 ## Quick start (testing)
 
-Requires Node 18+. No `npm install` is needed: the build has no dependencies.
-
-```bash
-cd browser-extensions
-npm run build          # builds all 5 extensions for chrome, edge and firefox
-npm run dev-server     # optional: local backend for tickets, DLP incidents, SaaS reports and sample config
-```
-
-Then load an unpacked build:
+**No build needed.** Every extension folder is ready to load as is:
 
 | Browser | How |
 |---|---|
-| **Chrome** | `chrome://extensions` → enable *Developer mode* → **Load unpacked** → `dist/chrome/<extension>` |
-| **Edge** | `edge://extensions` → enable *Developer mode* → **Load unpacked** → `dist/edge/<extension>` |
-| **Firefox** | `about:debugging#/runtime/this-firefox` → **Load Temporary Add-on…** → pick `dist/firefox/<extension>/manifest.json` |
+| **Chrome** | `chrome://extensions` → enable *Developer mode* → **Load unpacked** → pick `browser-extensions/<extension>` (e.g. `browser-extensions/go-links`) |
+| **Edge** | `edge://extensions` → enable *Developer mode* → **Load unpacked** → pick `browser-extensions/<extension>` |
+| **Firefox** | `about:debugging#/runtime/this-firefox` → **Load Temporary Add-on…** → pick `browser-extensions/<extension>/manifest.json` |
 
-Store-ready zips are written next to each folder (`dist/<browser>/<extension>-<version>.zip`).
+Each folder contains a generated copy of `shared/`, the brand file and the icons.
+If you change anything in `shared/` or `brand/`, refresh the copies with:
+
+```bash
+cd browser-extensions
+npm run sync           # = node tools/sync.mjs (Node 18+, no npm install needed)
+```
+
+Optional: `npm run dev-server` starts a local backend for tickets, DLP incidents, SaaS reports and sample config.
+
+### Building store packages
+
+```bash
+npm run build          # sync + per-browser builds and zips in dist/<browser>/
+node tools/build.mjs --brand brand/examples/summit-logistics.json   # build with another company's brand
+```
+
+`dist/<browser>/<extension>/` is the per-browser package. The Firefox one includes the add-on ID
+Mozilla needs for signing. Zips for store upload sit next to each folder (`dist/<browser>/<extension>-<version>.zip`).
 
 ### Trying each one with the dev server
 
@@ -66,9 +76,9 @@ Every page, popup, in-page dialog and toolbar icon takes its look from the brand
 
 There are three ways to apply a brand:
 
-1. **At build time**: edit `brand/brand.json` or pass another kit, for example
-   `node tools/build.mjs --brand brand/examples/summit-logistics.json`
-   (two sample kits are included). Icons are re-coloured automatically.
+1. **In the files**: edit `brand/brand.json` and run `npm run sync` (for the ready-to-load folders) or
+   `node tools/build.mjs --brand brand/examples/summit-logistics.json` (for store packages; two sample kits are included).
+   Icons are re-coloured automatically.
 2. **By policy**: push a `brand` object (or just some of its fields) to every browser. Enforced fields are locked in the UI.
 3. **In the UI**: every extension has a Settings → **Branding** page with a live preview, logo upload,
    colour presets and theme. It can export the result as a brand kit file to drop into `brand/brand.json`.
@@ -95,6 +105,7 @@ browser-extensions/
 ├── ticket-snap/  dlp-guard/  saas-reporter/  env-labeler/  go-links/
 ├── examples/              sample go-links / env-rules JSON and enterprise policy files
 ├── tools/
+│   ├── sync.mjs           copies shared/, brand and icons into each extension folder (load without building)
 │   ├── build.mjs          builds dist/<browser>/<extension> + zips, generates brand icons
 │   ├── check.mjs          syntax check + full build with reference validation (npm run check)
 │   ├── dev-server.mjs     local backend for testing
@@ -111,7 +122,7 @@ How the build handles each browser:
 ## Checks
 
 ```bash
-npm run check                                                   # syntax, JSON, build and file references
+npm run check                                                   # syntax, JSON, sync freshness, build and file references
 npx --yes web-ext@8 lint --source-dir dist/firefox/<extension>  # Firefox linter (0 errors, 0 warnings)
 node tools/screenshot.mjs --ext go-links --page directory.html --out shot.png --wait 3000
 ```

@@ -4,10 +4,29 @@
   "short_name": "Go-Links",
   "version": "1.0.0",
   "description": "Type go/payroll, go/vpn or go/handbook in the address bar. The company directory of every department's links.",
-  "background": { "service_worker": "background.js", "type": "module" },
-  "action": { "default_popup": "popup.html", "default_title": "Go-Links" },
-  "options_ui": { "page": "options.html", "open_in_tab": true },
-  "omnibox": { "keyword": "go" },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module",
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Go-Links",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "omnibox": {
+    "keyword": "go"
+  },
   "permissions": [
     "storage",
     "alarms",
@@ -25,16 +44,42 @@
     "https://www.ecosia.org/*",
     "https://search.brave.com/*"
   ],
-  "optional_host_permissions": ["https://*/*", "http://*/*"],
-  "web_accessible_resources": [
-    { "resources": ["go.html", "directory.html"], "matches": ["<all_urls>"] }
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
   ],
-  "storage": { "managed_schema": "schema.json" },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "go.html",
+        "directory.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "storage": {
+    "managed_schema": "schema.json"
+  },
   "browser_overrides": {
     "firefox": {
       "browser_specific_settings": {
-        "gecko": { "data_collection_permissions": { "required": ["none"] } }
+        "gecko": {
+          "data_collection_permissions": {
+            "required": [
+              "none"
+            ]
+          }
+        }
       }
     }
-  }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "minimum_chrome_version": "121"
 }

@@ -1,5 +1,8 @@
 # Shared layer
 
+> Edit files here, then run `npm run sync`. That copies this folder into every
+> extension (`<ext>/shared/`) so each extension folder loads unpacked with no build step.
+
 Every extension gets a copy of this folder at `shared/` in its build output
 (`dist/<browser>/<ext>/shared/…`), so pages reference it as `shared/ui.css`,
 `shared/page.js` and so on, relative to the extension root. Keep extension pages
