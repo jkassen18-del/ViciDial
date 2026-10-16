@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SaaS Usage Reporter · Settings</title>
+  <link rel="stylesheet" href="shared/ui.css">
+  <link rel="stylesheet" href="saas.css">
+  <script type="module" src="options.js"></script>
+</head>
+<body>
+  <header id="app-header"></header>
+  <div class="shell">
+    <nav class="side-nav" aria-label="Settings sections">
+      <div class="nav-label">Settings</div>
+      <a href="#tracking"><i data-icon="activity"></i>Tracking</a>
+      <a href="#apps"><i data-icon="grid"></i>App lists</a>
+      <a href="#reporting"><i data-icon="send"></i>Reporting</a>
+      <a href="#notices"><i data-icon="alert"></i>User notices</a>
+      <a href="#data"><i data-icon="server"></i>Data</a>
+      <div class="nav-label">General</div>
+      <a href="#branding"><i data-icon="palette"></i>Branding</a>
+      <a href="#backup"><i data-icon="download"></i>Backup &amp; policy</a>
+      <a href="#about"><i data-icon="info"></i>About</a>
+      <div class="nav-label">Views</div>
+      <a href="dashboard.html" target="_blank"><i data-icon="chart"></i>Dashboard</a>
+    </nav>
+    <main class="content">
+
+      <section id="tracking">
+        <div class="section-head"><h2><i data-icon="activity" class="text-primary" data-size="20"></i>Tracking</h2>
+          <p>Which apps are recorded and for how long. Only the app's domain is ever stored, never full addresses, page titles or content.</p></div>
+        <div class="card">
+          <div class="setting-row">
+            <div class="text"><strong>Record app usage</strong><span>Count visits and focused, active time per SaaS app in this browser.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="trackingEnabled"><span class="track"></span></label></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>What to record</strong><span>"Known apps" covers the built-in catalog of 300+ SaaS apps plus your custom and classified apps. "All websites" records any site by its domain.</span></div>
+            <div class="control"><select class="select" data-setting="trackingScope">
+              <option value="catalog">Known apps only</option>
+              <option value="all-domains">All websites (domain only)</option>
+            </select></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Keep local data for</strong><span>Older daily totals are deleted automatically.</span></div>
+            <div class="control"><input class="input" type="number" min="7" max="400" step="1" data-setting="retentionDays" style="width:110px"><span class="subtle">days</span></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Idle after</strong><span>Stop counting active time when there is no keyboard or mouse input for this long (minimum 15 seconds).</span></div>
+            <div class="control"><input class="input" type="number" min="15" max="3600" step="5" data-setting="idleSeconds" style="width:110px"><span class="subtle">seconds</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="field">
+            <label for="ignoreDomains">Ignored domains</label>
+            <textarea id="ignoreDomains" class="textarea code" data-setting="ignoreDomains" data-type="lines" placeholder="acme.com&#10;*.acme-internal.net&#10;acme.okta.com"></textarea>
+            <div class="help">One per line. Company and intranet sites listed here are never recorded. A domain also covers its subdomains; <code>*.example.com</code> matches subdomains only, <code>=host</code> one exact host. Localhost, IP addresses and private names (<code>.local</code>, <code>.corp</code>, <code>.internal</code>…) are ignored unless listed as a custom app; private windows and browser pages are always ignored.</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="apps">
+        <div class="section-head"><h2><i data-icon="grid" class="text-primary" data-size="20"></i>App lists</h2>
+          <p>Tell the extension which apps are approved, which are not, and which the company pays for. Search the catalog or type a domain or pattern.</p></div>
+        <div id="apps-editors" class="stack"></div>
+      </section>
+
+      <section id="reporting">
+        <div class="section-head"><h2><i data-icon="send" class="text-primary" data-size="20"></i>Reporting</h2>
+          <p>Send anonymous per-app totals to your IT endpoint on a schedule. Reports contain a random install ID, never a name, unless you turn on "Include user email".</p></div>
+        <div class="card" id="report-status-card"></div>
+        <div class="card">
+          <div class="setting-row">
+            <div class="text"><strong>Send reports</strong><span>Reports are only sent when an endpoint is set.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="reportingEnabled"><span class="track"></span></label></div>
+          </div>
+          <div class="field mt-16">
+            <label for="reportEndpoint">Report endpoint</label>
+            <input id="reportEndpoint" class="input code" type="url" data-setting="reportEndpoint" placeholder="https://it.example.com/api/saas/reports">
+            <div class="help">Receives <code>POST</code> requests with a JSON body. Try the local dev server: <code>http://localhost:8787/api/saas/reports</code>.</div>
+          </div>
+          <div class="field">
+            <label for="reportHeaders">Extra request headers</label>
+            <textarea id="reportHeaders" class="textarea code" data-setting="reportHeaders" data-type="json" placeholder='{ "Authorization": "Bearer …" }'></textarea>
+            <div class="help">JSON object, for example an API key. Left out of settings exports.</div>
+          </div>
+          <div class="grid-3 mt-16">
+            <div class="field"><label for="reportIntervalHours">Send every</label>
+              <div class="row"><input id="reportIntervalHours" class="input" type="number" min="1" max="720" data-setting="reportIntervalHours"><span class="subtle">hours</span></div></div>
+            <div class="field"><label for="reportPeriodDays">Include the last</label>
+              <div class="row"><input id="reportPeriodDays" class="input" type="number" min="1" max="400" data-setting="reportPeriodDays"><span class="subtle">days</span></div></div>
+            <div class="field"><label for="department">Department tag</label>
+              <input id="department" class="input" data-setting="department" placeholder="e.g. Marketing"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="setting-row">
+            <div class="text"><strong>Include unknown websites</strong><span>When recording all websites, also report domains that are not in the catalog. Off by default: only known apps are reported.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="includeUnknownDomains"><span class="track"></span></label></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Include user email</strong><span>Adds <code>user.email</code> to reports. Only enable this if your privacy policy allows per-person reporting.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="includeUserEmail"><span class="track"></span></label></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>User email</strong><span>Usually set per user through policy.</span></div>
+            <div class="control"><input class="input" type="email" data-setting="userEmail" placeholder="name@example.com"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="notices">
+        <div class="section-head"><h2><i data-icon="alert" class="text-primary" data-size="20"></i>User notices</h2>
+          <p>Gently tell people when they open an app that isn't approved, and suggest the approved alternative. Shown at most once per app per day.</p></div>
+        <div class="grid-2" style="align-items:start">
+          <div class="card">
+            <div class="setting-row">
+              <div class="text"><strong>Notice for unapproved apps</strong><span>Never blocks the app.</span></div>
+              <div class="control"><select class="select" data-setting="notifyOnUnsanctioned" style="width:150px">
+                <option value="notice">Show a notice</option>
+                <option value="off">Off</option>
+              </select></div>
+            </div>
+            <div class="field mt-16">
+              <label for="noticeLearnMoreUrl">"Why?" link</label>
+              <input id="noticeLearnMoreUrl" class="input" type="url" data-setting="noticeLearnMoreUrl" placeholder="https://intranet.example.com/approved-apps">
+              <div class="help">Your approved-apps policy page. Defaults to the brand's help page.</div>
+            </div>
+            <div id="banner-permission" class="mt-16"></div>
+          </div>
+          <div>
+            <h4 class="section-title">Preview</h4>
+            <div id="notice-preview"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="data">
+        <div class="section-head"><h2><i data-icon="server" class="text-primary" data-size="20"></i>Data</h2>
+          <p>Usage stays in this browser's extension storage. Only the totals described under Reporting ever leave the device.</p></div>
+        <div class="card" id="data-panel"></div>
+      </section>
+
+      <section id="branding"><div class="section-head"><h2><i data-icon="palette" class="text-primary" data-size="20"></i>Branding</h2><p>Logo, colours and theme used by every page and the in-page notice.</p></div><div id="branding-panel"></div></section>
+      <section id="backup"><div class="section-head"><h2><i data-icon="download" class="text-primary" data-size="20"></i>Backup &amp; policy</h2><p>Move settings between browsers or deploy them to everyone with managed policy.</p></div><div id="backup-panel"></div></section>
+      <section id="about"><div class="section-head"><h2><i data-icon="info" class="text-primary" data-size="20"></i>About</h2></div><div id="about-panel"></div><div id="advanced-panel" class="mt-16"></div></section>
+    </main>
+  </div>
+</body>
+</html>

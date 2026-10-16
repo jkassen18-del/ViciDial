@@ -1,0 +1,389 @@
+{
+  "type": "object",
+  "properties": {
+    "trackingEnabled": {
+      "type": "boolean",
+      "description": "Record SaaS app usage (visits and active time per app domain)."
+    },
+    "trackingScope": {
+      "type": "string",
+      "description": "\"catalog\" records only known/custom/classified apps; \"all-domains\" records any registrable domain (domain only).",
+      "enum": [
+        "catalog",
+        "all-domains"
+      ]
+    },
+    "ignoreDomains": {
+      "type": "array",
+      "description": "Company/internal domains or host patterns that are never recorded.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "retentionDays": {
+      "type": "integer",
+      "description": "Days of daily totals kept in the browser (default 90)."
+    },
+    "idleSeconds": {
+      "type": "integer",
+      "description": "Seconds without input after which active time stops counting (minimum 15, default 60)."
+    },
+    "customApps": {
+      "type": "array",
+      "description": "Extra apps: [{ domain, name, category, vendor }]. Overrides the built-in catalog for the same domain.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "vendor": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sanctionedApps": {
+      "type": "array",
+      "description": "Approved app domains or host patterns.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unsanctionedApps": {
+      "type": "array",
+      "description": "Discouraged or forbidden app domains or host patterns.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "alternatives": {
+      "type": "object",
+      "description": "Map of unsanctioned domain/pattern to the approved alternative: { \"wetransfer.com\": { \"name\": \"OneDrive\", \"url\": \"https://...\" } }.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "licensedApps": {
+      "type": "array",
+      "description": "Apps the company pays for: [{ domain, name, seats }].",
+      "items": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "seats": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "licenseUnusedDays": {
+      "type": "integer",
+      "description": "A licensed app counts as unused when not seen for this many days (default 30)."
+    },
+    "reportingEnabled": {
+      "type": "boolean",
+      "description": "Send periodic reports (only when reportEndpoint is set)."
+    },
+    "reportEndpoint": {
+      "type": "string",
+      "description": "URL that receives POSTed JSON reports."
+    },
+    "reportHeaders": {
+      "type": "object",
+      "description": "Extra HTTP headers sent with reports, e.g. { \"Authorization\": \"Bearer ...\" }.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "reportIntervalHours": {
+      "type": "integer",
+      "description": "Hours between reports (default 24)."
+    },
+    "reportPeriodDays": {
+      "type": "integer",
+      "description": "Rolling number of days of totals included in each report (default 30)."
+    },
+    "department": {
+      "type": "string",
+      "description": "Department tag added to reports."
+    },
+    "includeUnknownDomains": {
+      "type": "boolean",
+      "description": "In \"all-domains\" scope, also report domains that are not in the catalog or classified."
+    },
+    "includeUserEmail": {
+      "type": "boolean",
+      "description": "Add user.email to reports (off by default)."
+    },
+    "userEmail": {
+      "type": "string",
+      "description": "Email address reported when includeUserEmail is on."
+    },
+    "notifyOnUnsanctioned": {
+      "type": "string",
+      "description": "\"notice\" shows a dismissible notice (once per app per day) when an unsanctioned app is opened; \"off\" disables it.",
+      "enum": [
+        "off",
+        "notice"
+      ]
+    },
+    "noticeLearnMoreUrl": {
+      "type": "string",
+      "description": "Link for the \"Why?\" button in the notice (defaults to brand.supportUrl)."
+    },
+    "brand": {
+      "type": "object",
+      "description": "Company brand kit applied to every page and notice.",
+      "properties": {
+        "companyName": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string",
+          "description": "URL or data: URL"
+        },
+        "primary": {
+          "type": "string"
+        },
+        "accent": {
+          "type": "string"
+        },
+        "theme": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "light",
+            "dark"
+          ]
+        },
+        "radius": {
+          "type": "integer"
+        },
+        "supportUrl": {
+          "type": "string"
+        },
+        "supportEmail": {
+          "type": "string"
+        },
+        "footerText": {
+          "type": "string"
+        }
+      }
+    },
+    "defaults": {
+      "type": "object",
+      "description": "Suggested values the user may change (same keys as above).",
+      "properties": {
+        "trackingEnabled": {
+          "type": "boolean",
+          "description": "Record SaaS app usage (visits and active time per app domain)."
+        },
+        "trackingScope": {
+          "type": "string",
+          "description": "\"catalog\" records only known/custom/classified apps; \"all-domains\" records any registrable domain (domain only).",
+          "enum": [
+            "catalog",
+            "all-domains"
+          ]
+        },
+        "ignoreDomains": {
+          "type": "array",
+          "description": "Company/internal domains or host patterns that are never recorded.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "retentionDays": {
+          "type": "integer",
+          "description": "Days of daily totals kept in the browser (default 90)."
+        },
+        "idleSeconds": {
+          "type": "integer",
+          "description": "Seconds without input after which active time stops counting (minimum 15, default 60)."
+        },
+        "customApps": {
+          "type": "array",
+          "description": "Extra apps: [{ domain, name, category, vendor }]. Overrides the built-in catalog for the same domain.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "domain": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "category": {
+                "type": "string"
+              },
+              "vendor": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "sanctionedApps": {
+          "type": "array",
+          "description": "Approved app domains or host patterns.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unsanctionedApps": {
+          "type": "array",
+          "description": "Discouraged or forbidden app domains or host patterns.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "alternatives": {
+          "type": "object",
+          "description": "Map of unsanctioned domain/pattern to the approved alternative: { \"wetransfer.com\": { \"name\": \"OneDrive\", \"url\": \"https://...\" } }.",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "licensedApps": {
+          "type": "array",
+          "description": "Apps the company pays for: [{ domain, name, seats }].",
+          "items": {
+            "type": "object",
+            "properties": {
+              "domain": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "seats": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "licenseUnusedDays": {
+          "type": "integer",
+          "description": "A licensed app counts as unused when not seen for this many days (default 30)."
+        },
+        "reportingEnabled": {
+          "type": "boolean",
+          "description": "Send periodic reports (only when reportEndpoint is set)."
+        },
+        "reportEndpoint": {
+          "type": "string",
+          "description": "URL that receives POSTed JSON reports."
+        },
+        "reportHeaders": {
+          "type": "object",
+          "description": "Extra HTTP headers sent with reports, e.g. { \"Authorization\": \"Bearer ...\" }.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "reportIntervalHours": {
+          "type": "integer",
+          "description": "Hours between reports (default 24)."
+        },
+        "reportPeriodDays": {
+          "type": "integer",
+          "description": "Rolling number of days of totals included in each report (default 30)."
+        },
+        "department": {
+          "type": "string",
+          "description": "Department tag added to reports."
+        },
+        "includeUnknownDomains": {
+          "type": "boolean",
+          "description": "In \"all-domains\" scope, also report domains that are not in the catalog or classified."
+        },
+        "includeUserEmail": {
+          "type": "boolean",
+          "description": "Add user.email to reports (off by default)."
+        },
+        "userEmail": {
+          "type": "string",
+          "description": "Email address reported when includeUserEmail is on."
+        },
+        "notifyOnUnsanctioned": {
+          "type": "string",
+          "description": "\"notice\" shows a dismissible notice (once per app per day) when an unsanctioned app is opened; \"off\" disables it.",
+          "enum": [
+            "off",
+            "notice"
+          ]
+        },
+        "noticeLearnMoreUrl": {
+          "type": "string",
+          "description": "Link for the \"Why?\" button in the notice (defaults to brand.supportUrl)."
+        },
+        "brand": {
+          "type": "object",
+          "description": "Company brand kit applied to every page and notice.",
+          "properties": {
+            "companyName": {
+              "type": "string"
+            },
+            "logo": {
+              "type": "string",
+              "description": "URL or data: URL"
+            },
+            "primary": {
+              "type": "string"
+            },
+            "accent": {
+              "type": "string"
+            },
+            "theme": {
+              "type": "string",
+              "enum": [
+                "auto",
+                "light",
+                "dark"
+              ]
+            },
+            "radius": {
+              "type": "integer"
+            },
+            "supportUrl": {
+              "type": "string"
+            },
+            "supportEmail": {
+              "type": "string"
+            },
+            "footerText": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

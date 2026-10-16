@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "SaaS Usage Reporter",
+  "short_name": "SaaS Usage",
+  "version": "1.0.0",
+  "description": "Shows which SaaS apps you use (by domain only) and reports anonymous totals so IT can manage approved tools and licences.",
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": { "default_popup": "popup.html", "default_title": "SaaS Usage Reporter" },
+  "options_ui": { "page": "options.html", "open_in_tab": true },
+  "permissions": ["storage", "alarms", "idle", "tabs", "webNavigation", "notifications", "scripting", "favicon"],
+  "optional_host_permissions": ["<all_urls>"],
+  "incognito": "not_allowed",
+  "storage": { "managed_schema": "schema.json" },
+  "browser_overrides": {
+    "firefox": {
+      "browser_specific_settings": {
+        "gecko": { "data_collection_permissions": { "required": ["browsingActivity"] } }
+      }
+    }
+  }
+}
