@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Go-Links directory</title>
+<link rel="stylesheet" href="shared/ui.css">
+<link rel="stylesheet" href="go-links.css">
+<link rel="stylesheet" href="directory.css">
+<script type="module" src="directory.js"></script>
+</head>
+<body class="directory">
+  <header id="app-header"></header>
+  <section class="hero" id="hero"></section>
+  <div class="dir-wrap">
+    <div class="tabs" role="tablist" id="tabs">
+      <button type="button" role="tab" id="tab-all" aria-selected="true" data-tab="all"><i data-icon="building"></i>Company directory</button>
+      <button type="button" role="tab" id="tab-mine" aria-selected="false" data-tab="mine"><i data-icon="user"></i>My links <span class="badge sm" id="mine-count">0</span></button>
+    </div>
+    <div id="view-all" role="tabpanel" aria-labelledby="tab-all"></div>
+    <div id="view-mine" role="tabpanel" aria-labelledby="tab-mine" hidden></div>
+  </div>
+  <footer id="app-footer"></footer>
+</body>
+</html>

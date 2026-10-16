@@ -1,0 +1,466 @@
+{
+  "type": "object",
+  "properties": {
+    "sources": {
+      "type": "array",
+      "title": "Link sources",
+      "description": "Remote JSON link sources in precedence order.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "URL of the JSON file. Serve it with Access-Control-Allow-Origin: * ."
+          },
+          "name": {
+            "type": "string",
+            "description": "Display name of the source."
+          },
+          "department": {
+            "type": "string",
+            "description": "Department applied to links that do not set one."
+          }
+        }
+      }
+    },
+    "links": {
+      "type": "array",
+      "title": "Inline links",
+      "description": "Links pushed directly by policy. They take priority over every source.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Short name typed after go/ (a-z, 0-9, \".\", \"-\", \"_\"; case-insensitive)."
+          },
+          "url": {
+            "type": "string",
+            "description": "Destination (http/https). May contain {1}, {2} … or {*} placeholders."
+          },
+          "title": {
+            "type": "string",
+            "description": "Human-readable title."
+          },
+          "description": {
+            "type": "string",
+            "description": "One-line description shown in the directory."
+          },
+          "department": {
+            "type": "string",
+            "description": "Department used for grouping (HR, IT, Marketing …)."
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Search keywords."
+          },
+          "aliases": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Other keys that resolve to the same link."
+          },
+          "featured": {
+            "type": "boolean",
+            "description": "Highlight for new starters."
+          },
+          "owner": {
+            "type": "string",
+            "description": "Who maintains the link."
+          },
+          "home": {
+            "type": "string",
+            "description": "Destination when a parameterised link is used without arguments."
+          }
+        }
+      }
+    },
+    "allowPersonalLinks": {
+      "type": "boolean",
+      "title": "Allow personal links",
+      "description": "Let people create their own go-links (default true)."
+    },
+    "personalLinks": {
+      "type": "array",
+      "title": "Personal links",
+      "description": "The user’s own links. Normally not set by policy; enforcing it locks the list.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "description": "Short name typed after go/ (a-z, 0-9, \".\", \"-\", \"_\"; case-insensitive)."
+          },
+          "url": {
+            "type": "string",
+            "description": "Destination (http/https). May contain {1}, {2} … or {*} placeholders."
+          },
+          "title": {
+            "type": "string",
+            "description": "Human-readable title."
+          },
+          "description": {
+            "type": "string",
+            "description": "One-line description shown in the directory."
+          },
+          "department": {
+            "type": "string",
+            "description": "Department used for grouping (HR, IT, Marketing …)."
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Search keywords."
+          },
+          "aliases": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Other keys that resolve to the same link."
+          },
+          "featured": {
+            "type": "boolean",
+            "description": "Highlight for new starters."
+          },
+          "owner": {
+            "type": "string",
+            "description": "Who maintains the link."
+          },
+          "home": {
+            "type": "string",
+            "description": "Destination when a parameterised link is used without arguments."
+          }
+        }
+      }
+    },
+    "refreshMinutes": {
+      "type": "integer",
+      "title": "Refresh interval",
+      "description": "Minutes between source refreshes (5-1440, default 60)."
+    },
+    "shortHost": {
+      "type": "string",
+      "title": "Short host",
+      "description": "Word typed before the slash (default \"go\")."
+    },
+    "literalRedirect": {
+      "type": "boolean",
+      "title": "Redirect typed short links",
+      "description": "Redirect http://go/... navigations to Go-Links (default true)."
+    },
+    "catchSearches": {
+      "type": "boolean",
+      "title": "Catch go/ searches",
+      "description": "Redirect \"go/...\" searches on Google, Bing, DuckDuckGo, Yahoo, Ecosia and Brave Search (default true)."
+    },
+    "openInNewTab": {
+      "type": "boolean",
+      "title": "Open in new tab",
+      "description": "Open links picked in the popup/directory in a new tab (default false)."
+    },
+    "showFeatured": {
+      "type": "boolean",
+      "title": "Show featured",
+      "description": "Show featured links in the popup (default true)."
+    },
+    "trackUsage": {
+      "type": "boolean",
+      "title": "Rank by usage",
+      "description": "Count link usage locally to rank suggestions (default true)."
+    },
+    "welcomeMessage": {
+      "type": "string",
+      "title": "Welcome message",
+      "description": "Text shown under the directory headline."
+    },
+    "brand": {
+      "type": "object",
+      "title": "Brand",
+      "description": "Company branding.",
+      "properties": {
+        "companyName": {
+          "type": "string",
+          "description": "Company name."
+        },
+        "logo": {
+          "type": "string",
+          "description": "Logo URL or data: URL."
+        },
+        "primary": {
+          "type": "string",
+          "description": "Primary colour (#RRGGBB)."
+        },
+        "accent": {
+          "type": "string",
+          "description": "Accent colour (#RRGGBB)."
+        },
+        "theme": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "light",
+            "dark"
+          ],
+          "description": "Colour theme."
+        },
+        "radius": {
+          "type": "integer",
+          "description": "Corner radius in px."
+        },
+        "supportUrl": {
+          "type": "string",
+          "description": "Help page URL."
+        },
+        "supportEmail": {
+          "type": "string",
+          "description": "Support e-mail address."
+        },
+        "footerText": {
+          "type": "string",
+          "description": "Footer text."
+        }
+      }
+    },
+    "defaults": {
+      "type": "object",
+      "title": "Suggested defaults",
+      "description": "Values users may change. Same keys as the top level.",
+      "properties": {
+        "sources": {
+          "type": "array",
+          "title": "Link sources",
+          "description": "Remote JSON link sources in precedence order.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "description": "URL of the JSON file. Serve it with Access-Control-Allow-Origin: * ."
+              },
+              "name": {
+                "type": "string",
+                "description": "Display name of the source."
+              },
+              "department": {
+                "type": "string",
+                "description": "Department applied to links that do not set one."
+              }
+            }
+          }
+        },
+        "links": {
+          "type": "array",
+          "title": "Inline links",
+          "description": "Links pushed directly by policy. They take priority over every source.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "description": "Short name typed after go/ (a-z, 0-9, \".\", \"-\", \"_\"; case-insensitive)."
+              },
+              "url": {
+                "type": "string",
+                "description": "Destination (http/https). May contain {1}, {2} … or {*} placeholders."
+              },
+              "title": {
+                "type": "string",
+                "description": "Human-readable title."
+              },
+              "description": {
+                "type": "string",
+                "description": "One-line description shown in the directory."
+              },
+              "department": {
+                "type": "string",
+                "description": "Department used for grouping (HR, IT, Marketing …)."
+              },
+              "tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Search keywords."
+              },
+              "aliases": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Other keys that resolve to the same link."
+              },
+              "featured": {
+                "type": "boolean",
+                "description": "Highlight for new starters."
+              },
+              "owner": {
+                "type": "string",
+                "description": "Who maintains the link."
+              },
+              "home": {
+                "type": "string",
+                "description": "Destination when a parameterised link is used without arguments."
+              }
+            }
+          }
+        },
+        "allowPersonalLinks": {
+          "type": "boolean",
+          "title": "Allow personal links",
+          "description": "Let people create their own go-links (default true)."
+        },
+        "personalLinks": {
+          "type": "array",
+          "title": "Personal links",
+          "description": "The user’s own links. Normally not set by policy; enforcing it locks the list.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string",
+                "description": "Short name typed after go/ (a-z, 0-9, \".\", \"-\", \"_\"; case-insensitive)."
+              },
+              "url": {
+                "type": "string",
+                "description": "Destination (http/https). May contain {1}, {2} … or {*} placeholders."
+              },
+              "title": {
+                "type": "string",
+                "description": "Human-readable title."
+              },
+              "description": {
+                "type": "string",
+                "description": "One-line description shown in the directory."
+              },
+              "department": {
+                "type": "string",
+                "description": "Department used for grouping (HR, IT, Marketing …)."
+              },
+              "tags": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Search keywords."
+              },
+              "aliases": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Other keys that resolve to the same link."
+              },
+              "featured": {
+                "type": "boolean",
+                "description": "Highlight for new starters."
+              },
+              "owner": {
+                "type": "string",
+                "description": "Who maintains the link."
+              },
+              "home": {
+                "type": "string",
+                "description": "Destination when a parameterised link is used without arguments."
+              }
+            }
+          }
+        },
+        "refreshMinutes": {
+          "type": "integer",
+          "title": "Refresh interval",
+          "description": "Minutes between source refreshes (5-1440, default 60)."
+        },
+        "shortHost": {
+          "type": "string",
+          "title": "Short host",
+          "description": "Word typed before the slash (default \"go\")."
+        },
+        "literalRedirect": {
+          "type": "boolean",
+          "title": "Redirect typed short links",
+          "description": "Redirect http://go/... navigations to Go-Links (default true)."
+        },
+        "catchSearches": {
+          "type": "boolean",
+          "title": "Catch go/ searches",
+          "description": "Redirect \"go/...\" searches on Google, Bing, DuckDuckGo, Yahoo, Ecosia and Brave Search (default true)."
+        },
+        "openInNewTab": {
+          "type": "boolean",
+          "title": "Open in new tab",
+          "description": "Open links picked in the popup/directory in a new tab (default false)."
+        },
+        "showFeatured": {
+          "type": "boolean",
+          "title": "Show featured",
+          "description": "Show featured links in the popup (default true)."
+        },
+        "trackUsage": {
+          "type": "boolean",
+          "title": "Rank by usage",
+          "description": "Count link usage locally to rank suggestions (default true)."
+        },
+        "welcomeMessage": {
+          "type": "string",
+          "title": "Welcome message",
+          "description": "Text shown under the directory headline."
+        },
+        "brand": {
+          "type": "object",
+          "title": "Brand",
+          "description": "Company branding.",
+          "properties": {
+            "companyName": {
+              "type": "string",
+              "description": "Company name."
+            },
+            "logo": {
+              "type": "string",
+              "description": "Logo URL or data: URL."
+            },
+            "primary": {
+              "type": "string",
+              "description": "Primary colour (#RRGGBB)."
+            },
+            "accent": {
+              "type": "string",
+              "description": "Accent colour (#RRGGBB)."
+            },
+            "theme": {
+              "type": "string",
+              "enum": [
+                "auto",
+                "light",
+                "dark"
+              ],
+              "description": "Colour theme."
+            },
+            "radius": {
+              "type": "integer",
+              "description": "Corner radius in px."
+            },
+            "supportUrl": {
+              "type": "string",
+              "description": "Help page URL."
+            },
+            "supportEmail": {
+              "type": "string",
+              "description": "Support e-mail address."
+            },
+            "footerText": {
+              "type": "string",
+              "description": "Footer text."
+            }
+          }
+        }
+      }
+    }
+  }
+}

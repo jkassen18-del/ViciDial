@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Go-Links settings</title>
+<link rel="stylesheet" href="shared/ui.css">
+<link rel="stylesheet" href="go-links.css">
+<link rel="stylesheet" href="options.css">
+<script type="module" src="options.js"></script>
+</head>
+<body>
+  <header id="app-header"></header>
+  <div class="shell">
+    <nav class="side-nav">
+      <div class="nav-label">Go-Links</div>
+      <a href="#sources"><i data-icon="layers"></i>Sources</a>
+      <a href="#addressbar"><i data-icon="globe"></i>Address bar</a>
+      <a href="#personal"><i data-icon="user"></i>Personal links</a>
+      <a href="#behaviour"><i data-icon="settings"></i>Behaviour</a>
+      <div class="nav-label">General</div>
+      <a href="#branding"><i data-icon="palette"></i>Branding</a>
+      <a href="#backup"><i data-icon="download"></i>Backup &amp; policy</a>
+      <a href="#about"><i data-icon="info"></i>About</a>
+      <div class="nav-label">Shortcuts</div>
+      <a href="directory.html" class="nav-ext"><i data-icon="grid"></i>Open directory</a>
+    </nav>
+    <main class="content">
+      <section id="sources">
+        <div class="section-head">
+          <h2>Link sources</h2>
+          <p>Company links come from JSON files your teams publish (one for the whole company, more per department). Sources higher in the list win when two define the same go-link. Links pushed directly by policy always come first.</p>
+        </div>
+        <div id="sources-panel"></div>
+      </section>
+
+      <section id="addressbar">
+        <div class="section-head">
+          <h2>Address bar</h2>
+          <p>How typing a go-link in the browser's address bar reaches Go-Links.</p>
+        </div>
+        <div class="card">
+          <div class="setting-row">
+            <div class="text"><strong>Short host</strong><span>The word before the slash. With “go” you type go/payroll; some companies prefer “to” or “l”. One word, letters, digits and dashes.</span></div>
+            <div class="control"><div class="input-prefix"><span>http://</span><input class="input" id="shortHost" data-setting="shortHost" maxlength="63" spellcheck="false" style="width:140px"></div></div>
+          </div>
+          <div class="setting-row" id="host-access-row" hidden>
+            <div class="text"><strong>Allow the new short host</strong><span id="host-access-text">Go-Links needs permission to redirect this host.</span></div>
+            <div class="control"><button class="btn soft sm" type="button" id="grant-host"><i data-icon="unlock"></i>Grant access</button></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Redirect typed short links</strong><span>Turns http://go/anything into the right destination before the browser even looks the name up.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="literalRedirect"><span class="track"></span></label></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Catch go-links sent to a search engine</strong><span>When the browser searches for “go/payroll” instead of opening it, jump to the link instead. Works on Google, Bing, DuckDuckGo, Yahoo, Ecosia and Brave Search.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="catchSearches"><span class="track"></span></label></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Keyword</strong><span>Type <kbd>go</kbd> then <kbd>Space</kbd> (or <kbd>Tab</kbd>) in the address bar for live suggestions. The keyword is fixed by the browser at install time and can’t be changed here; Chrome and Edge let you change it under Settings → Search engine → Manage → Extensions.</span></div>
+            <div class="control"><span class="badge primary"><i data-icon="search"></i>go</span></div>
+          </div>
+        </div>
+        <div class="card" id="rules-card"></div>
+      </section>
+
+      <section id="personal">
+        <div class="section-head">
+          <h2>Personal links</h2>
+          <p>Shortcuts that only exist in this browser. A personal link can never replace a company link.</p>
+        </div>
+        <div class="card">
+          <div class="setting-row">
+            <div class="text"><strong>Allow personal links</strong><span>Let people create their own go-links in addition to the company directory.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="allowPersonalLinks"><span class="track"></span></label></div>
+          </div>
+        </div>
+        <div id="personal-panel" class="mt-12"></div>
+      </section>
+
+      <section id="behaviour">
+        <div class="section-head">
+          <h2>Behaviour</h2>
+        </div>
+        <div class="card">
+          <div class="setting-row">
+            <div class="text"><strong>Open links in a new tab</strong><span>Applies to links picked in the popup and the directory. Ctrl/⌘ + Enter always opens a new tab.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="openInNewTab"><span class="track"></span></label></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Show featured links in the popup</strong><span>The “Start here” links your company highlights for new starters.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="showFeatured"><span class="track"></span></label></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Rank by what I use</strong><span>Counts how often you open each link to sort suggestions and “Most used”. Counts stay on this device.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="trackUsage"><span class="track"></span></label><button class="btn ghost sm" type="button" id="clear-usage">Clear</button></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Refresh sources every</strong><span>Minutes between checks for updated links (5 – 1440). Sources are also refreshed when the browser starts.</span></div>
+            <div class="control"><input class="input" type="number" min="5" max="1440" step="5" data-setting="refreshMinutes" style="width:110px"></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Directory welcome message</strong><span>Shown under the headline of the directory page. Leave empty for the default.</span></div>
+            <div class="control"><input class="input" data-setting="welcomeMessage" maxlength="200" placeholder="Welcome to the team!" style="width:280px"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="branding"><div class="section-head"><h2>Branding</h2><p>How Go-Links looks for everyone using this browser.</p></div><div id="branding-panel"></div></section>
+      <section id="backup"><div class="section-head"><h2>Backup &amp; policy</h2></div><div id="backup-panel"></div></section>
+      <section id="about"><div class="section-head"><h2>About</h2></div><div id="about-panel"></div></section>
+    </main>
+  </div>
+</body>
+</html>

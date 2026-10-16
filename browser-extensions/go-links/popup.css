@@ -1,0 +1,21 @@
+body.popup { display: flex; flex-direction: column; }
+body.popup > main { display: flex; flex-direction: column; min-height: 0; }
+.popup-search { padding: 12px 12px 8px; border-bottom: 1px solid var(--border); }
+.popup-search .search-box > .input { height: 40px; font-size: 14.5px; }
+.popup-results { overflow-y: auto; max-height: 340px; min-height: 160px; padding: 8px 6px 10px; }
+.popup-results .section-label { padding: 6px 8px 2px; margin: 0; }
+.popup-results .section + .section { margin-top: 6px; }
+.popup-results .empty { margin: 8px 6px; padding: 24px 16px; }
+.popup-results .empty p { font-size: 13px; }
+.popup-results .skeleton-row { display: flex; gap: 10px; align-items: center; padding: 8px 10px; }
+.popup-results .skeleton-row .a { width: 32px; height: 32px; }
+.popup-results .skeleton-row .b { height: 10px; flex: 1; }
+.popup-actions { display: flex; align-items: center; gap: 4px; padding: 8px 10px; border-top: 1px solid var(--border); background: var(--surface); }
+.popup-add { padding: 12px 14px 14px; }
+.popup-add .link-fields .help { display: none; }
+.popup-add .callout { padding: 8px 10px; font-size: 12.5px; }
+.popup-add .grid-2 { grid-template-columns: 1fr; }
+.popup-add .field + .field, .popup-add .grid-2 { margin-top: 10px; }
+.popup-add h3 { display: flex; align-items: center; gap: 8px; }
+.popup-hint { padding: 4px 10px 0; font-size: 12px; color: var(--text-3); }
+.popup-hint code { font-size: 11.5px; }

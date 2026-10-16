@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Go-Links</title>
+<link rel="stylesheet" href="shared/ui.css">
+<link rel="stylesheet" href="go-links.css">
+<link rel="stylesheet" href="popup.css">
+<script type="module" src="popup.js"></script>
+</head>
+<body class="popup">
+  <header id="app-header"></header>
+  <main id="main">
+    <div class="popup-search">
+      <div class="search-box">
+        <i data-icon="search"></i>
+        <input id="q" class="input" type="text" placeholder="Search go-links…" aria-label="Search go-links" autocomplete="off" spellcheck="false">
+        <kbd id="kbd-hint">↵</kbd>
+      </div>
+      <div id="chips" class="dept-chips mt-8" role="toolbar" aria-label="Departments"></div>
+    </div>
+    <div id="results" class="popup-results" role="listbox" aria-label="Links"></div>
+    <div id="add-panel" class="popup-add" hidden></div>
+    <div class="popup-actions">
+      <button id="add-btn" class="btn soft sm" type="button"><i data-icon="plus"></i>Add link for this tab</button>
+      <span class="grow"></span>
+      <button id="dir-btn" class="btn ghost sm" type="button" title="Open the company directory"><i data-icon="grid"></i>Directory</button>
+      <button id="settings-btn" class="btn ghost sm icon" type="button" title="Settings" aria-label="Settings"><i data-icon="settings"></i></button>
+    </div>
+  </main>
+  <footer id="app-footer"></footer>
+</body>
+</html>

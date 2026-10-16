@@ -1,0 +1,21 @@
+/* go.html: resolver + "not a link yet" page */
+.boot {
+  position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; gap: 12px;
+  color: var(--text-3); font-size: 14px; opacity: 0; animation: boot-in .2s ease .35s forwards;
+}
+@keyframes boot-in { to { opacity: 1; } }
+body.go-page { min-height: 100vh; display: flex; flex-direction: column; }
+body.go-page > main { flex: 1; }
+.nf-hero .hero-inner { padding-top: 40px; padding-bottom: 36px; }
+.nf-hero h1 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+.nf-hero h1 .missing {
+  font-family: var(--mono); font-size: 0.86em; background: rgb(255 255 255 / .16); border: 1px solid rgb(255 255 255 / .28);
+  padding: 2px 12px; border-radius: var(--radius); word-break: break-all;
+}
+.nf-body { max-width: 1180px; margin: 0 auto; padding: 28px clamp(16px, 4vw, 40px) 60px; width: 100%; }
+.nf-layout { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 28px; align-items: start; }
+@media (max-width: 920px) { .nf-layout { grid-template-columns: 1fr; } }
+.nf-create .input-prefix > .input { font-weight: 600; }
+.nf-create h3 { display: flex; align-items: center; gap: 8px; }
+.nf-side { position: sticky; top: 20px; }
+@media (prefers-color-scheme: dark) { html:not([data-theme]) body { background: #0b0f19; color: #8591a9; } }
