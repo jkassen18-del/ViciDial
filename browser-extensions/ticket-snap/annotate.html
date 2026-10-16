@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Report a problem</title>
+  <link rel="stylesheet" href="shared/ui.css">
+  <link rel="stylesheet" href="annotate.css">
+  <script type="module" src="annotate.js"></script>
+</head>
+<body class="annotate">
+  <header id="app-header"></header>
+  <div class="workspace">
+    <div class="tool-rail" id="tool-rail" role="toolbar" aria-label="Annotation tools" aria-orientation="vertical"></div>
+    <section class="stage-col" aria-label="Screenshot">
+      <div class="stage-bar" id="stage-bar"></div>
+      <div class="stage" id="stage">
+        <div class="canvas-wrap" id="canvas-wrap"><canvas id="canvas" tabindex="0" aria-label="Screenshot editor. Choose a tool, then drag on the image."></canvas></div>
+        <div class="stage-empty hidden" id="stage-empty"></div>
+        <div class="stage-loading" id="stage-loading"><span class="spinner"></span></div>
+      </div>
+    </section>
+    <aside class="form-panel" aria-label="Ticket details">
+      <div class="panel-body" id="panel-body"></div>
+      <footer id="app-footer"></footer>
+    </aside>
+  </div>
+</body>
+</html>

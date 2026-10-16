@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ticket Snap settings</title>
+  <link rel="stylesheet" href="shared/ui.css">
+  <link rel="stylesheet" href="options.css">
+  <script type="module" src="options.js"></script>
+</head>
+<body>
+  <header id="app-header"></header>
+  <div class="shell">
+    <nav class="side-nav" aria-label="Settings sections">
+      <div class="nav-label">Settings</div>
+      <a href="#general"><i data-icon="send"></i>Helpdesk</a>
+      <a href="#form"><i data-icon="file-text"></i>Ticket form</a>
+      <a href="#diagnostics"><i data-icon="activity"></i>Diagnostics</a>
+      <a href="#capture"><i data-icon="camera"></i>Capture</a>
+      <a href="#history"><i data-icon="clock"></i>History</a>
+      <div class="nav-label">Organization</div>
+      <a href="#branding"><i data-icon="palette"></i>Branding</a>
+      <a href="#backup"><i data-icon="download"></i>Backup &amp; policy</a>
+      <a href="#about"><i data-icon="info"></i>About</a>
+    </nav>
+    <main class="content">
+      <section id="general">
+        <div class="section-head"><h2>Helpdesk</h2><p>Choose where tickets go. Credentials stay in this browser and are only sent to the helpdesk you configure.</p></div>
+        <div class="provider-grid" id="provider-grid" role="radiogroup" aria-label="Helpdesk"></div>
+        <div class="card mt-16" id="provider-config"></div>
+      </section>
+
+      <section id="form">
+        <div class="section-head"><h2>Ticket form</h2><p>What people see when they report a problem.</p></div>
+        <div class="card">
+          <div class="card-head"><h3><i data-icon="tag" data-size="18"></i>Categories</h3></div>
+          <div id="categories-editor"></div>
+          <div class="grid-2 mt-16">
+            <div class="field"><label for="defaultCategory">Default category</label><select class="select" id="defaultCategory" data-setting="defaultCategory"></select></div>
+            <div class="field"><label for="defaultPriority">Default priority</label>
+              <select class="select" id="defaultPriority" data-setting="defaultPriority">
+                <option value="low">Low</option><option value="normal">Normal</option><option value="high">High</option><option value="urgent">Urgent</option>
+              </select></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3><i data-icon="check" data-size="18"></i>Required fields</h3></div>
+          <p class="subtle" style="margin:-6px 0 10px">Summary is always required.</p>
+          <div id="required-editor" class="required-grid"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3><i data-icon="edit" data-size="18"></i>Text</h3></div>
+          <div class="field"><label for="summaryPrefix">Summary prefix</label><input class="input" id="summaryPrefix" data-setting="summaryPrefix" placeholder="e.g. [Browser]" maxlength="40"><div class="help">Optional text put in front of every summary.</div></div>
+          <div class="field"><label for="descriptionTemplate">Description template</label><textarea class="textarea" id="descriptionTemplate" data-setting="descriptionTemplate" rows="6"></textarea><div class="help">Shown as a hint in the empty description box.</div></div>
+          <div class="setting-row" style="padding-bottom:0">
+            <div class="text"><strong>Start with the template filled in</strong><span>Puts the template text into the description so people can fill in the blanks.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="descriptionPrefill"><span class="track"></span></label></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3><i data-icon="user" data-size="18"></i>Reporter</h3></div>
+          <p class="subtle" style="margin:-6px 0 12px">Pre-filled in every report; people can still change them.</p>
+          <div class="grid-2">
+            <div class="field"><label for="reporterName">Your name</label><input class="input" id="reporterName" data-setting="reporterName" autocomplete="name" placeholder="Jane Doe"></div>
+            <div class="field"><label for="reporterEmail">Your email</label><input class="input" id="reporterEmail" type="email" data-setting="reporterEmail" autocomplete="email" placeholder="jane@company.com"></div>
+          </div>
+          <div class="setting-row mt-12" style="padding-bottom:0">
+            <div class="text"><strong>Include the screenshot by default</strong><span>When off, people tick "Include screenshot" themselves.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="includeScreenshotDefault"><span class="track"></span></label></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="diagnostics">
+        <div class="section-head"><h2>Diagnostics</h2><p>Technical details attached to every ticket. People always see exactly what is sent before they submit.</p></div>
+        <div class="grid-2 diag-layout">
+          <div class="card" id="diag-toggles"></div>
+          <div class="stack">
+            <div class="card">
+              <div class="card-head"><h3><i data-icon="eye"></i>Preview</h3><span class="badge" id="diag-count"></span></div>
+              <div id="diag-preview"></div>
+            </div>
+            <div class="card">
+              <div class="setting-row" style="padding:0">
+                <div class="text"><strong>Let people remove the page URL</strong><span>Shows an "Include page address" checkbox on the form, for pages with private addresses.</span></div>
+                <div class="control"><label class="switch"><input type="checkbox" data-setting="allowRemoveUrl"><span class="track"></span></label></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="capture">
+        <div class="section-head"><h2>Capture</h2><p>Ways to start a report.</p></div>
+        <div class="card">
+          <div class="setting-row">
+            <div class="text"><strong>Keyboard shortcut</strong><span id="shortcut-text">Captures the current tab straight away.</span></div>
+            <div class="control" id="shortcut-control"></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Right-click menu</strong><span>Adds "Report a problem with this page" to the page context menu.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="showContextMenu"><span class="track"></span></label></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Keep a history of my tickets</strong><span>Stores the last 50 summaries and ticket links in this browser only.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="keepHistory"><span class="track"></span></label></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="history">
+        <div class="section-head"><h2>History</h2><p>Tickets submitted from this browser (most recent first).</p></div>
+        <div id="history-panel"></div>
+      </section>
+
+      <section id="branding"><div class="section-head"><h2>Branding</h2><p>Company look and support contacts, shared by every page of the extension.</p></div><div id="branding-panel"></div></section>
+      <section id="backup"><div class="section-head"><h2>Backup &amp; policy</h2><p>Move settings between browsers or deploy them to your organization.</p></div><div id="backup-panel"></div></section>
+      <section id="about"><div class="section-head"><h2>About</h2></div><div id="about-panel"></div></section>
+    </main>
+  </div>
+</body>
+</html>

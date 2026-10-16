@@ -89,6 +89,8 @@
     x: '<path d="M6 6l12 12M18 6 6 18"/>',
   };
   const svg = (name) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICON[name] || ICON.info}</svg>`;
+  // Builds nodes from our own escaped markup without innerHTML.
+  const nodes = (html) => [...new DOMParser().parseFromString(html, 'text/html').body.childNodes];
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
   function themeClass() {
@@ -139,7 +141,7 @@
       const iconName = opts.icon || (tone === 'danger' || tone === 'warning' ? 'shield' : tone === 'success' ? 'check' : 'info');
       const actions = opts.actions || [{ label: 'OK', value: true, variant: 'primary' }];
       const support = brand.supportUrl ? `<a href="${esc(brand.supportUrl)}" target="_blank" rel="noopener">Get help</a>` : brand.supportEmail ? `<a href="mailto:${esc(brand.supportEmail)}">${esc(brand.supportEmail)}</a>` : '';
-      back.innerHTML = `
+      back.append(...nodes(`
         <div class="modal ${tone}" role="alertdialog" aria-modal="true" aria-labelledby="t">
           <div class="tonebar"></div>
           <div class="head">${markHtml()}<span>${esc(brand.companyName)}${opts.product ? ' · ' + esc(opts.product) : ''}</span></div>
@@ -150,7 +152,7 @@
           </div>
           <div class="actions">${actions.map((a, i) => `<button class="btn ${esc(a.variant || '')}" data-i="${i}">${esc(a.label)}</button>`).join('')}</div>
           ${opts.footer || support ? `<div class="foot">${esc(opts.footer || '')}${opts.footer && support ? ' · ' : ''}${support}</div>` : ''}
-        </div>`;
+        </div>`));
       const textarea = back.querySelector('textarea');
       const buttons = [...back.querySelectorAll('button[data-i]')];
       const sync = () => buttons.forEach((b) => {
@@ -188,7 +190,7 @@
     if (!toasts?.isConnected) { toasts = document.createElement('div'); toasts.className = 'toasts'; layer.append(toasts); }
     const el = document.createElement('div');
     el.className = `toast ${tone}`;
-    el.innerHTML = `${markHtml()}<span>${esc(message)}</span>`;
+    el.append(...nodes(`${markHtml()}<span>${esc(message)}</span>`));
     if (action) {
       const b = document.createElement('button');
       b.textContent = action.label;
@@ -196,7 +198,7 @@
       el.append(b);
     }
     const x = document.createElement('button');
-    x.className = 'x'; x.setAttribute('aria-label', 'Dismiss'); x.innerHTML = '&times;';
+    x.className = 'x'; x.setAttribute('aria-label', 'Dismiss'); x.textContent = '×';
     x.addEventListener('click', close);
     el.append(x);
     toasts.append(el);

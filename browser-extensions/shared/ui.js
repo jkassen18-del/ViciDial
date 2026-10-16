@@ -21,7 +21,7 @@ export function h(tag, attrs = {}, ...children) {
       }
     }
     else if (k === 'dataset') Object.assign(el.dataset, v);
-    else if (k === 'html') el.innerHTML = v;
+    else if (k === 'html') el.append(...parseHtml(v));
     else if (k === 'value') value = v;
     else if (k.startsWith('on') && typeof v === 'function') el.addEventListener(k.slice(2).toLowerCase(), v);
     else if (k in el && typeof v !== 'string' && k !== 'list') el[k] = v;
@@ -142,8 +142,15 @@ export function icon(name, { size, class: cls, title } = {}) {
   svg.setAttribute('aria-hidden', title ? 'false' : 'true');
   if (size) { svg.setAttribute('width', size); svg.setAttribute('height', size); }
   if (cls) svg.setAttribute('class', cls);
-  svg.innerHTML = (title ? `<title>${escapeHtml(title)}</title>` : '') + (ICONS[name] || ICONS.info);
+  const markup = (title ? `<title>${escapeHtml(title)}</title>` : '') + (ICONS[name] || ICONS.info);
+  const parsed = new DOMParser().parseFromString(`<svg xmlns="${SVG_NS}">${markup}</svg>`, 'image/svg+xml');
+  svg.append(...parsed.documentElement.childNodes);
   return svg;
+}
+
+/** Parses a trusted HTML string into nodes (avoids innerHTML). */
+export function parseHtml(html) {
+  return [...new DOMParser().parseFromString(String(html), 'text/html').body.childNodes];
 }
 
 /** Replaces every <i data-icon="name"></i> placeholder in `root` with its SVG. */
