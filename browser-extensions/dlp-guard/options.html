@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Leak Guard · Settings</title>
+  <link rel="stylesheet" href="shared/ui.css">
+  <link rel="stylesheet" href="dlp.css">
+  <script src="detectors.js"></script>
+  <script type="module" src="options.js"></script>
+</head>
+<body>
+  <header id="app-header"></header>
+  <div class="shell">
+    <nav class="side-nav" aria-label="Settings sections">
+      <div class="nav-label">Policy</div>
+      <a href="#protection"><i data-icon="shield"></i>Protection</a>
+      <a href="#detectors"><i data-icon="search"></i>Detectors</a>
+      <a href="#custom"><i data-icon="code"></i>Custom rules</a>
+      <a href="#sites"><i data-icon="globe"></i>Sites</a>
+      <a href="#reporting"><i data-icon="cloud"></i>Reporting</a>
+      <div class="nav-label">Tools</div>
+      <a href="#testlab"><i data-icon="zap"></i>Test lab</a>
+      <a href="#incidents"><i data-icon="activity"></i>Incident log</a>
+      <div class="nav-label">Extension</div>
+      <a href="#branding"><i data-icon="palette"></i>Branding</a>
+      <a href="#backup"><i data-icon="download"></i>Backup &amp; policy</a>
+      <a href="#about"><i data-icon="info"></i>About</a>
+    </nav>
+
+    <main class="content">
+      <!-- ================= Protection ================= -->
+      <section id="protection">
+        <div class="section-head">
+          <h2><i data-icon="shield" class="text-primary" data-size="20"></i>Protection</h2>
+          <p>Where Data Leak Guard looks, and what happens when it finds something sensitive.</p>
+        </div>
+        <div id="status-callout"></div>
+
+        <div class="card mt-12">
+          <div class="card-head"><h3><i data-icon="globe" data-size="18"></i>Scope</h3></div>
+          <div class="setting-row">
+            <div class="text"><strong>Protect</strong><span>"Everywhere" checks every site except your trusted company domains (recommended). "Listed only" checks just the high-risk list.</span></div>
+            <div class="control">
+              <select class="select" data-setting="mode">
+                <option value="all-except-trusted">Everywhere except trusted sites</option>
+                <option value="listed">Only listed high-risk sites</option>
+              </select>
+            </div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Default action</strong><span>Used by custom rules and by any detector set to "Default".</span></div>
+            <div class="control">
+              <select class="select" data-setting="defaultAction">
+                <option value="log">Log only</option>
+                <option value="warn">Warn</option>
+                <option value="block">Block</option>
+              </select>
+            </div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>On high-risk sites</strong><span>Escalate warnings on public AI tools, personal e-mail and file sharing. "Log only" rules stay silent.</span></div>
+            <div class="control">
+              <select class="select" data-setting="highRiskAction">
+                <option value="same">Same as other sites</option>
+                <option value="warn">At least warn</option>
+                <option value="block">Block instead of warn</option>
+              </select>
+            </div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Require a reason to continue</strong><span>Users must type a business justification before "Continue anyway". The reason is kept in the incident log.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="requireJustification"><span class="track"></span></label></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3><i data-icon="layers" data-size="18"></i>Channels</h3></div>
+          <div class="setting-row">
+            <div class="text"><strong>Paste</strong><span>Text and files pasted into any field or editor.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="channels.paste"><span class="track"></span></label></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Drag and drop</strong><span>Text and files dropped onto a page.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="channels.drop"><span class="track"></span></label></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>File uploads</strong><span>File pickers: file names are always checked, and the contents of text-like files (txt, csv, json, env, pem, sql…).</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="channels.upload"><span class="track"></span></label></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Typed messages (send / submit)</strong><span>Checks what was typed when pressing Enter or submitting a form. High-risk sites only. Off by default to avoid noise.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="channels.submit"><span class="track"></span></label></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3><i data-icon="file-text" data-size="18"></i>Files</h3></div>
+          <div class="setting-row">
+            <div class="text"><strong>Scan up to</strong><span>Larger text files are scanned up to this size. Binary files (PDF, Office, images) are checked by name only.</span></div>
+            <div class="control"><input class="input" type="number" min="0.1" max="50" step="0.5" data-setting="maxFileSizeMB" style="width: 100px"><span class="subtle">MB</span></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Any file upload to high-risk sites</strong><span>Regardless of content, ask or refuse before files are uploaded to a high-risk destination.</span></div>
+            <div class="control">
+              <select class="select" data-setting="blockFileUploadsOnHighRisk">
+                <option value="off">Check content only</option>
+                <option value="warn">Warn on every upload</option>
+                <option value="block">Block every upload</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3><i data-icon="user" data-size="18"></i>User controls</h3></div>
+          <div class="setting-row">
+            <div class="text"><strong>Let users switch protection off</strong><span>Shows an on/off switch in the toolbar popup.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="allowUserDisable"><span class="track"></span></label></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Let users pause a site</strong><span>Adds "Pause on this site" to warnings and the popup. Blocks can never be paused.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="allowSnooze"><span class="track"></span></label></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Pause length</strong><span>How long a pause lasts.</span></div>
+            <div class="control"><input class="input" type="number" min="1" max="240" data-setting="snoozeMinutes" style="width: 100px"><span class="subtle">minutes</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Detectors ================= -->
+      <section id="detectors">
+        <div class="section-head">
+          <h2><i data-icon="search" class="text-primary" data-size="20"></i>Detectors</h2>
+          <p>Built-in detectors use checksums and format rules (Luhn, mod-97, area numbers…) to keep false alarms low. Choose what each one does.</p>
+        </div>
+        <div class="table-wrap"><table class="table rule-table" id="rule-table"></table></div>
+        <div class="grid-2 mt-16">
+          <div class="card">
+            <div class="field">
+              <label>Classification keywords</label>
+              <textarea class="textarea code" rows="6" data-setting="classificationKeywords" data-type="lines"></textarea>
+              <div class="help">One per line. Matched as whole words, case-insensitive (e.g. CONFIDENTIAL, INTERNAL ONLY, project code names).</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="field">
+              <label>Bulk e-mail threshold</label>
+              <input class="input" type="number" min="2" max="1000" data-setting="bulkEmailThreshold" style="width: 120px">
+              <div class="help">Trigger "Bulk e-mail addresses" when one paste or file contains at least this many distinct addresses.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Custom rules ================= -->
+      <section id="custom">
+        <div class="section-head">
+          <h2><i data-icon="code" class="text-primary" data-size="20"></i>Custom rules</h2>
+          <p>Add your own patterns, such as employee IDs, project code names or internal hostnames. Patterns are JavaScript regular expressions.</p>
+        </div>
+        <div id="custom-rules"></div>
+      </section>
+
+      <!-- ================= Sites ================= -->
+      <section id="sites">
+        <div class="section-head">
+          <h2><i data-icon="globe" class="text-primary" data-size="20"></i>Sites</h2>
+          <p>Trusted sites are never scanned. High-risk sites are always protected and get the stricter high-risk action.</p>
+        </div>
+        <div class="site-lists">
+          <div class="card chip-editor" id="trusted-editor"></div>
+          <div class="card chip-editor" id="risk-editor"></div>
+        </div>
+        <div class="callout mt-16">
+          <i data-icon="help" data-size="18"></i>
+          <div>
+            <strong>Pattern syntax.</strong>
+            <code>acme.com</code> matches the domain and all subdomains ·
+            <code>=app.acme.com</code> this host only ·
+            <code>*.acme.com</code> subdomains only ·
+            <code>icloud.com/mail*</code> host plus path ·
+            <code>re:^https://.+\.acme\.cloud/</code> regular expression on the full URL.
+            Trusted wins when a site is on both lists.
+          </div>
+        </div>
+        <div class="card mt-16">
+          <div class="card-head"><h3><i data-icon="search" data-size="18"></i>Check a URL</h3></div>
+          <div class="input-group">
+            <input class="input" id="url-test" placeholder="https://chatgpt.com/c/123" spellcheck="false">
+            <button class="btn" type="button" id="url-test-btn">Check</button>
+          </div>
+          <div id="url-test-result" class="url-test-result"></div>
+        </div>
+      </section>
+
+      <!-- ================= Reporting ================= -->
+      <section id="reporting">
+        <div class="section-head">
+          <h2><i data-icon="cloud" class="text-primary" data-size="20"></i>Reporting</h2>
+          <p>Optionally forward incidents to your security team. Reports contain rule names, counts, the site's hostname, the channel and the user's decision — never the content.</p>
+        </div>
+        <div class="card">
+          <div class="field">
+            <label>Reporting endpoint</label>
+            <input class="input" type="url" data-setting="reportingEndpoint" placeholder="https://siem.example.com/api/dlp/incidents" spellcheck="false">
+            <div class="help">Incidents are POSTed as JSON in batches and retried with back-off. Leave empty to keep everything on this device. Local test: <code>http://localhost:8787/api/dlp/incidents</code> (<code>node tools/dev-server.mjs</code>).</div>
+          </div>
+          <div class="field">
+            <label>Extra headers (JSON)</label>
+            <textarea class="textarea code" rows="3" data-setting="reportingHeaders" data-type="json" placeholder='{ "Authorization": "Bearer …" }'></textarea>
+            <div class="help">Not included in settings exports.</div>
+          </div>
+          <div class="grid-2 mt-12">
+            <div class="field">
+              <label>Department</label>
+              <input class="input" data-setting="department" placeholder="e.g. Finance">
+            </div>
+            <div class="field">
+              <label>User e-mail</label>
+              <input class="input" type="email" data-setting="userEmail" placeholder="name@company.com">
+            </div>
+          </div>
+          <div class="setting-row mt-12">
+            <div class="text"><strong>Include user e-mail in reports</strong><span>Off by default. Reports are otherwise tied only to an anonymous install ID.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="includeUserEmail"><span class="track"></span></label></div>
+          </div>
+          <div class="divider"></div>
+          <div class="row wrap between">
+            <div id="report-status" class="subtle"></div>
+            <div class="row">
+              <button class="btn sm" type="button" id="report-retry"><i data-icon="refresh"></i>Send queued now</button>
+              <button class="btn sm soft" type="button" id="report-test"><i data-icon="send"></i>Send test event</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Test lab ================= -->
+      <section id="testlab">
+        <div class="section-head">
+          <h2><i data-icon="zap" class="text-primary" data-size="20"></i>Test lab</h2>
+          <p>Try your rules, including unsaved changes on this page. Everything runs locally; nothing typed here is stored or sent.</p>
+        </div>
+        <div class="card">
+          <div class="toolbar">
+            <div class="segmented" role="group" aria-label="Destination" id="lab-dest">
+              <button type="button" aria-pressed="true" data-v="normal"><i data-icon="globe"></i>Normal site</button>
+              <button type="button" aria-pressed="false" data-v="risk"><i data-icon="shield-alert"></i>High-risk site</button>
+            </div>
+            <span class="grow"></span>
+            <button class="btn sm ghost" type="button" id="lab-sample"><i data-icon="sparkle"></i>Insert sample data</button>
+            <button class="btn sm ghost" type="button" id="lab-clear"><i data-icon="x"></i>Clear</button>
+          </div>
+          <div class="lab-grid">
+            <div class="field">
+              <label for="lab-input">Text</label>
+              <textarea class="textarea lab-input" id="lab-input" spellcheck="false" placeholder="Paste anything here: logs, CSV exports, config files, e-mails…"></textarea>
+            </div>
+            <div class="field">
+              <label>Result</label>
+              <div id="lab-result"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Incident log ================= -->
+      <section id="incidents">
+        <div class="section-head">
+          <h2><i data-icon="activity" class="text-primary" data-size="20"></i>Incident log</h2>
+          <p>The last 500 alerts on this device. Only rule names, counts, the hostname, the channel and the decision are stored.</p>
+        </div>
+        <div id="incident-stats" class="grid-4"></div>
+        <div class="toolbar mt-16">
+          <div class="input-icon grow" style="max-width: 320px"><i data-icon="search"></i><input class="input" id="inc-search" placeholder="Filter by site or rule"></div>
+          <select class="select" id="inc-decision" style="width: 170px">
+            <option value="">All decisions</option>
+            <option value="cancelled">Cancelled</option>
+            <option value="proceeded">Continued</option>
+            <option value="blocked">Blocked</option>
+            <option value="logged">Logged</option>
+          </select>
+          <span class="grow"></span>
+          <button class="btn sm" type="button" id="inc-export"><i data-icon="download"></i>Export CSV</button>
+          <button class="btn sm danger-soft" type="button" id="inc-clear"><i data-icon="trash"></i>Clear</button>
+        </div>
+        <div id="incident-table"></div>
+      </section>
+
+      <section id="branding"><div class="section-head"><h2><i data-icon="palette" class="text-primary" data-size="20"></i>Branding</h2><p>Logo, colours and help links used in the popup, this page and the in-page warnings.</p></div><div id="branding-panel"></div></section>
+      <section id="backup"><div class="section-head"><h2><i data-icon="download" class="text-primary" data-size="20"></i>Backup &amp; policy</h2><p>Export, import, or deploy this configuration to every device with managed policy.</p></div><div id="backup-panel"></div></section>
+      <section id="about"><div class="section-head"><h2><i data-icon="info" class="text-primary" data-size="20"></i>About</h2></div><div id="about-panel"></div></section>
+    </main>
+  </div>
+</body>
+</html>

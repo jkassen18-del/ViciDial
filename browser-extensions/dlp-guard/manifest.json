@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Data Leak Guard",
+  "short_name": "Data Leak Guard",
+  "version": "1.0.0",
+  "description": "Warns or blocks before card numbers, national IDs, secrets or confidential documents are pasted or uploaded to unapproved websites.",
+  "permissions": ["storage", "alarms", "activeTab"],
+  "optional_host_permissions": ["https://*/*", "http://*/*"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": { "default_popup": "popup.html", "default_title": "Data Leak Guard" },
+  "options_ui": { "page": "options.html", "open_in_tab": true },
+  "storage": { "managed_schema": "schema.json" },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["shared/content-ui.js", "detectors.js", "content.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true
+    }
+  ],
+  "browser_overrides": {
+    "firefox": {
+      "browser_specific_settings": {
+        "gecko": {
+          "data_collection_permissions": {
+            "required": ["none"],
+            "optional": ["websiteActivity", "personallyIdentifyingInfo"]
+          }
+        }
+      }
+    }
+  }
+}

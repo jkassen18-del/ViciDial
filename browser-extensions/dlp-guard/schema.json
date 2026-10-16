@@ -1,0 +1,825 @@
+{
+  "type": "object",
+  "properties": {
+    "enabled": {
+      "type": "boolean",
+      "description": "Protection on/off for the user. Only honoured when allowUserDisable is true."
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "all-except-trusted",
+        "listed"
+      ],
+      "description": "\"all-except-trusted\": protect every site except trustedSites. \"listed\": only protect highRiskSites."
+    },
+    "trustedSites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Company / approved destinations that are never scanned. Patterns: \"acme.com\" (domain + subdomains), \"=host\", \"*.acme.com\", \"host/path*\", \"re:<regex>\"."
+    },
+    "highRiskSites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Unapproved high-risk destinations (public AI tools, personal e-mail, file sharing). Same pattern syntax as trustedSites."
+    },
+    "defaultAction": {
+      "type": "string",
+      "enum": [
+        "off",
+        "log",
+        "warn",
+        "block"
+      ],
+      "description": "Action for custom rules and for any rule set to \"default\"."
+    },
+    "ruleActions": {
+      "type": "object",
+      "description": "Action per built-in detector: off | log | warn | block | default.",
+      "properties": {
+        "card": {
+          "type": "string",
+          "enum": [
+            "off",
+            "log",
+            "warn",
+            "block",
+            "default"
+          ],
+          "description": "Action for the \"card\" detector."
+        },
+        "iban": {
+          "type": "string",
+          "enum": [
+            "off",
+            "log",
+            "warn",
+            "block",
+            "default"
+          ],
+          "description": "Action for the \"iban\" detector."
+        },
+        "us-ssn": {
+          "type": "string",
+          "enum": [
+            "off",
+            "log",
+            "warn",
+            "block",
+            "default"
+          ],
+          "description": "Action for the \"us-ssn\" detector."
+        },
+        "uk-nino": {
+          "type": "string",
+          "enum": [
+            "off",
+            "log",
+            "warn",
+            "block",
+            "default"
+          ],
+          "description": "Action for the \"uk-nino\" detector."
+        },
+        "ca-sin": {
+          "type": "string",
+          "enum": [
+            "off",
+            "log",
+            "warn",
+            "block",
+            "default"
+          ],
+          "description": "Action for the \"ca-sin\" detector."
+        },
+        "au-tfn": {
+          "type": "string",
+          "enum": [
+            "off",
+            "log",
+            "warn",
+            "block",
+            "default"
+          ],
+          "description": "Action for the \"au-tfn\" detector."
+        },
+        "private-key": {
+          "type": "string",
+          "enum": [
+            "off",
+            "log",
+            "warn",
+            "block",
+            "default"
+          ],
+          "description": "Action for the \"private-key\" detector."
+        },
+        "aws-key": {
+          "type": "string",
+          "enum": [
+            "off",
+            "log",
+            "warn",
+            "block",
+            "default"
+          ],
+          "description": "Action for the \"aws-key\" detector."
+        },
+        "github-token": {
+          "type": "string",
+          "enum": [
+            "off",
+            "log",
+            "warn",
+            "block",
+            "default"
+          ],
+          "description": "Action for the \"github-token\" detector."
+        },
+        "slack-token": {
+          "type": "string",
+          "enum": [
+            "off",
+            "log",
+            "warn",
+            "block",
+            "default"
+          ],
+          "description": "Action for the \"slack-token\" detector."
+        },
+        "google-api-key": {
+          "type": "string",
+          "enum": [
+            "off",
+            "log",
+            "warn",
+            "block",
+            "default"
+          ],
+          "description": "Action for the \"google-api-key\" detector."
+        },
+        "stripe-key": {
+          "type": "string",
+          "enum": [
+            "off",
+            "log",
+            "warn",
+            "block",
+            "default"
+          ],
+          "description": "Action for the \"stripe-key\" detector."
+        },
+        "jwt": {
+          "type": "string",
+          "enum": [
+            "off",
+            "log",
+            "warn",
+            "block",
+            "default"
+          ],
+          "description": "Action for the \"jwt\" detector."
+        },
+        "password-assignment": {
+          "type": "string",
+          "enum": [
+            "off",
+            "log",
+            "warn",
+            "block",
+            "default"
+          ],
+          "description": "Action for the \"password-assignment\" detector."
+        },
+        "classification": {
+          "type": "string",
+          "enum": [
+            "off",
+            "log",
+            "warn",
+            "block",
+            "default"
+          ],
+          "description": "Action for the \"classification\" detector."
+        },
+        "bulk-email": {
+          "type": "string",
+          "enum": [
+            "off",
+            "log",
+            "warn",
+            "block",
+            "default"
+          ],
+          "description": "Action for the \"bulk-email\" detector."
+        }
+      }
+    },
+    "highRiskAction": {
+      "type": "string",
+      "enum": [
+        "same",
+        "warn",
+        "block"
+      ],
+      "description": "On high-risk sites, rules at warn level are escalated to this action (\"same\" keeps them as configured)."
+    },
+    "requireJustification": {
+      "type": "boolean",
+      "description": "Require a typed business reason before \"Continue anyway\"."
+    },
+    "blockFileUploadsOnHighRisk": {
+      "type": "string",
+      "enum": [
+        "off",
+        "warn",
+        "block"
+      ],
+      "description": "Warn or block every file upload to high-risk sites regardless of content."
+    },
+    "channels": {
+      "type": "object",
+      "description": "Which channels are inspected.",
+      "properties": {
+        "paste": {
+          "type": "boolean",
+          "description": "Pasted text and files."
+        },
+        "drop": {
+          "type": "boolean",
+          "description": "Drag and drop of text and files."
+        },
+        "upload": {
+          "type": "boolean",
+          "description": "File inputs (and dropped files): names and text-like file contents."
+        },
+        "submit": {
+          "type": "boolean",
+          "description": "Typed text when pressing Enter or submitting a form, on high-risk sites only."
+        }
+      }
+    },
+    "maxFileSizeMB": {
+      "type": "number",
+      "description": "Maximum amount of each text-like file that is scanned, in MB."
+    },
+    "classificationKeywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Classification markers (whole word, case-insensitive)."
+    },
+    "bulkEmailThreshold": {
+      "type": "integer",
+      "description": "Distinct e-mail addresses in one paste/upload that trigger the bulk e-mail detector."
+    },
+    "customRules": {
+      "type": "array",
+      "description": "Organization-defined regex rules.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable identifier."
+          },
+          "name": {
+            "type": "string",
+            "description": "Name shown to users."
+          },
+          "description": {
+            "type": "string",
+            "description": "Optional explanation."
+          },
+          "pattern": {
+            "type": "string",
+            "description": "JavaScript regular expression source."
+          },
+          "flags": {
+            "type": "string",
+            "description": "Regex flags (i, m, s, u)."
+          },
+          "minCount": {
+            "type": "integer",
+            "description": "Minimum distinct matches before the rule triggers."
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "off",
+              "log",
+              "warn",
+              "block",
+              "default"
+            ],
+            "description": "Action when the rule triggers."
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Rule enabled."
+          }
+        }
+      }
+    },
+    "allowUserDisable": {
+      "type": "boolean",
+      "description": "Allow users to switch protection off from the popup."
+    },
+    "allowSnooze": {
+      "type": "boolean",
+      "description": "Allow users to pause protection on one site for snoozeMinutes."
+    },
+    "snoozeMinutes": {
+      "type": "integer",
+      "description": "Length of a snooze in minutes."
+    },
+    "reportingEndpoint": {
+      "type": "string",
+      "description": "HTTPS endpoint that receives incident batches (POST JSON). Empty disables reporting."
+    },
+    "reportingHeaders": {
+      "type": "object",
+      "description": "Extra HTTP headers for reporting, e.g. Authorization.",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "department": {
+      "type": "string",
+      "description": "Department label sent with reports."
+    },
+    "includeUserEmail": {
+      "type": "boolean",
+      "description": "Include userEmail in reports."
+    },
+    "userEmail": {
+      "type": "string",
+      "description": "User e-mail sent with reports when includeUserEmail is true."
+    },
+    "brand": {
+      "type": "object",
+      "description": "Company brand overrides.",
+      "properties": {
+        "companyName": {
+          "type": "string",
+          "description": "Company name."
+        },
+        "logo": {
+          "type": "string",
+          "description": "Logo URL or data: URL."
+        },
+        "primary": {
+          "type": "string",
+          "description": "Primary colour (#RRGGBB)."
+        },
+        "accent": {
+          "type": "string",
+          "description": "Accent colour (#RRGGBB)."
+        },
+        "theme": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "light",
+            "dark"
+          ],
+          "description": "Theme."
+        },
+        "radius": {
+          "type": "integer",
+          "description": "Corner radius in px."
+        },
+        "supportUrl": {
+          "type": "string",
+          "description": "Help page URL."
+        },
+        "supportEmail": {
+          "type": "string",
+          "description": "Support e-mail."
+        },
+        "footerText": {
+          "type": "string",
+          "description": "Footer text."
+        }
+      }
+    },
+    "defaults": {
+      "type": "object",
+      "description": "Suggested values users may change (same keys as the top level).",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Protection on/off for the user. Only honoured when allowUserDisable is true."
+        },
+        "mode": {
+          "type": "string",
+          "enum": [
+            "all-except-trusted",
+            "listed"
+          ],
+          "description": "\"all-except-trusted\": protect every site except trustedSites. \"listed\": only protect highRiskSites."
+        },
+        "trustedSites": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Company / approved destinations that are never scanned. Patterns: \"acme.com\" (domain + subdomains), \"=host\", \"*.acme.com\", \"host/path*\", \"re:<regex>\"."
+        },
+        "highRiskSites": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Unapproved high-risk destinations (public AI tools, personal e-mail, file sharing). Same pattern syntax as trustedSites."
+        },
+        "defaultAction": {
+          "type": "string",
+          "enum": [
+            "off",
+            "log",
+            "warn",
+            "block"
+          ],
+          "description": "Action for custom rules and for any rule set to \"default\"."
+        },
+        "ruleActions": {
+          "type": "object",
+          "description": "Action per built-in detector: off | log | warn | block | default.",
+          "properties": {
+            "card": {
+              "type": "string",
+              "enum": [
+                "off",
+                "log",
+                "warn",
+                "block",
+                "default"
+              ],
+              "description": "Action for the \"card\" detector."
+            },
+            "iban": {
+              "type": "string",
+              "enum": [
+                "off",
+                "log",
+                "warn",
+                "block",
+                "default"
+              ],
+              "description": "Action for the \"iban\" detector."
+            },
+            "us-ssn": {
+              "type": "string",
+              "enum": [
+                "off",
+                "log",
+                "warn",
+                "block",
+                "default"
+              ],
+              "description": "Action for the \"us-ssn\" detector."
+            },
+            "uk-nino": {
+              "type": "string",
+              "enum": [
+                "off",
+                "log",
+                "warn",
+                "block",
+                "default"
+              ],
+              "description": "Action for the \"uk-nino\" detector."
+            },
+            "ca-sin": {
+              "type": "string",
+              "enum": [
+                "off",
+                "log",
+                "warn",
+                "block",
+                "default"
+              ],
+              "description": "Action for the \"ca-sin\" detector."
+            },
+            "au-tfn": {
+              "type": "string",
+              "enum": [
+                "off",
+                "log",
+                "warn",
+                "block",
+                "default"
+              ],
+              "description": "Action for the \"au-tfn\" detector."
+            },
+            "private-key": {
+              "type": "string",
+              "enum": [
+                "off",
+                "log",
+                "warn",
+                "block",
+                "default"
+              ],
+              "description": "Action for the \"private-key\" detector."
+            },
+            "aws-key": {
+              "type": "string",
+              "enum": [
+                "off",
+                "log",
+                "warn",
+                "block",
+                "default"
+              ],
+              "description": "Action for the \"aws-key\" detector."
+            },
+            "github-token": {
+              "type": "string",
+              "enum": [
+                "off",
+                "log",
+                "warn",
+                "block",
+                "default"
+              ],
+              "description": "Action for the \"github-token\" detector."
+            },
+            "slack-token": {
+              "type": "string",
+              "enum": [
+                "off",
+                "log",
+                "warn",
+                "block",
+                "default"
+              ],
+              "description": "Action for the \"slack-token\" detector."
+            },
+            "google-api-key": {
+              "type": "string",
+              "enum": [
+                "off",
+                "log",
+                "warn",
+                "block",
+                "default"
+              ],
+              "description": "Action for the \"google-api-key\" detector."
+            },
+            "stripe-key": {
+              "type": "string",
+              "enum": [
+                "off",
+                "log",
+                "warn",
+                "block",
+                "default"
+              ],
+              "description": "Action for the \"stripe-key\" detector."
+            },
+            "jwt": {
+              "type": "string",
+              "enum": [
+                "off",
+                "log",
+                "warn",
+                "block",
+                "default"
+              ],
+              "description": "Action for the \"jwt\" detector."
+            },
+            "password-assignment": {
+              "type": "string",
+              "enum": [
+                "off",
+                "log",
+                "warn",
+                "block",
+                "default"
+              ],
+              "description": "Action for the \"password-assignment\" detector."
+            },
+            "classification": {
+              "type": "string",
+              "enum": [
+                "off",
+                "log",
+                "warn",
+                "block",
+                "default"
+              ],
+              "description": "Action for the \"classification\" detector."
+            },
+            "bulk-email": {
+              "type": "string",
+              "enum": [
+                "off",
+                "log",
+                "warn",
+                "block",
+                "default"
+              ],
+              "description": "Action for the \"bulk-email\" detector."
+            }
+          }
+        },
+        "highRiskAction": {
+          "type": "string",
+          "enum": [
+            "same",
+            "warn",
+            "block"
+          ],
+          "description": "On high-risk sites, rules at warn level are escalated to this action (\"same\" keeps them as configured)."
+        },
+        "requireJustification": {
+          "type": "boolean",
+          "description": "Require a typed business reason before \"Continue anyway\"."
+        },
+        "blockFileUploadsOnHighRisk": {
+          "type": "string",
+          "enum": [
+            "off",
+            "warn",
+            "block"
+          ],
+          "description": "Warn or block every file upload to high-risk sites regardless of content."
+        },
+        "channels": {
+          "type": "object",
+          "description": "Which channels are inspected.",
+          "properties": {
+            "paste": {
+              "type": "boolean",
+              "description": "Pasted text and files."
+            },
+            "drop": {
+              "type": "boolean",
+              "description": "Drag and drop of text and files."
+            },
+            "upload": {
+              "type": "boolean",
+              "description": "File inputs (and dropped files): names and text-like file contents."
+            },
+            "submit": {
+              "type": "boolean",
+              "description": "Typed text when pressing Enter or submitting a form, on high-risk sites only."
+            }
+          }
+        },
+        "maxFileSizeMB": {
+          "type": "number",
+          "description": "Maximum amount of each text-like file that is scanned, in MB."
+        },
+        "classificationKeywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Classification markers (whole word, case-insensitive)."
+        },
+        "bulkEmailThreshold": {
+          "type": "integer",
+          "description": "Distinct e-mail addresses in one paste/upload that trigger the bulk e-mail detector."
+        },
+        "customRules": {
+          "type": "array",
+          "description": "Organization-defined regex rules.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Stable identifier."
+              },
+              "name": {
+                "type": "string",
+                "description": "Name shown to users."
+              },
+              "description": {
+                "type": "string",
+                "description": "Optional explanation."
+              },
+              "pattern": {
+                "type": "string",
+                "description": "JavaScript regular expression source."
+              },
+              "flags": {
+                "type": "string",
+                "description": "Regex flags (i, m, s, u)."
+              },
+              "minCount": {
+                "type": "integer",
+                "description": "Minimum distinct matches before the rule triggers."
+              },
+              "action": {
+                "type": "string",
+                "enum": [
+                  "off",
+                  "log",
+                  "warn",
+                  "block",
+                  "default"
+                ],
+                "description": "Action when the rule triggers."
+              },
+              "enabled": {
+                "type": "boolean",
+                "description": "Rule enabled."
+              }
+            }
+          }
+        },
+        "allowUserDisable": {
+          "type": "boolean",
+          "description": "Allow users to switch protection off from the popup."
+        },
+        "allowSnooze": {
+          "type": "boolean",
+          "description": "Allow users to pause protection on one site for snoozeMinutes."
+        },
+        "snoozeMinutes": {
+          "type": "integer",
+          "description": "Length of a snooze in minutes."
+        },
+        "reportingEndpoint": {
+          "type": "string",
+          "description": "HTTPS endpoint that receives incident batches (POST JSON). Empty disables reporting."
+        },
+        "reportingHeaders": {
+          "type": "object",
+          "description": "Extra HTTP headers for reporting, e.g. Authorization.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "department": {
+          "type": "string",
+          "description": "Department label sent with reports."
+        },
+        "includeUserEmail": {
+          "type": "boolean",
+          "description": "Include userEmail in reports."
+        },
+        "userEmail": {
+          "type": "string",
+          "description": "User e-mail sent with reports when includeUserEmail is true."
+        },
+        "brand": {
+          "type": "object",
+          "description": "Company brand overrides.",
+          "properties": {
+            "companyName": {
+              "type": "string",
+              "description": "Company name."
+            },
+            "logo": {
+              "type": "string",
+              "description": "Logo URL or data: URL."
+            },
+            "primary": {
+              "type": "string",
+              "description": "Primary colour (#RRGGBB)."
+            },
+            "accent": {
+              "type": "string",
+              "description": "Accent colour (#RRGGBB)."
+            },
+            "theme": {
+              "type": "string",
+              "enum": [
+                "auto",
+                "light",
+                "dark"
+              ],
+              "description": "Theme."
+            },
+            "radius": {
+              "type": "integer",
+              "description": "Corner radius in px."
+            },
+            "supportUrl": {
+              "type": "string",
+              "description": "Help page URL."
+            },
+            "supportEmail": {
+              "type": "string",
+              "description": "Support e-mail."
+            },
+            "footerText": {
+              "type": "string",
+              "description": "Footer text."
+            }
+          }
+        }
+      }
+    }
+  }
+}

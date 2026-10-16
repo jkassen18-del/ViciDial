@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Leak Guard</title>
+  <link rel="stylesheet" href="shared/ui.css">
+  <link rel="stylesheet" href="dlp.css">
+  <script src="detectors.js"></script>
+  <script type="module" src="popup.js"></script>
+</head>
+<body class="popup">
+  <header id="app-header"></header>
+  <main id="main" class="popup-main">
+    <div class="site-card skeleton-card" id="site-card" aria-busy="true">
+      <div class="skeleton" style="width: 42px; height: 42px; border-radius: 50%"></div>
+      <div class="grow stack-sm">
+        <div class="skeleton" style="height: 14px; width: 55%"></div>
+        <div class="skeleton" style="height: 12px; width: 80%"></div>
+      </div>
+    </div>
+    <div id="watching"></div>
+    <div id="stats"></div>
+    <div id="recent"></div>
+    <div id="tester"></div>
+  </main>
+  <footer id="app-footer"></footer>
+</body>
+</html>

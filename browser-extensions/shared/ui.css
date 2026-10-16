@@ -493,3 +493,7 @@ dialog.dialog[open] { animation: dialog-in .2s cubic-bezier(.2,.8,.2,1); }
 .icon-16 { width: 16px; height: 16px; }
 .icon-20 { width: 20px; height: 20px; }
 .text-success { color: var(--success); } .text-warning { color: var(--warning); } .text-danger { color: var(--danger); } .text-primary { color: var(--primary-text); }
+
+/* default icon sizes inside headings (avoid huge SVGs without width/height) */
+.section-head h2 > svg:not([width]) { width: 20px; height: 20px; flex: none; }
+.card-head h3 > svg:not([width]), h3 > svg:not([width]) { width: 18px; height: 18px; flex: none; }
