@@ -1,0 +1,490 @@
+{
+  "type": "object",
+  "properties": {
+    "enabled": {
+      "type": "boolean",
+      "title": "Enabled",
+      "description": "Master switch for all labels"
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable identifier"
+          },
+          "label": {
+            "type": "string",
+            "description": "Environment name shown on the ribbon, e.g. PRODUCTION"
+          },
+          "short": {
+            "type": "string",
+            "description": "Optional short tag for the badge and title prefix (defaults from the label, e.g. PROD)"
+          },
+          "color": {
+            "type": "string",
+            "description": "Ribbon colour as #RRGGBB"
+          },
+          "textColor": {
+            "type": "string",
+            "description": "Text colour as #RRGGBB (empty = automatic contrast)"
+          },
+          "patterns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Host/URL patterns: host, *.host, =exact, host/path*, host:port, re:regex"
+          },
+          "ribbon": {
+            "type": "string",
+            "enum": [
+              "top",
+              "bottom",
+              "left",
+              "right",
+              "corner",
+              "none"
+            ],
+            "description": "Ribbon position"
+          },
+          "faviconTint": {
+            "type": "boolean",
+            "description": "Tint the site favicon"
+          },
+          "titlePrefix": {
+            "type": "boolean",
+            "description": "Prefix the tab title, e.g. [PROD]"
+          },
+          "border": {
+            "type": "boolean",
+            "description": "Draw a coloured frame around the page"
+          },
+          "confirmForms": {
+            "type": "boolean",
+            "description": "Ask before submitting forms"
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Rule is active"
+          }
+        }
+      },
+      "title": "Company rules",
+      "description": "Environment rules from your organization. Always evaluated first and read-only for users."
+    },
+    "personalRules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Stable identifier"
+          },
+          "label": {
+            "type": "string",
+            "description": "Environment name shown on the ribbon, e.g. PRODUCTION"
+          },
+          "short": {
+            "type": "string",
+            "description": "Optional short tag for the badge and title prefix (defaults from the label, e.g. PROD)"
+          },
+          "color": {
+            "type": "string",
+            "description": "Ribbon colour as #RRGGBB"
+          },
+          "textColor": {
+            "type": "string",
+            "description": "Text colour as #RRGGBB (empty = automatic contrast)"
+          },
+          "patterns": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Host/URL patterns: host, *.host, =exact, host/path*, host:port, re:regex"
+          },
+          "ribbon": {
+            "type": "string",
+            "enum": [
+              "top",
+              "bottom",
+              "left",
+              "right",
+              "corner",
+              "none"
+            ],
+            "description": "Ribbon position"
+          },
+          "faviconTint": {
+            "type": "boolean",
+            "description": "Tint the site favicon"
+          },
+          "titlePrefix": {
+            "type": "boolean",
+            "description": "Prefix the tab title, e.g. [PROD]"
+          },
+          "border": {
+            "type": "boolean",
+            "description": "Draw a coloured frame around the page"
+          },
+          "confirmForms": {
+            "type": "boolean",
+            "description": "Ask before submitting forms"
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Rule is active"
+          }
+        }
+      },
+      "title": "Personal rules",
+      "description": "User-editable rules (evaluated after company and remote rules). Put this under defaults to seed them."
+    },
+    "allowPersonalRules": {
+      "type": "boolean",
+      "title": "Allow personal rules",
+      "description": "When false, only company and remote rules apply"
+    },
+    "rulesUrls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "title": "Remote rule sources",
+      "description": "HTTPS URLs of JSON files ({ \"rules\": [...] }) fetched periodically"
+    },
+    "refreshMinutes": {
+      "type": "integer",
+      "title": "Refresh interval",
+      "description": "Minutes between remote rule refreshes (default 60)"
+    },
+    "confirmDestructiveClicks": {
+      "type": "boolean",
+      "title": "Confirm destructive clicks",
+      "description": "On rules with confirmForms, also confirm clicks on Delete/Drop/Destroy/Remove/Truncate/Purge/Deploy buttons"
+    },
+    "ribbonHeight": {
+      "type": "integer",
+      "title": "Ribbon size",
+      "description": "Ribbon thickness in pixels (16-48)"
+    },
+    "ribbonOpacity": {
+      "type": "number",
+      "title": "Ribbon opacity",
+      "description": "0.3 to 1"
+    },
+    "allowHideRibbon": {
+      "type": "boolean",
+      "title": "Allow hiding the ribbon",
+      "description": "Show the close button that hides the ribbon for the current tab session"
+    },
+    "ribbonPushesContent": {
+      "type": "boolean",
+      "title": "Top ribbon pushes content",
+      "description": "Add top padding to the page so a top ribbon does not cover it"
+    },
+    "showHostname": {
+      "type": "boolean",
+      "title": "Show host name",
+      "description": "Show the host name next to the label on the ribbon"
+    },
+    "showBadge": {
+      "type": "boolean",
+      "title": "Toolbar badge",
+      "description": "Show the environment tag on the toolbar icon"
+    },
+    "defaults": {
+      "type": "object",
+      "title": "Suggested defaults",
+      "description": "Values users may change (same keys as above)",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "title": "Enabled",
+          "description": "Master switch for all labels"
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Stable identifier"
+              },
+              "label": {
+                "type": "string",
+                "description": "Environment name shown on the ribbon, e.g. PRODUCTION"
+              },
+              "short": {
+                "type": "string",
+                "description": "Optional short tag for the badge and title prefix (defaults from the label, e.g. PROD)"
+              },
+              "color": {
+                "type": "string",
+                "description": "Ribbon colour as #RRGGBB"
+              },
+              "textColor": {
+                "type": "string",
+                "description": "Text colour as #RRGGBB (empty = automatic contrast)"
+              },
+              "patterns": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Host/URL patterns: host, *.host, =exact, host/path*, host:port, re:regex"
+              },
+              "ribbon": {
+                "type": "string",
+                "enum": [
+                  "top",
+                  "bottom",
+                  "left",
+                  "right",
+                  "corner",
+                  "none"
+                ],
+                "description": "Ribbon position"
+              },
+              "faviconTint": {
+                "type": "boolean",
+                "description": "Tint the site favicon"
+              },
+              "titlePrefix": {
+                "type": "boolean",
+                "description": "Prefix the tab title, e.g. [PROD]"
+              },
+              "border": {
+                "type": "boolean",
+                "description": "Draw a coloured frame around the page"
+              },
+              "confirmForms": {
+                "type": "boolean",
+                "description": "Ask before submitting forms"
+              },
+              "enabled": {
+                "type": "boolean",
+                "description": "Rule is active"
+              }
+            }
+          },
+          "title": "Company rules",
+          "description": "Environment rules from your organization. Always evaluated first and read-only for users."
+        },
+        "personalRules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Stable identifier"
+              },
+              "label": {
+                "type": "string",
+                "description": "Environment name shown on the ribbon, e.g. PRODUCTION"
+              },
+              "short": {
+                "type": "string",
+                "description": "Optional short tag for the badge and title prefix (defaults from the label, e.g. PROD)"
+              },
+              "color": {
+                "type": "string",
+                "description": "Ribbon colour as #RRGGBB"
+              },
+              "textColor": {
+                "type": "string",
+                "description": "Text colour as #RRGGBB (empty = automatic contrast)"
+              },
+              "patterns": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Host/URL patterns: host, *.host, =exact, host/path*, host:port, re:regex"
+              },
+              "ribbon": {
+                "type": "string",
+                "enum": [
+                  "top",
+                  "bottom",
+                  "left",
+                  "right",
+                  "corner",
+                  "none"
+                ],
+                "description": "Ribbon position"
+              },
+              "faviconTint": {
+                "type": "boolean",
+                "description": "Tint the site favicon"
+              },
+              "titlePrefix": {
+                "type": "boolean",
+                "description": "Prefix the tab title, e.g. [PROD]"
+              },
+              "border": {
+                "type": "boolean",
+                "description": "Draw a coloured frame around the page"
+              },
+              "confirmForms": {
+                "type": "boolean",
+                "description": "Ask before submitting forms"
+              },
+              "enabled": {
+                "type": "boolean",
+                "description": "Rule is active"
+              }
+            }
+          },
+          "title": "Personal rules",
+          "description": "User-editable rules (evaluated after company and remote rules). Put this under defaults to seed them."
+        },
+        "allowPersonalRules": {
+          "type": "boolean",
+          "title": "Allow personal rules",
+          "description": "When false, only company and remote rules apply"
+        },
+        "rulesUrls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Remote rule sources",
+          "description": "HTTPS URLs of JSON files ({ \"rules\": [...] }) fetched periodically"
+        },
+        "refreshMinutes": {
+          "type": "integer",
+          "title": "Refresh interval",
+          "description": "Minutes between remote rule refreshes (default 60)"
+        },
+        "confirmDestructiveClicks": {
+          "type": "boolean",
+          "title": "Confirm destructive clicks",
+          "description": "On rules with confirmForms, also confirm clicks on Delete/Drop/Destroy/Remove/Truncate/Purge/Deploy buttons"
+        },
+        "ribbonHeight": {
+          "type": "integer",
+          "title": "Ribbon size",
+          "description": "Ribbon thickness in pixels (16-48)"
+        },
+        "ribbonOpacity": {
+          "type": "number",
+          "title": "Ribbon opacity",
+          "description": "0.3 to 1"
+        },
+        "allowHideRibbon": {
+          "type": "boolean",
+          "title": "Allow hiding the ribbon",
+          "description": "Show the close button that hides the ribbon for the current tab session"
+        },
+        "ribbonPushesContent": {
+          "type": "boolean",
+          "title": "Top ribbon pushes content",
+          "description": "Add top padding to the page so a top ribbon does not cover it"
+        },
+        "showHostname": {
+          "type": "boolean",
+          "title": "Show host name",
+          "description": "Show the host name next to the label on the ribbon"
+        },
+        "showBadge": {
+          "type": "boolean",
+          "title": "Toolbar badge",
+          "description": "Show the environment tag on the toolbar icon"
+        },
+        "brand": {
+          "type": "object",
+          "title": "Brand",
+          "description": "Company branding",
+          "properties": {
+            "companyName": {
+              "type": "string",
+              "description": "Company name"
+            },
+            "logo": {
+              "type": "string",
+              "description": "Logo URL or data: URL"
+            },
+            "primary": {
+              "type": "string",
+              "description": "Primary colour #RRGGBB"
+            },
+            "accent": {
+              "type": "string",
+              "description": "Accent colour #RRGGBB"
+            },
+            "theme": {
+              "type": "string",
+              "description": "auto, light or dark"
+            },
+            "radius": {
+              "type": "integer",
+              "description": "Corner radius in px"
+            },
+            "supportUrl": {
+              "type": "string",
+              "description": "Help page URL"
+            },
+            "supportEmail": {
+              "type": "string",
+              "description": "Support email"
+            },
+            "footerText": {
+              "type": "string",
+              "description": "Footer text"
+            }
+          }
+        }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "title": "Brand",
+      "description": "Company branding",
+      "properties": {
+        "companyName": {
+          "type": "string",
+          "description": "Company name"
+        },
+        "logo": {
+          "type": "string",
+          "description": "Logo URL or data: URL"
+        },
+        "primary": {
+          "type": "string",
+          "description": "Primary colour #RRGGBB"
+        },
+        "accent": {
+          "type": "string",
+          "description": "Accent colour #RRGGBB"
+        },
+        "theme": {
+          "type": "string",
+          "description": "auto, light or dark"
+        },
+        "radius": {
+          "type": "integer",
+          "description": "Corner radius in px"
+        },
+        "supportUrl": {
+          "type": "string",
+          "description": "Help page URL"
+        },
+        "supportEmail": {
+          "type": "string",
+          "description": "Support email"
+        },
+        "footerText": {
+          "type": "string",
+          "description": "Footer text"
+        }
+      }
+    }
+  }
+}

@@ -14,7 +14,12 @@ export function h(tag, attrs = {}, ...children) {
   for (const [k, v] of Object.entries(attrs || {})) {
     if (v == null || v === false) continue;
     if (k === 'class') el.className = Array.isArray(v) ? v.filter(Boolean).join(' ') : v;
-    else if (k === 'style' && typeof v === 'object') Object.assign(el.style, v);
+    else if (k === 'style' && typeof v === 'object') {
+      for (const [prop, val] of Object.entries(v)) {
+        if (prop.startsWith('--')) el.style.setProperty(prop, val);
+        else el.style[prop] = val;
+      }
+    }
     else if (k === 'dataset') Object.assign(el.dataset, v);
     else if (k === 'html') el.innerHTML = v;
     else if (k === 'value') value = v;

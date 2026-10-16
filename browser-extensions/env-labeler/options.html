@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Environment Labeler · Settings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="shared/ui.css">
+  <link rel="stylesheet" href="options.css">
+  <script type="module" src="options.js"></script>
+</head>
+<body>
+  <header id="app-header"></header>
+  <div class="shell">
+    <nav class="side-nav" aria-label="Settings sections">
+      <div class="nav-label">Environments</div>
+      <a href="#rules"><i data-icon="layers"></i>Rules</a>
+      <a href="#remote"><i data-icon="cloud"></i>Remote rule sources</a>
+      <a href="#behaviour"><i data-icon="settings"></i>Behaviour</a>
+      <div class="nav-label">Extension</div>
+      <a href="#branding"><i data-icon="palette"></i>Branding</a>
+      <a href="#backup"><i data-icon="download"></i>Backup &amp; policy</a>
+      <a href="#about"><i data-icon="info"></i>About</a>
+    </nav>
+    <main class="content">
+      <section id="rules">
+        <div class="section-head">
+          <h2><i data-icon="layers" class="text-primary"></i>Rules</h2>
+          <p>Each rule gives a group of sites a colour and a label. Rules are checked from top to bottom and the first enabled rule with a matching pattern wins, so put specific rules above broad ones.</p>
+        </div>
+        <div id="rules-panel"></div>
+      </section>
+
+      <section id="remote">
+        <div class="section-head">
+          <h2><i data-icon="cloud" class="text-primary"></i>Remote rule sources</h2>
+          <p>Load shared rules from JSON files your team hosts. They are fetched in the background, cached, and checked after company rules and before your personal rules.</p>
+        </div>
+        <div id="remote-panel"></div>
+        <div class="card">
+          <div class="setting-row">
+            <div class="text"><strong>Refresh every</strong><span>Minutes between background refreshes. Sources are also fetched when the browser starts and when you add one.</span></div>
+            <div class="control"><input class="input" type="number" min="1" max="1440" style="width: 110px" data-setting="refreshMinutes" aria-label="Refresh interval in minutes"><span class="subtle">min</span></div>
+          </div>
+          <details class="mt-12">
+            <summary class="subtle">File format</summary>
+            <pre class="textarea code format-sample">{
+  "name": "Acme environments",
+  "rules": [
+    {
+      "id": "prod", "label": "PRODUCTION", "color": "#DC2626",
+      "patterns": ["app.acme.example", "*.prod.acme.example"],
+      "ribbon": "top", "faviconTint": true, "titlePrefix": true,
+      "border": true, "confirmForms": true
+    }
+  ]
+}</pre>
+          </details>
+        </div>
+      </section>
+
+      <section id="behaviour">
+        <div class="section-head">
+          <h2><i data-icon="settings" class="text-primary"></i>Behaviour</h2>
+          <p>How labels look and behave on every site.</p>
+        </div>
+        <div class="card">
+          <div class="setting-row">
+            <div class="text"><strong>Label environments</strong><span>Master switch. When off, no ribbons, favicons, title prefixes, badges or confirmations are shown.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="enabled"><span class="track"></span></label></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Allow personal rules</strong><span>Use the rules you define yourself in addition to company and remote rules.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="allowPersonalRules"><span class="track"></span></label></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Confirm destructive clicks</strong><span>On environments that confirm forms, also ask before clicking buttons labelled Delete, Drop, Destroy, Remove, Truncate, Purge or Deploy.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="confirmDestructiveClicks"><span class="track"></span></label></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Toolbar badge</strong><span>Show the environment tag (PROD, STG, DEV…) on the toolbar icon.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="showBadge"><span class="track"></span></label></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3><i data-icon="flag"></i>Ribbon</h3></div>
+          <div class="setting-row">
+            <div class="text"><strong>Ribbon size</strong><span>Thickness of the ribbon in pixels.</span></div>
+            <div class="control range-control"><input type="range" min="18" max="40" step="1" data-setting="ribbonHeight" id="ribbon-height"><span class="badge" id="ribbon-height-out"></span></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Ribbon opacity</strong><span>Lower values let more of the page show through.</span></div>
+            <div class="control range-control"><input type="range" min="0.4" max="1" step="0.05" data-setting="ribbonOpacity" id="ribbon-opacity"><span class="badge" id="ribbon-opacity-out"></span></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Show host name</strong><span>Show the site's host name next to the label on top, bottom and side ribbons.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="showHostname"><span class="track"></span></label></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Allow hiding the ribbon</strong><span>Show a small × on the ribbon that hides it for the rest of the tab session.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="allowHideRibbon"><span class="track"></span></label></div>
+          </div>
+          <div class="setting-row">
+            <div class="text"><strong>Top ribbon pushes content down</strong><span>Adds space above the page so a top ribbon never covers it. Off by default because some sites' fixed headers will not move.</span></div>
+            <div class="control"><label class="switch"><input type="checkbox" data-setting="ribbonPushesContent"><span class="track"></span></label></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="branding"><div class="section-head"><h2><i data-icon="palette" class="text-primary"></i>Branding</h2><p>Company look and feel for the popup, settings and the confirmation dialogs shown on web pages.</p></div><div id="branding-panel"></div></section>
+      <section id="backup"><div class="section-head"><h2><i data-icon="download" class="text-primary"></i>Backup &amp; policy</h2><p>Move your rules between browsers or roll them out to everyone with a managed policy.</p></div><div id="backup-panel"></div></section>
+      <section id="about"><div class="section-head"><h2><i data-icon="info" class="text-primary"></i>About</h2></div><div id="about-panel"></div></section>
+    </main>
+  </div>
+</body>
+</html>

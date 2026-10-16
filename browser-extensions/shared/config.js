@@ -29,7 +29,12 @@ export function getBakedBrand() {
 
 /** Raw managed-policy object ({} when no policy is installed or the browser lacks support). */
 export async function readManaged() {
-  try { return (await api.storage.managed.get(null)) || {}; } catch { return {}; }
+  // storage.managed.get can stall for seconds right after browser start
+  // (seen in headless Chromium); don't let that block every page render.
+  try {
+    const timeout = new Promise((resolve) => setTimeout(() => resolve(null), 1500));
+    return (await Promise.race([api.storage.managed.get(null), timeout])) || {};
+  } catch { return {}; }
 }
 
 export async function readLocalSettings() {
